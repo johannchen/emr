@@ -8,13 +8,15 @@ Emr::Application.routes.draw do
   # root 'welcome#index'
   root :to => "home#index"
 
+  namespace :admin do
+    resources :users
+  end
+
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
       resources :users
     end
   end
-
-  resources :users
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
