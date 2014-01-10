@@ -1,9 +1,20 @@
 Emr::Application.routes.draw do
+  get "home/index"
+  devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
+  root :to => "home#index"
+
+  namespace :api, defaults: {format: :json} do
+    namespace :v1 do
+      resources :users
+    end
+  end
+
+  resources :users
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
