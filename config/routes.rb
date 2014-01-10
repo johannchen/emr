@@ -9,6 +9,7 @@ Emr::Application.routes.draw do
   root :to => "home#index"
 
   namespace :admin do
+    root :to => "base#index"
     resources :users
   end
 
