@@ -1,0 +1,7 @@
+= link_to "New User", new_admin_user_path
+table 
+	- for user in @users do
+		tr
+			/td = user.first_name
+			/td = user.last_name
+			td = user

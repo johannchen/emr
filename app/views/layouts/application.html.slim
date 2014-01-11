@@ -1,0 +1,27 @@
+doctype html
+html
+	head
+  	title Emr
+  	= stylesheet_link_tag    "//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+  	= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+  	= javascript_include_tag "application", "data-turbolinks-track" => true 
+  	= csrf_meta_tags
+
+	body
+    .container
+      .header
+        ul.nav.nav-pills.pull-right
+          - if user_signed_in?
+            li
+              = link_to "Admin", admin_root_path
+            li
+              = link_to "Log out", destroy_user_session_path, method: :delete
+          - else
+            li
+              = link_to "Home", root_path
+            li
+              = link_to "Sign in", new_user_session_path
+        h3.text-muted
+          = link_to "Light EMR", root_path
+		  = render "layouts/flash"
+      = yield
