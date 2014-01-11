@@ -41,7 +41,11 @@ class User
   # field :unlock_token,    :type => String # Only if unlock strategy is :email or :both
   # field :locked_at,       :type => Time
 
-  def to_s
-    "#{email}" + " (Admin)" if admin?
+  def email_role
+    if admin?
+      "#{email} (Admin)"
+    else
+      "#{email}"
+    end
   end
 end
