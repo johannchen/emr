@@ -13,7 +13,6 @@ describe "Editing an user" do
 		click_link 'Admin'
 		click_link 'Users'
 		click_link @user.email
-		#click_link admin.email
 		click_link 'Edit User'
 	end
 
