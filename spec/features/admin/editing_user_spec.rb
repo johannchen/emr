@@ -7,8 +7,8 @@ describe "Editing an user" do
 	before :each do
 		@user = create(:user)
 		visit '/users/sign_in'
-		fill_in 'Email', :with => admin.email
-		fill_in 'Password', :with => admin.password
+		fill_in 'user_email', :with => admin.email
+		fill_in 'user_password', :with => admin.password
 		click_button 'Sign in'
 		click_link 'Admin'
 		click_link 'Users'

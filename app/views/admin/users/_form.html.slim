@@ -1,6 +1,14 @@
 = form_for [:admin, @user] do |f|
 	= @user.errors.full_messages.each do |msg|
 		p = msg
+
+	p
+		= f.label :first_name
+		= f.text_field :first_name
+
+	p
+		= f.label :last_name
+		= f.text_field :last_name
 	p
 		= f.label :email
 		= f.email_field :email

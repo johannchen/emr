@@ -6,8 +6,9 @@ class User
   devise :database_authenticatable, 
          :recoverable, :rememberable, :trackable, :validatable
          
-  # amdin
   field :admin, :type => Boolean, :default => false
+  field :first_name, :type => String
+  field :last_name, :type => String
 
   ## Database authenticatable
   field :email,              :type => String, :default => ""
@@ -41,11 +42,15 @@ class User
   # field :unlock_token,    :type => String # Only if unlock strategy is :email or :both
   # field :locked_at,       :type => Time
 
-  def email_role
+  def info
     if admin?
-      "#{email} (Admin)"
+      "#{full_name}, #{email} (Admin)"
     else
-      "#{email}"
+      "#{full_name}, #{email}"
     end
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
   end
 end
