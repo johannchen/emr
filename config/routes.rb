@@ -1,11 +1,6 @@
 Emr::Application.routes.draw do
-  get "home/index"
   devise_for :users
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
   root :to => "home#index"
 
   namespace :admin do
@@ -18,6 +13,9 @@ Emr::Application.routes.draw do
       resources :users
     end
   end
+
+  get '/dashboard' => 'templates#index'
+  get '/templates/:path.html' => 'templates#template', :constraints => { :path => /.+/ }
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

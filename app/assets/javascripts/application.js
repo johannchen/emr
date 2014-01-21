@@ -13,4 +13,15 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require lib/angular
+//= require lib/angular-resource
+//= require lib/angular-route
+//= require emr
 //= require_tree .
+
+# Makes AngularJS work with turbolinks
+$(document).on 'page:load', ->
+	$('[ng-app]').each ->
+		module = $(this).attr('ng-app')
+		angular.bootstrap(this, [module])
+

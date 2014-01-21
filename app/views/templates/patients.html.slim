@@ -1,0 +1,5 @@
+.ng-cloak(ng-init="init()")
+  p look up patient
+  ul
+    li(ng-repeat="patient in patients")
+      | {{patient.first_name}} {{patient.last_name}}
