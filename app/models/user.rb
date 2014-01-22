@@ -2,7 +2,7 @@ class User
   include Mongoid::Document
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  # :registerable, :token_authenticatable
+  # :registerable 
   devise :database_authenticatable, 
          :recoverable, :rememberable, :trackable, :validatable
          
@@ -27,9 +27,6 @@ class User
   field :last_sign_in_at,    :type => Time
   field :current_sign_in_ip, :type => String
   field :last_sign_in_ip,    :type => String
-
-  # Authentication Token for API
-  #field :authentication_token, :type => String
 
   ## Confirmable
   # field :confirmation_token,   :type => String

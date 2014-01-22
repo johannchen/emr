@@ -24,7 +24,7 @@ group :test do
 	gem 'factory_girl_rails'
 	gem 'database_cleaner'
 	gem 'mongoid-rspec'
-	gem 'rack-test'
+	#gem 'rack-test'
 end
 
 # Use ActiveModel has_secure_password

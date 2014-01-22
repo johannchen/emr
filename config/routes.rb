@@ -3,6 +3,8 @@ Emr::Application.routes.draw do
 
   root :to => "home#index"
 
+  get '/patients' => 'templates#index'
+
   namespace :admin do
     root :to => "base#index"
     resources :users
@@ -10,7 +12,9 @@ Emr::Application.routes.draw do
 
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
-      resources :users
+      devise_scope :user do
+        resource :session, only: [:create, :destroy]
+      end
     end
   end
 
