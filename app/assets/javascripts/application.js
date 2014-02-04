@@ -13,15 +13,13 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require lib/lodash
 //= require lib/angular
-//= require lib/angular-resource
+//= require lib/restangular
 //= require lib/angular-route
+//= require lib/select2
+//= require lib/angular-ui-select2/select2
 //= require emr
 //= require_tree .
 
-# Makes AngularJS work with turbolinks
-$(document).on 'page:load', ->
-	$('[ng-app]').each ->
-		module = $(this).attr('ng-app')
-		angular.bootstrap(this, [module])
 

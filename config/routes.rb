@@ -3,8 +3,6 @@ Emr::Application.routes.draw do
 
   root :to => "home#index"
 
-  get '/patients' => 'templates#index'
-
   namespace :admin do
     root :to => "base#index"
     resources :users
@@ -18,7 +16,8 @@ Emr::Application.routes.draw do
     end
   end
 
-  get '/dashboard' => 'templates#index'
+  resources :patients, defaults: {format: :json}
+  get '/patient' => 'templates#patient'
   get '/templates/:path.html' => 'templates#template', :constraints => { :path => /.+/ }
 
   # Example of regular route:

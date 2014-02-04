@@ -1,0 +1,21 @@
+.row
+  form name="patientForm"
+    .form-group(ng-class="{error: patientForm.first_name.$invalid && !patientForm.first_name.$pristine}")
+      label for="first_name" First name
+      input.form-control(type="text" name="first_name" ng-model="patient.first_name" required)
+      span.help-inline ng-show="patientForm.first_name.$error.required && !patientForm.first_name.$pristine"
+        | Required
+    .form-group(ng-class="{error: patientForm.last_name.$invalid && !patientForm.last_name.$pristine}")
+      label for="last_name" Last name
+      input.form-control(type="text" name="last_name" ng-model="patient.last_name" required) 
+      span.help-inline ng-show="patientForm.last_name.$error.required && !patientForm.last_name.$pristine"
+        | Required
+    .form-group
+      label.radio-inline
+        input type="radio" name="gender" id="F" value="Female" ng-model="patient.gender" Female
+      label.radio-inline
+        input type="radio" name="gender" id="M" value="Male" ng-model="patient.gender" Male
+    .form-group
+      label for="birthday" Birthday
+      input type="date" name="birthday" ng-model="patient.birthday"
+    button.btn.btn-primary ng-click="save()" ng-disabled="patientForm.$invalid" Save

@@ -1,0 +1,16 @@
+.row
+  .col-md-2(ng-controller="PatientMenuCtrl" ng-init="init()")
+    h4 Current Patient:
+    form
+      select(ui-select2 ng-model="currentPatientId" ng-change="selectPatient()" data-placeholder="Choose a patient")
+        option value=""
+        option(ng-repeat="patient in patients" value="{{patient.sid}}") 
+          | {{patient.full_name}}
+    ul.nav.nav-pills(ng-hide="currentPatientId==''")
+      li
+        a href="#/{{currentPatientId}}/edit" Edit Profile 
+    hr
+    ul.nav.nav-pills
+      li
+        a href="#/new" New Patient
+  .col-md-10(ng-view)

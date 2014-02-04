@@ -1,7 +1,7 @@
 class TemplatesController < ApplicationController
   before_filter :authenticate_user!
 
-  def index
+  def patient 
   end
 
   def template
