@@ -17,5 +17,11 @@
         input type="radio" name="gender" id="M" value="Male" ng-model="patient.gender" Male
     .form-group
       label for="birthday" Birthday
-      input type="date" name="birthday" ng-model="patient.birthday"
+      input.form-control type="date" name="birthday" ng-model="patient.birthday"
+    .form-group
+      label for="email" Email 
+      input.form-control type="email" name="email" ng-model="patient.email"
+    .form-group
+      label for="phone" Phone 
+      input.form-control type="text" name="phone" ng-model="patient.phone"
     button.btn.btn-primary ng-click="save()" ng-disabled="patientForm.$invalid" Save

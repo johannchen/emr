@@ -28,6 +28,6 @@ class PatientsController < ApplicationController
 
   private
   def safe_params
-    params.require(:patient).permit(:first_name, :last_name, :gender, :birthday)
+    params.require(:patient).permit(:first_name, :last_name, :gender, :birthday, :email, :phone)
   end
 end

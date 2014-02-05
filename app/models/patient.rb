@@ -4,6 +4,8 @@ class Patient
   field :last_name, type: String
   field :gender, type: String
   field :birthday, type: Date 
+  field :email, type: String
+  field :phone, type: String
 
   def sid
     id.to_s
@@ -11,14 +13,5 @@ class Patient
 
   def full_name
     "#{first_name} #{last_name}"
-  end
-
-  def self.search(name)
-    if name.blank?
-      all
-    else
-      for_js("this.first_name.match(param) ||
-            this.last_name.match(param)", param: "/#{name}/")
-    end
   end
 end
