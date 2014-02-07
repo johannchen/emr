@@ -16,6 +16,14 @@
     li 
       strong Allergies:
     li(ng-repeat="allergy in patient.allergies")
-      a href="#" editable-text="allergy.name" onbeforesave="updateAllergy($data)" {{allergy.name || "empty"}}
-    li.glyphicon.glyphicon-plus-sign
-
+      a href="#" editable-text="allergy.name" onbeforesave="updateAllergy($data)" {{allergy.name}}
+    li
+      a ng-click="isAddingAllergy=true" ng-hide="isAddingAllergy"
+        span.glyphicon.glyphicon-plus-sign
+      form.form-inline ng-show="isAddingAllergy" 
+        .form-group
+          input.form-control(type="text" ng-model="newAllergy" autofocus)
+        button.btn.btn-primary ng-click="addAllergy()"
+          span.glyphicon.glyphicon-ok
+        button.btn.btn-default type="button" ng-click="isAddingAllergy=false"
+          span.glyphicon.glyphicon-remove

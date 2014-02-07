@@ -5,10 +5,17 @@ class AllergiesController < ApplicationController
   end
 
   def create
+    @allergy = patient.allergies.create!(safe_params)
+    render json: @allergy
   end
 
   def update
     allergy.update_attributes(safe_params)
+    render nothing: true
+  end
+
+  def destroy
+    allergy.destroy
     render nothing: true
   end
 

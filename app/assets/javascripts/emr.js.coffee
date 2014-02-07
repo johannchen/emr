@@ -1,4 +1,4 @@
-angular.module('emrApp', ['restangular', 'ngRoute', 'ui.select2', 'xeditable', 'patient.service'])
+angular.module('emrApp', ['restangular', 'ngRoute', 'ui.select2', 'xeditable', 'util.service', 'patient.service'])
 	.config(['$httpProvider', ($httpProvider) ->
 		authToken = $("meta[name=\"csrf-token\"]").attr("content")
 		$httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken
