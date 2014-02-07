@@ -19,6 +19,7 @@
 //= require lib/angular-route
 //= require lib/select2
 //= require lib/angular-ui-select2/select2
+//= require lib/xeditable
 //= require emr
 //= require_tree .
 

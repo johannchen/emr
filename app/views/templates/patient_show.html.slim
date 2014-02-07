@@ -12,5 +12,10 @@
       |Phone: {{patient.phone}}
       
 .row
-  p 
-    | Patient detail {{patient.full_name}}
+  ul.list-inline
+    li 
+      strong Allergies:
+    li(ng-repeat="allergy in patient.allergies")
+      a href="#" editable-text="allergy.name" onbeforesave="updateAllergy($data)" {{allergy.name || "empty"}}
+    li.glyphicon.glyphicon-plus-sign
+

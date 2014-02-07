@@ -1,0 +1,1 @@
+json.(@allergy, :id, :name)

@@ -1,4 +1,4 @@
-angular.module('emrApp', ['restangular', 'ngRoute', 'ui.select2', 'patient.service'])
+angular.module('emrApp', ['restangular', 'ngRoute', 'ui.select2', 'xeditable', 'patient.service'])
 	.config(['$httpProvider', ($httpProvider) ->
 		authToken = $("meta[name=\"csrf-token\"]").attr("content")
 		$httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken
@@ -16,8 +16,11 @@ angular.module('emrApp', ['restangular', 'ngRoute', 'ui.select2', 'patient.servi
 	])
 	.config(['RestangularProvider', (RestangularProvider) ->
 		#RestangularProvider.setBaseUrl('/')
-		#RestangularProvider.setRestangularFields
-		#	id: "sid"
+		RestangularProvider.setRestangularFields
+			id: "id.$oid"
+	])
+	.run(['editableOptions', (editableOptions) ->
+		editableOptions.theme = 'bs3'
 	])
 
 # Makes AngularJS work with turbolinks

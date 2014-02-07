@@ -6,6 +6,7 @@ class Patient
   field :birthday, type: Date 
   field :email, type: String
   field :phone, type: String
+  embeds_many :allergies
 
   def sid
     id.to_s
