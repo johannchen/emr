@@ -5,7 +5,7 @@
     li.active(ng-hide="patient.gender == null")
       |{{patient.gender}}
     li.active(ng-hide="patient.birthday == null")
-      |DOB: {{patient.birthday}} (Age: {{age}})
+      |DOB: {{patient.birthday}} Age: {{patient.age}}
     li.active(ng-hide="patient.email == null")
       |{{patient.email}}
     li.active(ng-hide="patient.phone == null")
@@ -27,3 +27,95 @@
           span.glyphicon.glyphicon-ok
         button.btn.btn-default type="button" ng-click="isAddingAllergy=false"
           span.glyphicon.glyphicon-remove
+.row
+  .col-md-7
+    h5 Most Rencent Visit
+    h5 View Preivous Visits
+  .col-md-5
+    h5 Past Medical History
+    table.table
+      tr
+        th Diagnosis
+        th Year
+        th Comments
+      tr
+        td D1
+        td 2014
+        td good
+
+    h5 Current Medications
+    table.table id="medications"
+      tr
+        th Med Name 
+        th Script 
+        th Comment
+        th Edit
+      tr ng-repeat="med in patient.medications"
+        td
+          span(editable-text="med.name" e-name="name" e-form="medForm" e-required)
+            | {{med.name}}
+        td 
+          span(editable-text="med.script" e-name="script" e-form="medForm" e-required)
+            | {{med.script}}
+        td 
+          span(editable-text="med.comment" e-name="comment" e-form="medForm")
+            | {{med.comment }}
+        td
+          form.form-inline(editable-form name="medForm" ng-show="medForm.$visible" shown="inserted == med")
+            button.btn.btn-primary(type="submit" ng-disabled="medForm.$waiting")
+              span.glyphicon.glyphicon-ok
+            button.btn.btn-default(type="button" ng-disabled="medForm.$waiting" ng-click="medForm.$cancel()")
+              span.glyphicon.glyphicon-remove
+          .eidt ng-show="!medForm.$visible"
+            button.btn.btn-primary(ng-click="medForm.$show()")
+              span.glyphicon.glyphicon-edit  
+            button.btn.btn-danger(ng-click="removeMed($index)")
+              span.glyphicon.glyphicon-remove-circle
+        tr
+          td colspan="4"
+            button.btn.btn-default(ng-click="newMed()") New Medication
+
+    h5 Allergies/Advose Reactions
+    table.table.table-hover id="reactions"
+      tr
+        th style="width:40%" Med Name 
+        th style="width:60%" Reaction
+        th
+      tr.x-row ng-repeat="reaction in patient.reactions"
+        td
+          span(editable-text="reaction.medication" e-name="medication" e-form="reactionForm" e-required)
+            | {{reaction.medication || 'empty'}}
+        td
+          span(editable-text="reaction.name" e-name="name" e-form="reactionForm" e-required)
+            | {{reaction.name || 'empty'}}
+        td
+          form.form-inline(editable-form name="reactionForm" onaftersave="saveReaction()" ng-show="reactionForm.$visible" shown="insertedReaction == reaction")
+            button.btn.btn-primary(type="submit" ng-disabled="reactionForm.$waiting")
+              span.glyphicon.glyphicon-ok
+            button.btn.btn-default(type="button" ng-disabled="reactionForm.$waiting" ng-click="reactionForm.$cancel()")
+              span.glyphicon.glyphicon-remove
+          .edit ng-show="!reactionForm.$visible"
+            button.btn.btn-primary(ng-click="reactionForm.$show()")
+              span.glyphicon.glyphicon-edit  
+            button.btn.btn-danger(ng-click="removeReaction($index)")
+              span.glyphicon.glyphicon-remove-circle
+      tr
+        td colspan="3"
+          button.btn.btn-default(ng-click="newReaction()") New Reaction 
+    h5 Past Surgical History
+    table.table id="surgeries"
+      tr
+        th Surgery
+        th Year 
+        th Comment
+    h5 Social History
+    table.table id="social"
+      tr
+        th Name
+        th Description 
+    h5 Family History
+    table.table id="family"
+      tr
+        th Relation 
+        th Description 
+    h5 Related Family Members

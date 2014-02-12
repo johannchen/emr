@@ -22,3 +22,13 @@ body {
   padding: 15px;
   margin: 0 auto;
 }
+
+.edit {
+  display: none;
+}
+
+.x-row:hover .edit {
+  display: inline;
+}
+
+
