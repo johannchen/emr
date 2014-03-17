@@ -8,6 +8,7 @@ class Patient
   field :phone, type: String
   embeds_many :allergies
   embeds_many :reactions
+  embeds_many :diagonsises
 
   def sid
     id.to_s

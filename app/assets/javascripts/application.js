@@ -20,6 +20,7 @@
 //= require lib/select2
 //= require lib/angular-ui-select2/select2
 //= require lib/xeditable
+//= require lib/ngStorage
 //= require emr
 //= require_tree .
 

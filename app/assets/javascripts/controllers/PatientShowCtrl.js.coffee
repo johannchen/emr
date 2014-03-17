@@ -1,5 +1,7 @@
-angular.module('emrApp').controller 'PatientShowCtrl', ['$scope', 'patient', 'PatientService', 'UtilService', ($scope, patient, PatientService, UtilService) ->
+angular.module('emrApp').controller 'PatientShowCtrl', ['$scope', '$sessionStorage', 'patient', 'PatientService', 'UtilService', ($scope, $sessionStorage, patient, PatientService, UtilService) ->
 	$scope.patient = patient
+	$scope.$storage = $sessionStorage
+	$scope.$storage.patient = patient
 	$scope.patient.medications = []	
 	PatientService.broadcastSid($scope.patient.sid)
 	$scope.addAllergy = ->
@@ -33,9 +35,10 @@ angular.module('emrApp').controller 'PatientShowCtrl', ['$scope', 'patient', 'Pa
 			name: ''
 		$scope.patient.reactions.push($scope.insertedReaction)
 	$scope.removeReaction = (index) ->
-		patient.one("reactions", @reaction.id.$oid).get().then (reaction) ->
-			reaction.remove()
-			$scope.patient.reactions.splice(index, 1)
+    if confirm("Are you sure to delete this reaction?")
+      patient.one("reactions", @reaction.id.$oid).get().then (reaction) ->
+        reaction.remove()
+        $scope.patient.reactions.splice(index, 1)
 	$scope.saveReaction = ->
 		myReaction = @reaction
 		if @reaction.id == ''
