@@ -8,7 +8,7 @@ class Patient
   field :phone, type: String
   embeds_many :allergies
   embeds_many :reactions
-  embeds_many :diagonsises
+  embeds_many :diagnoses, class_name: "Diagnosis"
 
   def sid
     id.to_s

@@ -11,10 +11,17 @@
     li.active(ng-hide="patient.phone == null")
       |Phone: {{patient.phone}}
 .row
+  ol.breadcrumb
+    li 
+      a href="/patient#/{{patient.sid}}" Summary
+    li 
+      a href="/patient#/{{patient.sid}}/diagnosis" Medical History
+    li.active New Diagnosis
+.row
   form name="diagnosisForm"
-    .form-group(ng-class="{error: diagnosisForm.name.$invalid && !diagnosisForm.name.$pristine}")
+    .form-group(ng-class="{error: diagnosisForm.diagnosis.$invalid && !diagnosisForm.diagnosis.$pristine}")
       label for="name" Diagnosis 
-      input.form-control(type="text" name="name" ng-model="diagnosis.first_name" required)
+      input.form-control(type="text" name="name" ng-model="diagnosis.name" required)
       span.help-inline ng-show="diagnosisForm.name.$error.required && !diagnosisForm.name.$pristine"
         | Required
     .form-group(ng-class="{error: diagnosisForm.year.$invalid && !diagnosisForm.year.$pristine}")
@@ -22,4 +29,7 @@
       input.form-control(type="text" name="year" ng-model="diagnosis.year" required) 
       span.help-inline ng-show="diagnosisForm.year.$error.required && !diagnosisForm.year.$pristine"
         | Required
+    .form-group
+      label for="comment" Comment
+      textarea.form-control rows="3" ng-model="diagnosis.comment"
     button.btn.btn-primary ng-click="save()" ng-disabled="diagnosisForm.$invalid" Save

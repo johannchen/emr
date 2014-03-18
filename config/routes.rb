@@ -19,6 +19,7 @@ Emr::Application.routes.draw do
   resources :patients, defaults: {format: :json} do
     resources :allergies
     resources :reactions
+		resources :diagnoses
   end
   get '/patient' => 'templates#patient'
   get '/templates/:path.html' => 'templates#template', :constraints => { :path => /.+/ }

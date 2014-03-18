@@ -11,8 +11,13 @@
     li.active(ng-hide="patient.phone == null")
       |Phone: {{patient.phone}}
 .row
+  ol.breadcrumb
+    li 
+      a href="/patient#/{{patient.sid}}" Summary 
+    li.active Medical History
+.row
   .col-md-12
-    h4 Past Medical History
+    h4 Medical History
     a href="/patient#/{{patient.sid}}/diagnosis/new" New Diagnosis 
     table.table.table-hover id="diagnosis"
       tr
@@ -21,21 +26,10 @@
         th Comments
         th By 
         th
-      tr.x-row ng-repeat="diagnosis in patient.diagnosis"
+      tr.x-row ng-repeat="diagnosis in diagnoses"
         td
-          span(editable-text="diagnosis.name" e-name="name" e-form="diagnosisForm" e-required)
-            | {{diagnosis.name || 'empty'}}
+          |{{diagnosis.name}}
         td
-          span(editable-text="diagnosis.year" e-name="year" e-form="diagnosisForm" e-required)
-            | {{diagnosis.year || 'empty'}}
+          |{{diagnosis.year}}
         td
-          form.form-inline(editable-form name="diagnosisForm" onaftersave="saveDiagnosis()" ng-show="diagnosisForm.$visible" shown="insertedDiagnosis == diagnosis")
-            button.btn.btn-primary(type="submit" ng-disabled="diagnosisForm.$waiting")
-              span.glyphicon.glyphicon-ok
-            button.btn.btn-default(type="button" ng-disabled="diagnosisForm.$waiting" ng-click="diagnosisForm.$cancel()")
-              span.glyphicon.glyphicon-remove
-          .edit ng-show="!diagnosisForm.$visible"
-            button.btn.btn-primary(ng-click="diagnosisForm.$show()")
-              span.glyphicon.glyphicon-edit  
-            button.btn.btn-danger(ng-click="removeDiagnosis($index)")
-              span.glyphicon.glyphicon-remove-circle
+          |{{diagnosis.comment}}
