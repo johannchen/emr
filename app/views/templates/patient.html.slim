@@ -1,4 +1,4 @@
-.row
+.row ng-init="user='#{current_user.full_name}'"
   .col-md-2(ng-controller="PatientMenuCtrl" ng-init="init()")
     h4 Current Patient:
     form
@@ -7,6 +7,8 @@
         option(ng-repeat="patient in patients" value="{{patient.sid}}") 
           | {{patient.full_name}}
     ul.nav.nav-pills(ng-hide="currentPatientId==''")
+      li
+        a href="#/{{currentPatientId}}" Summary 
       li
         a href="#/{{currentPatientId}}/edit" Edit Profile 
     hr

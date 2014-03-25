@@ -2,6 +2,7 @@ angular.module('emrApp').controller 'PatientShowCtrl', ['$scope', '$sessionStora
 	$scope.patient = patient
 	$scope.$storage = $sessionStorage
 	$scope.$storage.patient = patient
+
 	$scope.patient.medications = []	
 	PatientService.broadcastSid($scope.patient.sid)
 	$scope.addAllergy = ->

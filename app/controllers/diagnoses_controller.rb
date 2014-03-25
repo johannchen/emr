@@ -6,6 +6,8 @@ class DiagnosesController < ApplicationController
 	end
 
   def show
+		diagnosis
+		render json: @diagnosis	
   end
 
   def create
@@ -28,11 +30,11 @@ class DiagnosesController < ApplicationController
     @patient ||= Patient.find(params[:patient_id])
   end
 
-  def diagnosi
+  def diagnosis
     @diagnosis ||= patient.diagnoses.find(params[:id])
   end
 
   def safe_params
-    params.require(:diagnosis).permit(:name, :year, :comment)
+    params.require(:diagnosis).permit(:name, :year, :comment, :edited_by)
   end
 end

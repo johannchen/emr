@@ -1,4 +1,5 @@
-angular.module('emrApp').controller 'PatientMenuCtrl', ['$scope', '$location', 'PatientService', 'Restangular', ($scope, $location, PatientService, Restangular) ->
+angular.module('emrApp').controller 'PatientMenuCtrl', ['$scope', '$location', '$sessionStorage', 'PatientService', 'Restangular', ($scope, $location, $sessionStorage, PatientService, Restangular) ->
+	$sessionStorage.user = $scope.user
 	$scope.init = ->
 		Restangular.all('patients').getList().then (patients) ->
 			$scope.patients = patients

@@ -18,18 +18,11 @@
 .row
   .col-md-12
     h4 Medical History
-    a href="/patient#/{{patient.sid}}/diagnosis/new" New Diagnosis 
-    table.table.table-hover id="diagnosis"
-      tr
-        th Diagnosis
-        th Year
-        th Comments
-        th By 
-        th
-      tr.x-row ng-repeat="diagnosis in diagnoses"
-        td
-          |{{diagnosis.name}}
-        td
-          |{{diagnosis.year}}
-        td
-          |{{diagnosis.comment}}
+    a href="/patient#/{{patient.sid}}/new_diagnosis" Add Diagnosis 
+    p Diagnosis: {{diagnosis.name}}
+    p Year: {{diagnosis.year}}
+    p Comment: {{diagnosis.comment}}
+    p Created at: {{diagnosis.created_at}}
+    p Updated at: {{diagnosis.updated_at}}
+    p Last updated by: {{diagnosis.edited_by}}
+    a href="/patient#/{{patient.sid}}/diagnoses/{{diagnosis._id.$oid}}/edit" Edit

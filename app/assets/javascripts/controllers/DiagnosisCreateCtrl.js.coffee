@@ -2,6 +2,7 @@ angular.module('emrApp').controller 'DiagnosisCreateCtrl', ['$scope', '$sessionS
 	$scope.patient = $sessionStorage.patient
 	patientId = $scope.patient.sid
 	$scope.save = ->
+		$scope.diagnosis.edited_by = $sessionStorage.user
 		Restangular.one('patients', patientId).all("diagnoses").post($scope.diagnosis).then (diagnosis) ->
-			$location.path('/' + patientId + '/diagnosis')
+			$location.path('/' + patientId + '/diagnoses')
 ]

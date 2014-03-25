@@ -15,8 +15,8 @@
     li 
       a href="/patient#/{{patient.sid}}" Summary
     li 
-      a href="/patient#/{{patient.sid}}/diagnosis" Medical History
-    li.active New Diagnosis
+      a href="/patient#/{{patient.sid}}/diagnoses" Medical History
+    li.active Diagnosis
 .row
   form name="diagnosisForm"
     .form-group(ng-class="{error: diagnosisForm.diagnosis.$invalid && !diagnosisForm.diagnosis.$pristine}")
