@@ -1,7 +1,7 @@
 class DiagnosesController < ApplicationController
   before_filter :authenticate_user!
 	def index
-		@diagnoses = patient.diagnoses
+		@diagnoses = patient.diagnoses.in(deleted: [nil, false])
 		render json: @diagnoses
 	end
 
@@ -35,6 +35,6 @@ class DiagnosesController < ApplicationController
   end
 
   def safe_params
-    params.require(:diagnosis).permit(:name, :year, :comment, :edited_by)
+    params.require(:diagnosis).permit(:name, :year, :comment, :deleted, :edited_by)
   end
 end

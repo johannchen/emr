@@ -14,15 +14,17 @@
   ol.breadcrumb
     li 
       a href="/patient#/{{patient.sid}}" Summary 
-    li.active Medical History
+    li
+      a href="/patient#/{{patient.sid}}/diagnoses" Medical History
+    li.active Diagnosis
 .row
   .col-md-12
-    h4 Medical History
-    a href="/patient#/{{patient.sid}}/new_diagnosis" Add Diagnosis 
     p Diagnosis: {{diagnosis.name}}
     p Year: {{diagnosis.year}}
     p Comment: {{diagnosis.comment}}
     p Created at: {{diagnosis.created_at}}
     p Updated at: {{diagnosis.updated_at}}
     p Last updated by: {{diagnosis.edited_by}}
-    a href="/patient#/{{patient.sid}}/diagnoses/{{diagnosis._id.$oid}}/edit" Edit
+    a href="/patient#/{{patient.sid}}/diagnoses/{{diagnosis._id.$oid}}/edit" Edit 
+    a href="" ng-click="markDelete()" ng-hide="diagnosis.deleted" Delete
+    a href="" ng-click="undoDelete()" ng-show="diagnosis.deleted" Undo
