@@ -3,8 +3,15 @@ angular.module('emrApp').controller 'PatientShowCtrl', ['$scope', '$sessionStora
 	$scope.$storage = $sessionStorage
 	$scope.$storage.patient = patient
 
-	$scope.patient.medications = []	
 	PatientService.broadcastSid($scope.patient.sid)
+	$scope.quickAddMedication = ->
+		patient.all("medications").post($scope.medication).then (medication) ->
+			$scope.patient.medications.push
+				name: medication.name
+				script: medication.script
+			$scope.medication.name = ""
+			$scope.medication.script = ""
+				
 	$scope.addAllergy = ->
 		if $scope.newAllergy != ""
 			patient.all("allergies").post({name: $scope.newAllergy}).then (allergy) ->
@@ -23,12 +30,6 @@ angular.module('emrApp').controller 'PatientShowCtrl', ['$scope', '$sessionStora
 				allergy.name = data
 				allergy.put()
 		true
-	$scope.newMed = ->
-		$scope.inserted = 
-			name: ''
-			script: ''
-			comment: ''
-		$scope.patient.medications.push($scope.inserted)
 	$scope.newReaction = ->
 		$scope.insertedReaction =
 			id: ''
@@ -53,9 +54,6 @@ angular.module('emrApp').controller 'PatientShowCtrl', ['$scope', '$sessionStora
 				reaction.name = myReaction.name
 				reaction.put()
 		@reactionForm.$cancel() 
-
-			
-
 
 ]
 				

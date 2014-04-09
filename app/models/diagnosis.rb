@@ -1,7 +1,8 @@
 class Diagnosis
   include Mongoid::Document
   include Mongoid::Timestamps
-	include Mongoid::History::Trackable
+# include Mongoid::Versioning
+#	include Mongoid::History::Trackable
 
   field :name, type: String
   field :year, type: String
@@ -10,5 +11,5 @@ class Diagnosis
   field :edited_by, type: String
   embedded_in :patient 
 
-	track_history :scope => :patient
+#	track_history :scope => :patient
 end
