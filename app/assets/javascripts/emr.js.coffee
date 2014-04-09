@@ -25,6 +25,9 @@ angular.module('emrApp', ['restangular', 'ngRoute', 'ngStorage', 'ui.select2', '
 		$routeProvider.when "/:patientId/diagnoses/:id/edit",
       controller: 'DiagnosisUpdateCtrl'
       templateUrl: '/templates/diagnosis_form.html' 
+		$routeProvider.when "/edit_history/:model/:id",
+      controller: 'EditHistoryCtrl'
+      templateUrl: '/templates/edit_history.html' 
 	])
 	.config(['RestangularProvider', (RestangularProvider) ->
 		#RestangularProvider.setBaseUrl('/')

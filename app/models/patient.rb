@@ -1,5 +1,8 @@
 class Patient
   include Mongoid::Document
+	include Mongoid::Timestamps
+	include Mongoid::History::Trackable
+
   field :first_name, type: String
   field :last_name, type: String
   field :gender, type: String
@@ -8,7 +11,14 @@ class Patient
   field :phone, type: String
   embeds_many :allergies
   embeds_many :reactions
+	embeds_many :medications
   embeds_many :diagnoses, class_name: "Diagnosis"
+	track_history :modifier_field => :modifier,
+		:modifer_field_inverse_of => :nil,
+		:version_field => :version,
+		:track_create => false,
+		:track_update => true,
+		:track_destroy => false
 
   def sid
     id.to_s

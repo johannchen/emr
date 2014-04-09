@@ -13,12 +13,13 @@ class PatientsController < ApplicationController
   end
 
   def create
-    @patient = Patient.create!(safe_params)
+    @patient = Patient.create!(safe_params, modifier: current_user)
     render json: @patient 
   end
 
   def update
     @patient = Patient.find(params[:id])
+		@patient.modifier = current_user
     @patient.update_attributes(safe_params)
     render nothing: true
   end

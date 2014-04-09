@@ -10,7 +10,10 @@
       |{{patient.email}}
     li.active(ng-hide="patient.phone == null")
       |Phone: {{patient.phone}}
-      
+    li.active
+      a href="/patient#/edit_history/patients/{{patient.sid}}" edit history
+
+
 .row
   ul.list-inline
     li 
