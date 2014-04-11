@@ -1,0 +1,24 @@
+.row
+  ol.breadcrumb
+    li 
+      a href="/patient#/{{patientId}}" Summary 
+    li.active Current Medications 
+.row
+  .col-md-12
+    h4 Current Medications 
+    a href="/patient#/{{patientId}}/new_medication" Add Medication
+    table.table.table-hover id="medications"
+      tr
+        th Medication 
+        th Script
+        th Editor
+        th Last Updated 
+      tr.x-row ng-repeat="medication in medications"
+        td
+          a href="/patient#/{{patientId}}/medications/{{medication._id.$oid}}" {{medication.name}}
+        td
+          |{{medication.script}}
+        td
+          |{{medication.editor}}
+        td
+          |{{medication.updated_at}}

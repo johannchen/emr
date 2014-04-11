@@ -11,13 +11,20 @@ class MedicationsController < ApplicationController
   end
 
   def create
+    params[:medication][:editor] = current_user.full_name
     @medication = patient.medications.create!(safe_params)
     render json: @medication
   end
 
   def update
-    medication.update_attributes(safe_params)
-    render nothing: true
+    medication
+    # only creator can update his own record
+    # todo: use id to check to enhance accuracy
+    if @medication.editor == current_user.full_name
+      params[:medication][:editor] = current_user.full_name
+      medication.update_attributes(safe_params)
+      render nothing: true
+    end
   end
 
   def destroy
@@ -35,6 +42,6 @@ class MedicationsController < ApplicationController
   end
 
   def safe_params
-    params.require(:medication).permit(:name, :script, :details)
+    params.require(:medication).permit(:name, :script, :details, :editor)
   end
 end

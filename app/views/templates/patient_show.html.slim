@@ -38,24 +38,24 @@
         th Diagnosis
         th Year
 
-    h5 Current Medications
+    a href="/patient#/{{patient.sid}}/medications" Current Medications
     table.table id="medications"
       tr
         th Medication
         th Script 
       tr ng-repeat="medication in patient.medications"
         td 
-          |{{medication.name}}
+          a href="/patient#/{{patient.sid}}/medications/{{medication.id.$oid}}" {{medication.name}}
         td 
           |{{medication.script}}
     form.form-inline name="medicationForm"
       .form-group
         label.sr-only for="medication" Medication
-        input.form-control type="text" id="medication" ng-model="medication.name" placeholder="Medication"
+        input.form-control(type="text" id="medication" ng-model="medication.name" placeholder="Medication" required)
       .form-group
         label.sr-only for="script" Script 
         input.form-control type="text" id="script" ng-model="medication.script" placeholder="Script"
-      button.btn.btn-primary(ng-click="quickAddMedication()") Add Medication 
+      button.btn.btn-primary ng-click="quickAddMedication()" ng-disabled="medicationForm.$invalid" Add Medication 
       
     h5 Allergies/Advose Reactions
     table.table.table-hover id="reactions"

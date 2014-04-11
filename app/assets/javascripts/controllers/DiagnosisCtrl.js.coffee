@@ -1,4 +1,4 @@
-angular.module('emrApp').controller 'DiagnosisCtrl', ['$scope', '$route', '$sessionStorage', 'PatientService', 'UtilService', 'Restangular', ($scope, $route, $sessionStorage, PatientService, UtilService, Restangular) ->
+angular.module('emrApp').controller 'DiagnosisCtrl', ['$scope', '$route', '$sessionStorage', 'Restangular', ($scope, $route, $sessionStorage, Restangular) ->
 	$scope.patient = $sessionStorage.patient
 	id = $route.current.params.id
 	diagnosisBase = Restangular.one('patients', $scope.patient.sid).one('diagnoses', id)
