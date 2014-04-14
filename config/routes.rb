@@ -21,6 +21,7 @@ Emr::Application.routes.draw do
     resources :reactions
 		resources :diagnoses
     resources :medications
+    resources :family_members
   end
   get '/patient' => 'templates#patient'
   get '/templates/:path.html' => 'templates#template', :constraints => { :path => /.+/ }

@@ -19,9 +19,21 @@
       label for="birthday" Birthday
       input.form-control type="date" name="birthday" ng-model="patient.birthday"
     .form-group
+      label for="nationality" Nationality 
+      input.form-control type="text" name="nationality" ng-model="patient.nationality"
+    .form-group
+      label for="address" Address 
+      input.form-control type="text" name="address" ng-model="patient.address"
+    .form-group
       label for="email" Email 
       input.form-control type="email" name="email" ng-model="patient.email"
     .form-group
       label for="phone" Phone 
       input.form-control type="text" name="phone" ng-model="patient.phone"
+    .form-group
+      label for="occupation" Occupation 
+      input.form-control type="text" name="occupation" ng-model="patient.occupation"
+    .form-group
+      label for="company" Company 
+      input.form-control type="text" name="company" ng-model="patient.company"
     button.btn.btn-primary ng-click="save()" ng-disabled="patientForm.$invalid" Save

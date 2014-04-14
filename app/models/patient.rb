@@ -1,18 +1,24 @@
 class Patient
   include Mongoid::Document
 	include Mongoid::Timestamps
-#  include Mongoid::Versioning
 #	include Mongoid::History::Trackable
 
-  field :first_name, type: String
-  field :last_name, type: String
-  field :gender, type: String
+  field :first_name
+  field :last_name
+  field :gender
   field :birthday, type: Date 
-  field :email, type: String
-  field :phone, type: String
+  field :address
+  field :email
+  field :phone
+  field :nationality
+  field :occupation
+  field :company
+  field :editor
+#  embeds_one :address
   embeds_many :allergies
   embeds_many :reactions
 	embeds_many :medications
+  embeds_many :family_members
   embeds_many :diagnoses, class_name: "Diagnosis"
 =begin
 	track_history :modifier_field => :modifier,

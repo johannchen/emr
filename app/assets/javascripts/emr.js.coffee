@@ -12,6 +12,7 @@ angular.module('emrApp', ['restangular', 'ngRoute', 'ngStorage', 'ui.select2', '
 			  patient: ['$route', 'Restangular', ($route, Restangular) ->
           Restangular.one('patients', $route.current.params.patientId).get()
         ]	
+		$routeProvider.when "/:patientId/profile", controller: 'PatientProfileCtrl', templateUrl: '/templates/patient_profile.html'
 		$routeProvider.when "/:patientId/edit", controller: 'PatientUpdateCtrl', templateUrl: '/templates/patient_form.html'
 		$routeProvider.when "/:patientId/diagnoses",
       controller: 'PatientDiagnosesCtrl'

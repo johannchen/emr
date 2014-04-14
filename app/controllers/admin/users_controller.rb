@@ -9,7 +9,7 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def create
-  	@user = User.new(params[:user])
+  	@user = User.new(user_params)
   	if @user.save
   		flash[:notice] = "User has been created."
   		redirect_to admin_users_path
@@ -30,7 +30,7 @@ class Admin::UsersController < Admin::BaseController
       params[:user].delete(:password)
       params[:user].delete(:password_confirmation)
     end
-    if @user.update_attributes(params[:user])
+    if @user.update_attributes(user_params)
       flash[:notice] = "User has been updated."
       redirect_to admin_users_path
     else
@@ -51,7 +51,11 @@ class Admin::UsersController < Admin::BaseController
   end
 
   private 
-    def find_user
-      @user = User.find(params[:id])
-    end
+  def find_user
+    @user = User.find(params[:id])
+  end
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :admin)
+  end
 end

@@ -100,4 +100,17 @@
       tr
         th Relation 
         th Description 
+      tr ng-repeat="member in patient.family_members"
+        td 
+          |{{member.relation}}
+        td 
+          |{{member.description}}
+    form.form-inline name="familyForm"
+      .form-group
+        label.sr-only for="relation" Medication
+        input.form-control(type="text" id="relation" ng-model="family.relation" placeholder="Relation" required)
+      .form-group
+        label.sr-only for="description" Description 
+        input.form-control(type="text" id="description" ng-model="family.description" placeholder="Description" required)
+      button.btn.btn-primary ng-click="quickAddFamily()" ng-disabled="familyForm.$invalid" Add Family History
     h5 Related Family Members

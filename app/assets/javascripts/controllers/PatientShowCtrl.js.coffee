@@ -11,7 +11,14 @@ angular.module('emrApp').controller 'PatientShowCtrl', ['$scope', '$sessionStora
 				script: medication.script
 			$scope.medication.name = ""
 			$scope.medication.script = ""
-				
+	$scope.quickAddFamily = ->
+		patient.all("family_members").post($scope.family).then (family) ->
+			$scope.patient.family_members.push
+				relation: family.relation
+				description: family.description
+			$scope.family.relation = ""
+			$scope.family.description = ""
+					
 	$scope.addAllergy = ->
 		if $scope.newAllergy != ""
 			patient.all("allergies").post({name: $scope.newAllergy}).then (allergy) ->
