@@ -65,6 +65,9 @@ angular.module('emrApp', ['restangular', 'ngRoute', 'ngStorage', 'ui.select2', '
 			  visit: ['$route', 'Restangular', ($route, Restangular) ->
           Restangular.one('patients', $route.current.params.patientId).one('visits', $route.current.params.id).get()
         ]	
+		$routeProvider.when "/:patientId/visits/:id/edit",
+      controller: 'VisitUpdateCtrl'
+      templateUrl: '/templates/visit_form.html' 
 		$routeProvider.when "/edit_history/:model/:id",
       controller: 'EditHistoryCtrl'
       templateUrl: '/templates/edit_history.html' 

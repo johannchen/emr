@@ -14,22 +14,22 @@
       .form-inline
         .form-group
           label.sr-only for="weight" Weight
-          input.form-control type="text" id="weight" ng-model="visit.vital_sign_attributes.weight" placeholder="weight (kg)"
+          input.form-control type="text" id="weight" ng-model="visit.vital_sign.weight" placeholder="weight (kg)"
         .form-group
           label.sr-only for="Height" Height
-          input.form-control type="text" id="" ng-model="visit.vital_sign_attributes.height" placeholder="height (cm)"
+          input.form-control type="text" id="" ng-model="visit.vital_sign.height" placeholder="height (cm)"
         .form-group
           label.sr-only for="pulse" Pulse 
-          input.form-control type="text" id="pulse" ng-model="visit.vital_sign_attributes.pulse" placeholder="pulse (bpm)"
+          input.form-control type="text" id="pulse" ng-model="visit.vital_sign.pulse" placeholder="pulse (bpm)"
     .form-group
       label for="assessment" Assessment
-      textarea.form-control rows="3" ng-model="medication.assessment"
+      textarea.form-control rows="3" ng-model="visit.assessment"
     .form-group
       label for="lab" Lab 
-      textarea.form-control rows="3" ng-model="medication.lab"
+      textarea.form-control rows="3" ng-model="visit.lab"
     .form-group
       label for="plan" Plan
-      textarea.form-control rows="3" ng-model="medication.plan"
+      textarea.form-control rows="3" ng-model="visit.plan"
     .form-group
       label for="follow_up" Follow up 
       input.form-control type="text" name="follow_up" ng-model="visit.follow_up"

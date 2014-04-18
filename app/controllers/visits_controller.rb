@@ -22,7 +22,8 @@ class VisitsController < ApplicationController
     # todo: use id to check to enhance accuracy
     if @visit.editor == current_user.full_name
       params[:visit][:editor] = current_user.full_name
-      visit.update_attributes(safe_params)
+      #@visit.vital_sign_attributes = params[:visit][:vital_sign]
+      @visit.update_attributes(safe_params)
       render nothing: true
     end
   end
@@ -42,6 +43,6 @@ class VisitsController < ApplicationController
   end
 
   def safe_params
-    params.require(:visit).permit(:visit_date, :subjective, :physical, :assessment, :lab, :plan, :follow_up, :editor, :vital_sign_attributes)
+    params.require(:visit).permit(:visit_date, :subjective, :physical, :assessment, :lab, :plan, :follow_up, :editor, vital_sign: [:height, :weight, :pulse])
   end
 end

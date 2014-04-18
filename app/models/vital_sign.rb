@@ -1,6 +1,5 @@
 class VitalSign 
   include Mongoid::Document
-  include Mongoid::Timestamps
 
   field :blood_pressure
   field :pulse
