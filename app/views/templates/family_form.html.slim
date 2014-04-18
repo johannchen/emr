@@ -1,0 +1,24 @@
+.row
+  ol.breadcrumb
+    li 
+      a href="/patient#/{{patientId}}" Summary
+    li.active Family History 
+.row
+  form name="familyForm"
+    .form-group(ng-class="{error: familyForm.family.$invalid && !familyForm.family.$pristine}")
+      label for="relation" Relation 
+      input.form-control(type="text" name="relation" ng-model="family.relation" required)
+      span.help-inline ng-show="familyForm.relation.$error.required && !familyForm.relation.$pristine"
+        | Required
+    .form-group(ng-class="{error: familyForm.description.$invalid && !familyForm.description.$pristine}")
+      label for="description" Description 
+      input.form-control type="text" name="description" ng-model="family.description"
+      span.help-inline ng-show="familyForm.description.$error.required && !familyForm.description.$pristine"
+        | Required
+    .form-group
+      label for="patient_id" Name 
+      select(ui-select2 ng-model="family.patient_id" data-placeholder="Choose a patient")
+        option value=""
+        option(ng-repeat="patient in patients" value="{{patient.sid}}")
+          | {{patient.full_name}}
+    button.btn.btn-primary ng-click="save()" ng-disabled="familyForm.$invalid" Save

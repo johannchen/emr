@@ -1,0 +1,31 @@
+/display patient profile
+.row
+  ol.breadcrumb
+    li 
+      a href="/patient#/{{patientId}}" Summary 
+    li
+      a href="/patient#/{{patientId}}/visits" Visits 
+    li.active 
+      | {{visit.visit_date}} 
+.row
+  .col-md-12
+    p 
+      strong Subjective: 
+      | {{visit.subjective}}
+    p
+      ul.list-inline
+        li
+          strong Weight: 
+          | {{visit.vital_sign.weight}}
+        li
+          strong Height: 
+          | {{visit.vital_sign.height}}
+    p
+      strong Assessment:
+      | {{visit.assessment}}
+    p Created at: {{visit.created_at}}
+    p Updated at: {{visit.updated_at}}
+    p Last updated by: {{visit.editor}}
+    a href="/patient#/{{patientId}}/visits/{{visit._id.$oid}}/edit" Edit 
+    a href="" ng-click="markDelete()" ng-hide="visit.deleted" Delete
+    a href="" ng-click="undoDelete()" ng-show="visit.deleted" Undo

@@ -102,7 +102,7 @@
         th Description 
       tr ng-repeat="member in patient.family_members"
         td 
-          |{{member.relation}}
+          a href="/patient#/{{patient.sid}}/family/{{member.id.$oid}}" {{member.relation}}
         td 
           |{{member.description}}
     form.form-inline name="familyForm"
@@ -113,4 +113,3 @@
         label.sr-only for="description" Description 
         input.form-control(type="text" id="description" ng-model="family.description" placeholder="Description" required)
       button.btn.btn-primary ng-click="quickAddFamily()" ng-disabled="familyForm.$invalid" Add Family History
-    h5 Related Family Members

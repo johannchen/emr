@@ -1,0 +1,15 @@
+.row
+  ol.breadcrumb
+    li 
+      a href="/patient#/{{patientId}}" Summary 
+    li.active Family History: {{family.relation}} 
+.row
+  .col-md-12
+    p name: {{family.name}}
+    p description: {{family.description}}
+    p Created at: {{family.created_at}}
+    p Updated at: {{family.updated_at}}
+    p Last updated by: {{family.editor}}
+    a href="/patient#/{{patientId}}/family/{{family._id.$oid}}/edit" Edit 
+    a href="" ng-click="markDelete()" ng-hide="family.deleted" Delete
+    a href="" ng-click="undoDelete()" ng-show="family.deleted" Undo

@@ -14,6 +14,7 @@ angular.module('emrApp').controller 'PatientShowCtrl', ['$scope', '$sessionStora
 	$scope.quickAddFamily = ->
 		patient.all("family_members").post($scope.family).then (family) ->
 			$scope.patient.family_members.push
+				id: family._id
 				relation: family.relation
 				description: family.description
 			$scope.family.relation = ""

@@ -12,7 +12,7 @@
       input.form-control(type="text" name="name" ng-model="medication.name" required)
       span.help-inline ng-show="medicationForm.name.$error.required && !medicationForm.name.$pristine"
         | Required
-    .form-group(ng-class="{error: medicationForm.year.$invalid && !medicationForm.year.$pristine}")
+    .form-group
       label for="script" Script 
       input.form-control type="text" name="script" ng-model="medication.script"
     .form-group

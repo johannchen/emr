@@ -7,8 +7,13 @@ angular.module('emrApp').controller 'PatientMenuCtrl', ['$scope', '$location', '
 		$scope.init()
 	$scope.$on 'handleBroadcastSid', ->
 		$scope.currentPatientId = PatientService.sid
+		Restangular.one('patients', $scope.currentPatientId).all('family_members').getList().then (family) ->
+			$scope.family = family
 	$scope.selectPatient = ->
-		$location.path('/' + $scope.currentPatientId) if $scope.currentPatientId != ""
+		if $scope.currentPatientId != ""
+			Restangular.one('patients', $scope.currentPatientId).all('family_members').getList().then (family) ->
+				$scope.family = family
+			$location.path('/' + $scope.currentPatientId) 
 	$scope.new = ->
 		$scope.currentPatientId = ""
 		$location.path('/new')

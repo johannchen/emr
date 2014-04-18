@@ -26,7 +26,17 @@ angular.module('emrApp', ['restangular', 'ngRoute', 'ngStorage', 'ui.select2', '
 		$routeProvider.when "/:patientId/diagnoses/:id/edit",
       controller: 'DiagnosisUpdateCtrl'
       templateUrl: '/templates/diagnosis_form.html' 
-		$routeProvider.when "/:patientId/medications",
+		$routeProvider.when "/:patientId/family/:id",
+			controller: 'FamilyCtrl'
+			templateUrl: '/templates/family.html'
+			resolve:
+			  family: ['$route', 'Restangular', ($route, Restangular) ->
+          Restangular.one('patients', $route.current.params.patientId).one('family_members', $route.current.params.id).get()
+				]
+		$routeProvider.when "/:patientId/family/:id/edit",
+      controller: 'FamilyUpdateCtrl'
+      templateUrl: '/templates/family_form.html' 
+ 		$routeProvider.when "/:patientId/medications",
       controller: 'PatientMedicationsCtrl'
       templateUrl: '/templates/patient_medications.html'
 		$routeProvider.when "/:patientId/new_medication", 
@@ -42,6 +52,19 @@ angular.module('emrApp', ['restangular', 'ngRoute', 'ngStorage', 'ui.select2', '
 		$routeProvider.when "/:patientId/medications/:id/edit",
       controller: 'MedicationUpdateCtrl'
       templateUrl: '/templates/medication_form.html' 
+ 		$routeProvider.when "/:patientId/visits",
+      controller: 'PatientVisitsCtrl'
+      templateUrl: '/templates/patient_visits.html'
+		$routeProvider.when "/:patientId/new_visit", 
+			controller: 'VisitCreateCtrl'
+			templateUrl: '/templates/visit_form.html'
+		$routeProvider.when "/:patientId/visits/:id",
+			controller: 'VisitCtrl'
+			templateUrl: '/templates/visit.html'
+			resolve:
+			  visit: ['$route', 'Restangular', ($route, Restangular) ->
+          Restangular.one('patients', $route.current.params.patientId).one('visits', $route.current.params.id).get()
+        ]	
 		$routeProvider.when "/edit_history/:model/:id",
       controller: 'EditHistoryCtrl'
       templateUrl: '/templates/edit_history.html' 

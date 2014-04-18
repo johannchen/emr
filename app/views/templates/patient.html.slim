@@ -6,11 +6,18 @@
         option value=""
         option(ng-repeat="patient in patients" value="{{patient.sid}}") 
           | {{patient.full_name}}
-    ul.nav.nav-pills(ng-hide="currentPatientId==''")
-      li
-        a href="#/{{currentPatientId}}" Summary 
-      li
-        a href="#/{{currentPatientId}}/profile" Profile 
+    .menu ng-hide="currentPatientId==''"
+      ul.nav.nav-pills
+        li
+          a href="#/{{currentPatientId}}" Summary 
+        li
+          a href="#/{{currentPatientId}}/visits" Visits 
+        li
+          a href="#/{{currentPatientId}}/profile" Profile 
+      h5 Family/Relatives
+      ul.nav.nav-pills
+        li ng-repeat="member in family"
+          a href="#/{{member.patient_id}}" {{member.name}} 
     hr
     ul.nav.nav-pills
       li

@@ -1,0 +1,36 @@
+.row
+  form name="visitForm"
+    .form-group(ng-class="{error: visitForm.visit_date.$invalid && !visitForm.visit_date.$pristine}")
+      label for="visit_date" Visit Date 
+      input.form-control(type="date" name="visit_date" ng-model="visit.visit_date" required)
+      span.help-inline ng-show="visitForm.visit_date.$error.required && !visitForm.visit_date.$pristine"
+    .form-group(ng-class="{error: visitForm.subjective.$invalid && !visitForm.subjective.$pristine}")
+      label for="subjective" Subjective 
+      input.form-control(type="text" name="subjective" ng-model="visit.subjective" required)
+      span.help-inline ng-show="visitForm.subjective.$error.required && !visitForm.subjective.$pristine"
+        | Required
+    .form-group
+      label for="vital_sign" Vital Sign
+      .form-inline
+        .form-group
+          label.sr-only for="weight" Weight
+          input.form-control type="text" id="weight" ng-model="visit.vital_sign_attributes.weight" placeholder="weight (kg)"
+        .form-group
+          label.sr-only for="Height" Height
+          input.form-control type="text" id="" ng-model="visit.vital_sign_attributes.height" placeholder="height (cm)"
+        .form-group
+          label.sr-only for="pulse" Pulse 
+          input.form-control type="text" id="pulse" ng-model="visit.vital_sign_attributes.pulse" placeholder="pulse (bpm)"
+    .form-group
+      label for="assessment" Assessment
+      textarea.form-control rows="3" ng-model="medication.assessment"
+    .form-group
+      label for="lab" Lab 
+      textarea.form-control rows="3" ng-model="medication.lab"
+    .form-group
+      label for="plan" Plan
+      textarea.form-control rows="3" ng-model="medication.plan"
+    .form-group
+      label for="follow_up" Follow up 
+      input.form-control type="text" name="follow_up" ng-model="visit.follow_up"
+    button.btn.btn-primary ng-click="save()" ng-disabled="visitForm.$invalid" Save

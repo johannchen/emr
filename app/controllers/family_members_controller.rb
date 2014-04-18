@@ -17,7 +17,10 @@ class FamilyMembersController < ApplicationController
   end
 
   def update
-    family_member
+    unless params[:family_member][:patient_id] == ""
+      p = Patient.find(params[:family_member][:patient_id])
+      params[:family_member][:name] = p.full_name
+    end
     # only creator can update his own record
     # todo: use id to check to enhance accuracy
     #if @family_member.editor == current_user.full_name
@@ -42,6 +45,6 @@ class FamilyMembersController < ApplicationController
   end
 
   def safe_params
-    params.require(:family_member).permit(:relation, :description, :editor)
+    params.require(:family_member).permit(:relation, :description, :patient_id, :name, :editor)
   end
 end

@@ -19,6 +19,7 @@ class Patient
   embeds_many :reactions
 	embeds_many :medications
   embeds_many :family_members
+  embeds_many :visits
   embeds_many :diagnoses, class_name: "Diagnosis"
 =begin
 	track_history :modifier_field => :modifier,
