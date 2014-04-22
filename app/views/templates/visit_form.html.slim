@@ -13,14 +13,64 @@
       label for="vital_sign" Vital Sign
       .form-inline
         .form-group
+          label.sr-only for="temperature" Temperature 
+          input.form-control type="text" id="temperature" ng-model="visit.vital_sign.temperature" placeholder="T (C)"
+        .form-group
+          label.sr-only for="pulse" Pulse 
+          input.form-control type="text" id="pulse" ng-model="visit.vital_sign.pulse" placeholder="pulse (bpm)"
+        .form-group
+          label.sr-only for="respiratory_rate" RR
+          input.form-control type="text" id="respiratory_rate" ng-model="visit.vital_sign.respiratory_rate" placeholder="RR"
+        .form-group
           label.sr-only for="weight" Weight
           input.form-control type="text" id="weight" ng-model="visit.vital_sign.weight" placeholder="weight (kg)"
         .form-group
           label.sr-only for="Height" Height
           input.form-control type="text" id="" ng-model="visit.vital_sign.height" placeholder="height (cm)"
         .form-group
-          label.sr-only for="pulse" Pulse 
-          input.form-control type="text" id="pulse" ng-model="visit.vital_sign.pulse" placeholder="pulse (bpm)"
+          label.sr-only for="bmi" BMI 
+          input.form-control type="text" id="bmi" ng-model="visit.vital_sign.bmi" placeholder="BMI"
+        .form-group
+          label.sr-only for="oxygen_saturation" Oxygen saturation
+          input.form-control type="text" id="oxygen_saturation" ng-model="visit.vital_sign.oxygen_saturation" placeholder="Oxygen saturation(%)"
+        .form-group
+          label.sr-only for="pediatric_hc" Pediatric HC
+          input.form-control type="text" id="pediatric_hc" ng-model="visit.vital_sign.pediatric_hc" placeholder="Pediatric HC (cm)"
+    .form-group
+      label for="physical" Physical 
+      .form-horizontal
+        .form-group
+          label.col-sm-1.control-label for="heent" HEENT 
+          .col-sm-11
+            input.form-control type="text" id="heent" ng-model="visit.physical.heent"
+        .form-group
+          label.col-sm-1.control-label for="neck" Neck 
+          .col-sm-11
+            input.form-control type="text" id="neck" ng-model="visit.physical.neck"
+        .form-group
+          label.col-sm-1.control-label for="respiratory" Respiratory
+          .col-sm-11
+            input.form-control type="text" id="respiratory" ng-model="visit.physical.respiratory"
+        .form-group
+          label.col-sm-1.control-label for="cardiac" Cardiac 
+          .col-sm-11
+            input.form-control type="text" id="cardiac" ng-model="visit.physical.cardiac"
+        .form-group
+          label.col-sm-1.control-label for="abdomen" Abdomen 
+          .col-sm-11
+            input.form-control type="text" id="abdomen" ng-model="visit.physical.abdomen"
+        .form-group
+          label.col-sm-1.control-label for="back" Back 
+          .col-sm-11
+            input.form-control type="text" id="back" ng-model="visit.physical.back"
+        .form-group
+          label.col-sm-1.control-label for="skin" Skin
+          .col-sm-11
+            input.form-control type="text" id="skin" ng-model="visit.physical.skin"
+        .form-group
+          label.col-sm-1.control-label for="comment" Comment 
+          .col-sm-11
+            input.form-control type="text" id="comment" ng-model="visit.physical.comment"
     .form-group
       label for="assessment" Assessment
       textarea.form-control rows="3" ng-model="visit.assessment"
@@ -28,8 +78,8 @@
       label for="lab" Lab 
       textarea.form-control rows="3" ng-model="visit.lab"
     .form-group
-      label for="plan" Plan
-      textarea.form-control rows="3" ng-model="visit.plan"
+      label for="treatment" Treatment 
+      textarea.form-control rows="3" ng-model="visit.treatment"
     .form-group
       label for="follow_up" Follow up 
       input.form-control type="text" name="follow_up" ng-model="visit.follow_up"

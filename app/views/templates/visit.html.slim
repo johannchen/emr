@@ -13,6 +13,7 @@
       strong Subjective: 
       | {{visit.subjective}}
     p
+      strong Vital Signs
       ul.list-inline
         li
           strong Weight: 
@@ -20,9 +21,65 @@
         li
           strong Height: 
           | {{visit.vital_sign.height}}
+        li
+          strong BP: 
+          | {{visit.vital_sign.blood_pressure}}
+        li
+          strong Pulse:
+          | {{visit.vital_sign.pulse}}
+        li
+          strong RR: 
+          | {{visit.vital_sign.respiratory_rate}}
+        li
+          strong T: 
+          | {{visit.vital_sign.temperature}}
+        li
+          strong BMI: 
+          | {{visit.vital_sign.bmi}}
+        li
+          strong Pediatric HC: 
+          | {{visit.vital_sign.pediatric_hc}}
+        li
+          strong O2: 
+          | {{visit.vital_sign.oxygen_saturation}}
+    p
+      strong Physical
+      ul.list-inline
+        li
+          strong HEENT: 
+          | {{visit.physical.heent}}
+        li
+          strong Neck: 
+          | {{visit.physical.neck}}
+        li
+          strong Respiratory: 
+          | {{visit.physical.respiratory}}
+        li
+          strong Cardiac: 
+          | {{visit.physical.cardiac}}
+        li
+          strong Abdomen: 
+          | {{visit.physical.abdomen}}
+        li
+          strong Back: 
+          | {{visit.physical.back}}
+        li
+          strong Skin: 
+          | {{visit.physical.skin}}
+        strong Comment: 
+        | {{visit.physical.comment}}
     p
       strong Assessment:
       | {{visit.assessment}}
+    p
+      strong Lab:
+      | {{visit.lab}}
+    p
+      strong Treatment:
+      | {{visit.treatment}}
+    p
+      strong Follow up:
+      | {{visit.follow_up}}
     p Created at: {{visit.created_at}}
     p Updated at: {{visit.updated_at}}
     p Last updated by: {{visit.editor}}

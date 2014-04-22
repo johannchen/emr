@@ -30,7 +30,58 @@
 .row
   .col-md-7
     h5 Most Rencent Visit
-    h5 View Preivous Visits
+    .visit ng-show="patient.visit"
+      p
+        strong Visit Date: 
+        | {{patient.visit.visit_date}}
+      p
+        strong Subjective: 
+        | {{patient.visit.subjective}}
+      p
+        strong Vital Signs 
+        ul.list-inline
+          li
+            strong Wt: 
+            | {{patient.vital_sign.weight}}
+          li
+            strong Ht: 
+            | {{patient.vital_sign.height}}
+          li
+            strong BP: 
+            | {{patient.vital_sign.blood_pressure}}
+          li
+            strong P:
+            | {{patient.vital_sign.pulse}}
+          li
+            strong RR: 
+            | {{patient.vital_sign.respiratory_rate}}
+          li
+            strong T: 
+            | {{patient.vital_sign.temperature}}
+          li
+            strong BMI: 
+            | {{patient.vital_sign.bmi}}
+          li
+            strong HC: 
+            | {{patient.vital_sign.pediatric_hc}}
+          li
+            strong O2: 
+            | {{patient.vital_sign.oxygen_saturation}}
+      p
+        strong Assessment: 
+        | {{patient.visit.assessment}}
+      p
+        strong Lab: 
+        | {{patient.visit.lab}}
+      p
+        strong Treatment: 
+        | {{patient.visit.treatment}}
+      p
+        strong Follow up: 
+        | {{patient.visit.follow_up}}
+      p
+        strong Sign by: 
+        | {{patient.visit.editor}}
   .col-md-5
     a href="/patient#/{{patient.sid}}/diagnoses" Past Medical History
     table.table

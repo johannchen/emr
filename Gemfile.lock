@@ -8,13 +8,6 @@ GIT
       origin (~> 2.1)
       tzinfo (>= 0.3.37)
 
-GIT
-  remote: git://github.com/simi/mongoid-versioning.git
-  revision: 9b8b772f6835056277e6a8c63ed3d704b0eafd09
-  specs:
-    mongoid-versioning (0.0.1)
-      mongoid (> 3)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -197,7 +190,7 @@ DEPENDENCIES
   jquery-rails
   mongoid!
   mongoid-rspec
-  mongoid-versioning!
+  origin
   rails (= 4.0.3)
   rspec-rails
   sass-rails (~> 4.0.0)

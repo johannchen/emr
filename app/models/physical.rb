@@ -1,7 +1,14 @@
 class Physical 
   include Mongoid::Document
-  include Mongoid::Timestamps
 
-  field :description
-#  embedded_in :visit
+  field :heent
+  field :neck
+  field :respiratory
+  field :cardiac
+  field :abdomen
+  field :back
+  field :skin
+  field :comment
+  
+  embedded_in :visit
 end

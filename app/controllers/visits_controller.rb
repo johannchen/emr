@@ -1,7 +1,7 @@
 class VisitsController < ApplicationController
   before_filter :authenticate_user!
 	def index
-		@visits = patient.visits
+		@visits = patient.visits.desc(:visit_date)
 		render json: @visits
 	end
 
@@ -22,7 +22,6 @@ class VisitsController < ApplicationController
     # todo: use id to check to enhance accuracy
     if @visit.editor == current_user.full_name
       params[:visit][:editor] = current_user.full_name
-      #@visit.vital_sign_attributes = params[:visit][:vital_sign]
       @visit.update_attributes(safe_params)
       render nothing: true
     end
@@ -43,6 +42,6 @@ class VisitsController < ApplicationController
   end
 
   def safe_params
-    params.require(:visit).permit(:visit_date, :subjective, :physical, :assessment, :lab, :plan, :follow_up, :editor, vital_sign: [:height, :weight, :pulse])
+    params.require(:visit).permit(:visit_date, :subjective, :physical, :assessment, :lab, :treatment, :follow_up, :editor, vital_sign: [:blood_pressure, :pulse, :respiratory_rate, :temperature, :height, :weight, :pediatric_hc, :oxygen_saturation, :bmi], physical: [:heent, :neck, :respiratory, :cardiac, :abdomen, :back, :skin, :comment])
   end
 end

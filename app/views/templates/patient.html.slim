@@ -7,7 +7,7 @@
         option(ng-repeat="patient in patients" value="{{patient.sid}}") 
           | {{patient.full_name}}
     .menu ng-hide="currentPatientId==''"
-      ul.nav.nav-pills
+      ul.nav.nav-pills.nav-stacked
         li
           a href="#/{{currentPatientId}}" Summary 
         li

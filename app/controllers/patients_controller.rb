@@ -10,6 +10,8 @@ class PatientsController < ApplicationController
 
   def show
     @patient = Patient.find(params[:id])
+    @last_visit = @patient.visits.desc(:visit_date).first
+    @vital_sign = @last_visit.vital_sign if @last_visit
   end
 
   def create

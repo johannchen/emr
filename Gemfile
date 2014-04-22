@@ -14,8 +14,9 @@ group :doc do
 end
 
 gem 'mongoid', github: 'mongoid/mongoid'
-gem 'mongoid-versioning', github: 'simi/mongoid-versioning'
+#gem 'mongoid-versioning', github: 'simi/mongoid-versioning'
 gem 'bson_ext'
+gem 'origin'
 gem 'devise'
 gem 'slim'
 

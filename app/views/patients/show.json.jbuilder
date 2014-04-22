@@ -3,3 +3,9 @@ json.allergies @patient.allergies, :id, :name
 json.medications @patient.medications, :id, :name, :script
 json.reactions @patient.reactions, :id, :medication, :name
 json.family_members @patient.family_members, :id, :relation, :description
+if @last_visit
+	json.visit @last_visit, :visit_date, :subjective, :assessment, :lab, :treatment, :follow_up, :editor
+end
+if @vital_sign
+	json.vital_sign @vital_sign, :blood_pressure, :pulse, :respiratory_rate, :temperature, :weight, :height, :pediatric_hc, :oxygen_saturation, :bmi
+end
