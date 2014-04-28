@@ -11,7 +11,7 @@
     li.active(ng-hide="patient.phone == null")
       |Phone: {{patient.phone}}
 
-.row
+/.row
   ul.list-inline
     li 
       strong Allergies:
@@ -33,19 +33,15 @@
     .visit ng-show="patient.visit"
       p
         strong Visit Date: 
-        | {{patient.visit.visit_date}}
+        a href="/patient#/{{patient.sid}}/visits/{{patient.visit.id.$oid}}" {{patient.visit.visit_date}}
       p
         strong Subjective: 
         | {{patient.visit.subjective}}
       p
-        strong Vital Signs 
         ul.list-inline
           li
-            strong Wt: 
-            | {{patient.vital_sign.weight}}
-          li
-            strong Ht: 
-            | {{patient.vital_sign.height}}
+            strong T: 
+            | {{patient.vital_sign.temperature}}
           li
             strong BP: 
             | {{patient.vital_sign.blood_pressure}}
@@ -56,17 +52,21 @@
             strong RR: 
             | {{patient.vital_sign.respiratory_rate}}
           li
-            strong T: 
-            | {{patient.vital_sign.temperature}}
+            strong O2: 
+            | {{patient.vital_sign.oxygen_saturation}}
+        ul.list-inline
+          li
+            strong Wt: 
+            | {{patient.vital_sign.weight}}
+          li
+            strong Ht: 
+            | {{patient.vital_sign.height}}
           li
             strong BMI: 
             | {{patient.vital_sign.bmi}}
           li
             strong HC: 
             | {{patient.vital_sign.pediatric_hc}}
-          li
-            strong O2: 
-            | {{patient.vital_sign.oxygen_saturation}}
       p
         strong Assessment: 
         | {{patient.visit.assessment}}
@@ -80,8 +80,9 @@
         strong Follow up: 
         | {{patient.visit.follow_up}}
       p
-        strong Sign by: 
+        strong Signed by: 
         | {{patient.visit.editor}}
+    a href="/patient#/{{patient.sid}}/new_visit" New Visit
   .col-md-5
     a href="/patient#/{{patient.sid}}/diagnoses" Past Medical History
     table.table
@@ -108,8 +109,28 @@
         input.form-control type="text" id="script" ng-model="medication.script" placeholder="Script"
       button.btn.btn-primary ng-click="quickAddMedication()" ng-disabled="medicationForm.$invalid" Add Medication 
       
-    h5 Allergies/Advose Reactions
-    table.table.table-hover id="reactions"
+    h5 Allergies
+    table.table id="allergies"
+      tr
+        th Med Name 
+        th Reaction 
+      tr ng-repeat="allergy in patient.allergies"
+        td 
+          a href="/patient#/{{patient.sid}}/allergies/{{allergy.id.$oid}}" {{allergy.name}}
+        td 
+          |{{allergy.reaction}}
+    form.form-inline name="allergyForm"
+      .form-group
+        label.sr-only for="name" Med Name 
+        input.form-control(type="text" id="name" ng-model="allergy.name" placeholder="Med Name" required)
+      .form-group
+        label.sr-only for="reaction" Reaction 
+        input.form-control(type="text" id="reaction" ng-model="allergy.reaction" placeholder="Reaction")
+      button.btn.btn-primary ng-click="quickAddAllergy()" ng-disabled="allergyForm.$invalid" Add Allergy 
+
+
+    /h5 Allergies/Advose Reactions
+    /table.table.table-hover id="reactions"
       tr
         th style="width:40%" Med Name 
         th style="width:60%" Reaction
@@ -135,12 +156,11 @@
       tr
         td colspan="3"
           button.btn.btn-default(ng-click="newReaction()") New Reaction 
-    h5 Past Surgical History
+    h5 Surgical History
     table.table id="surgeries"
       tr
         th Surgery
         th Year 
-        th Comment
     h5 Social History
     table.table id="social"
       tr

@@ -13,7 +13,22 @@
       strong Subjective: 
       | {{visit.subjective}}
     p
-      strong Vital Signs
+      ul.list-inline
+        li
+          strong T: 
+          | {{visit.vital_sign.temperature}}
+        li
+          strong BP: 
+          | {{visit.vital_sign.blood_pressure}}
+        li
+          strong P:
+          | {{visit.vital_sign.pulse}}
+        li
+          strong RR: 
+          | {{visit.vital_sign.respiratory_rate}}
+        li
+          strong O2: 
+          | {{visit.vital_sign.oxygen_saturation}}
       ul.list-inline
         li
           strong Weight: 
@@ -22,52 +37,54 @@
           strong Height: 
           | {{visit.vital_sign.height}}
         li
-          strong BP: 
-          | {{visit.vital_sign.blood_pressure}}
-        li
-          strong Pulse:
-          | {{visit.vital_sign.pulse}}
-        li
-          strong RR: 
-          | {{visit.vital_sign.respiratory_rate}}
-        li
-          strong T: 
-          | {{visit.vital_sign.temperature}}
-        li
           strong BMI: 
           | {{visit.vital_sign.bmi}}
         li
           strong Pediatric HC: 
           | {{visit.vital_sign.pediatric_hc}}
-        li
-          strong O2: 
-          | {{visit.vital_sign.oxygen_saturation}}
     p
-      strong Physical
-      ul.list-inline
-        li
+      strong General: 
+      | {{visit.physical.general}}
+      ul
+        li ng-show="{{visit.physical.heent}}"
           strong HEENT: 
           | {{visit.physical.heent}}
-        li
+        li ng-show="{{visit.physical.neck}}"
           strong Neck: 
           | {{visit.physical.neck}}
-        li
+        li ng-show="{{visit.physical.respiratory}}"
           strong Respiratory: 
           | {{visit.physical.respiratory}}
-        li
+        li ng-show="{{visit.physical.cardiac}}"
           strong Cardiac: 
           | {{visit.physical.cardiac}}
-        li
+        li ng-show="{{visit.physical.abdomen}}"
           strong Abdomen: 
           | {{visit.physical.abdomen}}
-        li
+        li ng-show="{{visit.physical.gu}}"
+          strong GU: 
+          | {{visit.physical.gu}}
+        li ng-show="{{visit.physical.rectal}}"
+          strong Rectal: 
+          | {{visit.physical.rectal}}
+        li ng-show="{{visit.physical.extremities}}"
+          strong Extremities: 
+          | {{visit.physical.extremities}}
+        li ng-show="{{visit.physical.back}}"
           strong Back: 
           | {{visit.physical.back}}
-        li
+        li ng-show="{{visit.physical.skin}}"
           strong Skin: 
           | {{visit.physical.skin}}
-        strong Comment: 
-        | {{visit.physical.comment}}
+        li ng-show="{{visit.physical.breast}}"
+          strong Breast: 
+          | {{visit.physical.breast}}
+        li ng-show="{{visit.physical.neuro}}"
+          strong Neuro: 
+          | {{visit.physical.neuro}}
+        li ng-show="{{visit.physical.psych}}"
+          strong Psych: 
+          | {{visit.physical.psych}}
     p
       strong Assessment:
       | {{visit.assessment}}

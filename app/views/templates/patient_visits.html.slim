@@ -9,10 +9,10 @@
     a href="/patient#/{{patientId}}/new_visit" New Visit 
     table.table.table-hover id="visits"
       tr
-        th Date 
-        th Subjective 
-        th Editor
-        th Last Updated 
+        th.col-md-2 Date 
+        th.col-md-6 Subjective 
+        th.col-md-2 Editor
+        th.col-md-2 Last Updated 
       tr.x-row ng-repeat="visit in visits"
         td
           a href="/patient#/{{patientId}}/visits/{{visit._id.$oid}}" {{visit.visit_date}}

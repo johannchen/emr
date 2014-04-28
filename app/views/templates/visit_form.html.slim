@@ -10,17 +10,24 @@
       span.help-inline ng-show="visitForm.subjective.$error.required && !visitForm.subjective.$pristine"
         | Required
     .form-group
-      label for="vital_sign" Vital Sign
+      label for="vital_sign" Vital Signs
       .form-inline
         .form-group
           label.sr-only for="temperature" Temperature 
           input.form-control type="text" id="temperature" ng-model="visit.vital_sign.temperature" placeholder="T (C)"
         .form-group
+          label.sr-only for="bp" BP
+          input.form-control type="text" id="bp" ng-model="visit.vital_sign.blood_pressure" placeholder="BP"
+        .form-group
           label.sr-only for="pulse" Pulse 
-          input.form-control type="text" id="pulse" ng-model="visit.vital_sign.pulse" placeholder="pulse (bpm)"
+          input.form-control type="text" id="pulse" ng-model="visit.vital_sign.pulse" placeholder="P (bpm)"
         .form-group
           label.sr-only for="respiratory_rate" RR
           input.form-control type="text" id="respiratory_rate" ng-model="visit.vital_sign.respiratory_rate" placeholder="RR"
+        .form-group
+          label.sr-only for="oxygen_saturation" Oxygen saturation
+          input.form-control type="text" id="oxygen_saturation" ng-model="visit.vital_sign.oxygen_saturation" placeholder="Oxygen saturation(%)"
+      .form-inline
         .form-group
           label.sr-only for="weight" Weight
           input.form-control type="text" id="weight" ng-model="visit.vital_sign.weight" placeholder="weight (kg)"
@@ -31,14 +38,15 @@
           label.sr-only for="bmi" BMI 
           input.form-control type="text" id="bmi" ng-model="visit.vital_sign.bmi" placeholder="BMI"
         .form-group
-          label.sr-only for="oxygen_saturation" Oxygen saturation
-          input.form-control type="text" id="oxygen_saturation" ng-model="visit.vital_sign.oxygen_saturation" placeholder="Oxygen saturation(%)"
-        .form-group
           label.sr-only for="pediatric_hc" Pediatric HC
           input.form-control type="text" id="pediatric_hc" ng-model="visit.vital_sign.pediatric_hc" placeholder="Pediatric HC (cm)"
     .form-group
-      label for="physical" Physical 
+      label for="physical" Physical Exam
       .form-horizontal
+        .form-group
+          label.col-sm-1.control-label for="general" General 
+          .col-sm-11
+            input.form-control type="text" id="general" ng-model="visit.physical.general"
         .form-group
           label.col-sm-1.control-label for="heent" HEENT 
           .col-sm-11
@@ -60,6 +68,18 @@
           .col-sm-11
             input.form-control type="text" id="abdomen" ng-model="visit.physical.abdomen"
         .form-group
+          label.col-sm-1.control-label for="gu" GU 
+          .col-sm-11
+            input.form-control type="text" id="gu" ng-model="visit.physical.gu"
+        .form-group
+          label.col-sm-1.control-label for="rectal" Rectal  
+          .col-sm-11
+            input.form-control type="text" id="rectal" ng-model="visit.physical.rectal"
+        .form-group
+          label.col-sm-1.control-label for="extremities" Extremities  
+          .col-sm-11
+            input.form-control type="text" id="extremities" ng-model="visit.physical.extremities"
+        .form-group
           label.col-sm-1.control-label for="back" Back 
           .col-sm-11
             input.form-control type="text" id="back" ng-model="visit.physical.back"
@@ -68,9 +88,17 @@
           .col-sm-11
             input.form-control type="text" id="skin" ng-model="visit.physical.skin"
         .form-group
-          label.col-sm-1.control-label for="comment" Comment 
+          label.col-sm-1.control-label for="breast" Breast 
           .col-sm-11
-            input.form-control type="text" id="comment" ng-model="visit.physical.comment"
+            input.form-control type="text" id="breast" ng-model="visit.physical.breast"
+        .form-group
+          label.col-sm-1.control-label for="neuro" Neuro 
+          .col-sm-11
+            input.form-control type="text" id="neuro" ng-model="visit.physical.neuro"
+        .form-group
+          label.col-sm-1.control-label for="psych" Psych 
+          .col-sm-11
+            input.form-control type="text" id="psych" ng-model="visit.physical.psych"
     .form-group
       label for="assessment" Assessment
       textarea.form-control rows="3" ng-model="visit.assessment"

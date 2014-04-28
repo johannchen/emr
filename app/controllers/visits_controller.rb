@@ -42,6 +42,6 @@ class VisitsController < ApplicationController
   end
 
   def safe_params
-    params.require(:visit).permit(:visit_date, :subjective, :physical, :assessment, :lab, :treatment, :follow_up, :editor, vital_sign: [:blood_pressure, :pulse, :respiratory_rate, :temperature, :height, :weight, :pediatric_hc, :oxygen_saturation, :bmi], physical: [:heent, :neck, :respiratory, :cardiac, :abdomen, :back, :skin, :comment])
+    params.require(:visit).permit(:visit_date, :subjective, :physical, :assessment, :lab, :treatment, :follow_up, :editor, vital_sign: [:blood_pressure, :pulse, :respiratory_rate, :temperature, :height, :weight, :pediatric_hc, :oxygen_saturation, :bmi], physical: [:general, :heent, :neck, :respiratory, :cardiac, :abdomen, :gu, :rectal, :extremities, :back, :skin, :breast, :neuro, :psych])
   end
 end

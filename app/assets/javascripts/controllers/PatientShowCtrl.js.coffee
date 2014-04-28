@@ -19,7 +19,15 @@ angular.module('emrApp').controller 'PatientShowCtrl', ['$scope', '$sessionStora
 				description: family.description
 			$scope.family.relation = ""
 			$scope.family.description = ""
-					
+	$scope.quickAddAllergy = ->
+		patient.all("allergies").post($scope.allergy).then (allergy) ->
+			$scope.patient.allergies.push
+				id: allergy._id
+				name: allergy.name
+				reaction: allergy.reaction
+			$scope.allergy.name = ""
+			$scope.allergy.reaction = ""
+	###					
 	$scope.addAllergy = ->
 		if $scope.newAllergy != ""
 			patient.all("allergies").post({name: $scope.newAllergy}).then (allergy) ->
@@ -62,6 +70,6 @@ angular.module('emrApp').controller 'PatientShowCtrl', ['$scope', '$sessionStora
 				reaction.name = myReaction.name
 				reaction.put()
 		@reactionForm.$cancel() 
-
+###
 ]
 				

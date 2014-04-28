@@ -22,7 +22,7 @@ class MedicationsController < ApplicationController
     # todo: use id to check to enhance accuracy
     if @medication.editor == current_user.full_name
       params[:medication][:editor] = current_user.full_name
-      medication.update_attributes(safe_params)
+      @medication.update_attributes(safe_params)
       render nothing: true
     end
   end
