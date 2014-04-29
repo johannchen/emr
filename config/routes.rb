@@ -22,6 +22,7 @@ Emr::Application.routes.draw do
     #resources :reactions
 		resources :diagnoses
     resources :medications
+    resources :behaviors
     resources :family_members
     resources :visits
   end

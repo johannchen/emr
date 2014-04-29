@@ -2,6 +2,7 @@ json.(@patient, :id, :sid, :full_name, :first_name, :last_name, :gender, :birthd
 json.allergies @patient.allergies, :id, :name, :reaction
 json.medications @patient.medications, :id, :name, :script
 json.surgeries @patient.surgeries, :id, :name, :year
+json.behaviors @patient.behaviors, :id, :name, :details
 json.family_members @patient.family_members, :id, :relation, :description
 if @last_visit
 	json.visit @last_visit, :id, :visit_date, :subjective, :assessment, :lab, :treatment, :follow_up, :editor

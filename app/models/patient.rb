@@ -19,6 +19,7 @@ class Patient
   embeds_many :allergies
 	embeds_many :medications
 	embeds_many :surgeries
+	embeds_many :behaviors
   embeds_many :family_members
   embeds_many :visits
   embeds_many :diagnoses, class_name: "Diagnosis"

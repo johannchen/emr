@@ -149,11 +149,27 @@
         input.form-control(type="text" id="year" ng-model="surgery.year" placeholder="Year")
       button.btn.btn-primary ng-click="quickAddSurgery()" ng-disabled="surgeryForm.$invalid" Add Surgery 
 
-    h5 Social History
+    .category
+      a href="/patient#/{{patient.sid}}/behaviors" Social History 
     table.table id="social"
       tr
         th Name
-        th Description 
+        th Details
+      tr ng-repeat="behavior in patient.behaviors"
+        td
+          a href="/patient#/{{patient.sid}}/behaviors/{{behavior.id.$oid}}" {{behavior.name}}
+        td
+          | {{behavior.details}}
+    form.form-inline name="behaviorForm"
+      .form-group
+        label.sr-only for="name" Name 
+        input.form-control(type="text" id="name" ng-model="behavior.name" placeholder="Name" required)
+      .form-group
+        label.sr-only for="details" Details
+        input.form-control(type="text" id="details" ng-model="behavior.details" placeholder="Details")
+      button.btn.btn-primary ng-click="quickAddBehavior()" ng-disabled="behaviorForm.$invalid" Add Social History 
+
+
     h5 Family History
     table.table id="family"
       tr

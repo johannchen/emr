@@ -1,0 +1,23 @@
+.row
+  ol.breadcrumb
+    li 
+      a href="/patient#/{{patientId}}" Summary 
+    li
+      a href="/patient#/{{patientId}}/behaviors" Social History 
+    li.active 
+      | {{behavior.name}}
+.row
+  .col-md-12
+    p 
+      strong Name: 
+      | {{behavior.name}}
+    p 
+      strong Details: 
+      | {{behavior.details}}
+    p Created at: {{behavior.created_at}}
+    p Updated at: {{behavior.updated_at}}
+    p Last updated by: {{behavior.editor}}
+    .action ng-show="isEditor"
+      a href="/patient#/{{patientId}}/behaviors/{{behavior._id.$oid}}/edit" Edit 
+      a href="" ng-click="markDelete()" ng-hide="behavior.deleted" Delete
+      a href="" ng-click="undoDelete()" ng-show="behavior.deleted" Undo

@@ -1,0 +1,24 @@
+.row
+  ol.breadcrumb
+    li 
+      a href="/patient#/{{patientId}}" Summary 
+    li.active Social History 
+.row
+  .col-md-12
+    h4 Social History 
+    a href="/patient#/{{patientId}}/new_behavior" Add Social History 
+    table.table.table-hover id="behaviors"
+      tr
+        th Name 
+        th Details 
+        th Editor
+        th Last Updated 
+      tr.x-row ng-repeat="behavior in behaviors"
+        td
+          a href="/patient#/{{patientId}}/behaviors/{{behavior._id.$oid}}" {{behavior.name}}
+        td
+          |{{behavior.details}}
+        td
+          |{{behavior.editor}}
+        td
+          |{{behavior.updated_at}}
