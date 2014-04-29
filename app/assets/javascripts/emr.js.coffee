@@ -14,6 +14,7 @@ angular.module('emrApp', ['restangular', 'ngRoute', 'ngStorage', 'ui.select2', '
         ]	
 		$routeProvider.when "/:patientId/profile", controller: 'PatientProfileCtrl', templateUrl: '/templates/patient_profile.html'
 		$routeProvider.when "/:patientId/edit", controller: 'PatientUpdateCtrl', templateUrl: '/templates/patient_form.html'
+		# diagnoses
 		$routeProvider.when "/:patientId/diagnoses",
       controller: 'PatientDiagnosesCtrl'
       templateUrl: '/templates/patient_diagnoses.html'
@@ -26,6 +27,7 @@ angular.module('emrApp', ['restangular', 'ngRoute', 'ngStorage', 'ui.select2', '
 		$routeProvider.when "/:patientId/diagnoses/:id/edit",
       controller: 'DiagnosisUpdateCtrl'
       templateUrl: '/templates/diagnosis_form.html' 
+		# family
 		$routeProvider.when "/:patientId/family/:id",
 			controller: 'FamilyCtrl'
 			templateUrl: '/templates/family.html'
@@ -36,6 +38,7 @@ angular.module('emrApp', ['restangular', 'ngRoute', 'ngStorage', 'ui.select2', '
 		$routeProvider.when "/:patientId/family/:id/edit",
       controller: 'FamilyUpdateCtrl'
       templateUrl: '/templates/family_form.html' 
+		# medications
  		$routeProvider.when "/:patientId/medications",
       controller: 'PatientMedicationsCtrl'
       templateUrl: '/templates/patient_medications.html'
@@ -52,6 +55,24 @@ angular.module('emrApp', ['restangular', 'ngRoute', 'ngStorage', 'ui.select2', '
 		$routeProvider.when "/:patientId/medications/:id/edit",
       controller: 'MedicationUpdateCtrl'
       templateUrl: '/templates/medication_form.html' 
+		# surgeries
+		$routeProvider.when "/:patientId/surgeries",
+      controller: 'PatientSurgeriesCtrl'
+      templateUrl: '/templates/patient_surgeries.html'
+		$routeProvider.when "/:patientId/new_surgery", 
+			controller: 'SurgeryCreateCtrl'
+			templateUrl: '/templates/surgery_form.html'
+		$routeProvider.when "/:patientId/surgeries/:id",
+			controller: 'SurgeryCtrl'
+			templateUrl: '/templates/surgery.html'
+			resolve:
+			  surgery: ['$route', 'Restangular', ($route, Restangular) ->
+          Restangular.one('patients', $route.current.params.patientId).one('surgeries', $route.current.params.id).get()
+        ]	
+		$routeProvider.when "/:patientId/surgeries/:id/edit",
+      controller: 'SurgeryUpdateCtrl'
+      templateUrl: '/templates/surgery_form.html' 
+		# visits
  		$routeProvider.when "/:patientId/visits",
       controller: 'PatientVisitsCtrl'
       templateUrl: '/templates/patient_visits.html'

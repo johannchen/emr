@@ -18,7 +18,8 @@ Emr::Application.routes.draw do
 
   resources :patients, defaults: {format: :json} do
     resources :allergies
-    resources :reactions
+    resources :surgeries
+    #resources :reactions
 		resources :diagnoses
     resources :medications
     resources :family_members

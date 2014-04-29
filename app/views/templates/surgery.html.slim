@@ -1,0 +1,25 @@
+.row
+  ol.breadcrumb
+    li 
+      a href="/patient#/{{patientId}}" Summary 
+    li
+      a href="/patient#/{{patientId}}/surgeries" Surgical History 
+    li.active Surgery 
+.row
+  .col-md-12
+    p 
+      strong Medication: 
+      | {{surgery.name}}
+    p 
+      strong Year: 
+      | {{surgery.year}}
+    p 
+      strong Details: 
+      | {{surgery.details}}
+    p Created at: {{surgery.created_at}}
+    p Updated at: {{surgery.updated_at}}
+    p Last updated by: {{surgery.editor}}
+    .action ng-show="isEditor"
+      a href="/patient#/{{patientId}}/surgeries/{{surgery._id.$oid}}/edit" Edit 
+      a href="" ng-click="markDelete()" ng-hide="surgery.deleted" Delete
+      a href="" ng-click="undoDelete()" ng-show="surgery.deleted" Undo

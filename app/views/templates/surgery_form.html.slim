@@ -1,0 +1,21 @@
+.row
+  ol.breadcrumb
+    li 
+      a href="/patient#/{{patientId}}" Summary
+    li 
+      a href="/patient#/{{patientId}}/surgeries" Surgical History 
+    li.active Surgery 
+.row
+  form name="surgeryForm"
+    .form-group(ng-class="{error: surgeryForm.surgery.$invalid && !surgeryForm.surgery.$pristine}")
+      label for="name" Surgery 
+      input.form-control(type="text" name="name" ng-model="surgery.name" required)
+      span.help-inline ng-show="surgeryForm.name.$error.required && !surgeryForm.name.$pristine"
+        | Required
+    .form-group
+      label for="year" Year 
+      input.form-control type="text" name="year" ng-model="surgery.year"
+    .form-group
+      label for="details" Details 
+      textarea.form-control rows="3" ng-model="surgery.details"
+    button.btn.btn-primary ng-click="save()" ng-disabled="surgeryForm.$invalid" Save

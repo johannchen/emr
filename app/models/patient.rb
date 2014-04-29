@@ -15,9 +15,10 @@ class Patient
   field :company
   field :editor
 #  embeds_one :address
+#embeds_many :reactions
   embeds_many :allergies
-  embeds_many :reactions
 	embeds_many :medications
+	embeds_many :surgeries
   embeds_many :family_members
   embeds_many :visits
   embeds_many :diagnoses, class_name: "Diagnosis"

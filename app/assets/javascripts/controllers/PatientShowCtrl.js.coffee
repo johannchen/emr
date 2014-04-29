@@ -27,6 +27,14 @@ angular.module('emrApp').controller 'PatientShowCtrl', ['$scope', '$sessionStora
 				reaction: allergy.reaction
 			$scope.allergy.name = ""
 			$scope.allergy.reaction = ""
+	$scope.quickAddSurgery = ->
+		patient.all("surgeries").post($scope.surgery).then (surgery) ->
+			$scope.patient.surgeries.push
+				id: surgery._id
+				name: surgery.name
+				year: surgery.year
+			$scope.surgery.name = ""
+			$scope.surgery.year = ""
 	###					
 	$scope.addAllergy = ->
 		if $scope.newAllergy != ""

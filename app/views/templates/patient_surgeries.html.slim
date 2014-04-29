@@ -1,0 +1,24 @@
+.row
+  ol.breadcrumb
+    li 
+      a href="/patient#/{{patientId}}" Summary 
+    li.active Surgical History 
+.row
+  .col-md-12
+    h4 Surgical History 
+    a href="/patient#/{{patientId}}/new_surgery" Add Surgery 
+    table.table.table-hover id="surgeries"
+      tr
+        th Surgery 
+        th Year 
+        th Editor
+        th Last Updated 
+      tr.x-row ng-repeat="surgery in surgeries"
+        td
+          a href="/patient#/{{patientId}}/surgeries/{{surgery._id.$oid}}" {{surgery.name}}
+        td
+          |{{surgery.year}}
+        td
+          |{{surgery.editor}}
+        td
+          |{{surgery.updated_at}}

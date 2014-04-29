@@ -156,11 +156,25 @@
       tr
         td colspan="3"
           button.btn.btn-default(ng-click="newReaction()") New Reaction 
-    h5 Surgical History
+    a href="/patient#/{{patient.sid}}/surgeries" Surgical History 
     table.table id="surgeries"
       tr
         th Surgery
-        th Year 
+        th Year
+      tr ng-repeat="surgery in patient.surgeries"
+        td
+          a href="/patient#/{{patient.sid}}/surgeries/{{surgery.id.$oid}}" {{surgery.name}}
+        td
+          | {{surgery.year}}
+    form.form-inline name="surgeryForm"
+      .form-group
+        label.sr-only for="name" Surgery 
+        input.form-control(type="text" id="name" ng-model="surgery.name" placeholder="Surgery" required)
+      .form-group
+        label.sr-only for="year" Year 
+        input.form-control(type="text" id="year" ng-model="surgery.year" placeholder="Year")
+      button.btn.btn-primary ng-click="quickAddSurgery()" ng-disabled="surgeryForm.$invalid" Add Surgery 
+
     h5 Social History
     table.table id="social"
       tr
