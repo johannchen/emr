@@ -40,6 +40,6 @@ class AllergiesController < ApplicationController
   end
 
   def safe_params
-    params.require(:allergy).permit(:name, :reaction, :editor)
+    params.require(:allergy).permit(:name, :reaction, :details, :editor)
   end
 end

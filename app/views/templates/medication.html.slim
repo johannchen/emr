@@ -7,9 +7,15 @@
     li.active Medication 
 .row
   .col-md-12
-    p Medication: {{medication.name}}
-    p Script: {{medication.script}}
-    p Details: {{medication.details}}
+    p 
+      strong Medication: 
+      | {{medication.name}}
+    p 
+      strong Script: 
+      | {{medication.script}}
+    p 
+      strong Details: 
+      | {{medication.details}}
     p Created at: {{medication.created_at}}
     p Updated at: {{medication.updated_at}}
     p Last updated by: {{medication.editor}}

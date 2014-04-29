@@ -55,6 +55,23 @@ angular.module('emrApp', ['restangular', 'ngRoute', 'ngStorage', 'ui.select2', '
 		$routeProvider.when "/:patientId/medications/:id/edit",
       controller: 'MedicationUpdateCtrl'
       templateUrl: '/templates/medication_form.html' 
+		# allergies 
+ 		$routeProvider.when "/:patientId/allergies",
+      controller: 'PatientAllergiesCtrl'
+      templateUrl: '/templates/patient_allergies.html'
+		$routeProvider.when "/:patientId/new_allergy", 
+			controller: 'AllergyCreateCtrl'
+			templateUrl: '/templates/allergy_form.html'
+		$routeProvider.when "/:patientId/allergies/:id",
+			controller: 'AllergyCtrl'
+			templateUrl: '/templates/allergy.html'
+			resolve:
+			  allergy: ['$route', 'Restangular', ($route, Restangular) ->
+          Restangular.one('patients', $route.current.params.patientId).one('allergies', $route.current.params.id).get()
+        ]	
+		$routeProvider.when "/:patientId/allergies/:id/edit",
+      controller: 'AllergyUpdateCtrl'
+      templateUrl: '/templates/allergy_form.html' 
 		# surgeries
 		$routeProvider.when "/:patientId/surgeries",
       controller: 'PatientSurgeriesCtrl'

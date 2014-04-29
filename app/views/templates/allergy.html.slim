@@ -1,0 +1,26 @@
+.row
+  ol.breadcrumb
+    li 
+      a href="/patient#/{{patientId}}" Summary 
+    li
+      a href="/patient#/{{patientId}}/allergies" Allergies 
+    li.active 
+      | {{allergy.name}} 
+.row
+  .col-md-12
+    p 
+      strong Allergy: 
+      | {{allergy.name}}
+    p 
+      strong Reaction: 
+      | {{allergy.reaction}}
+    p 
+      strong Details: 
+      | {{allergy.details}}
+    p Created at: {{allergy.created_at}}
+    p Updated at: {{allergy.updated_at}}
+    p Last updated by: {{allergy.editor}}
+    .action ng-show="isEditor"
+      a href="/patient#/{{patientId}}/allergies/{{allergy._id.$oid}}/edit" Edit 
+      a href="" ng-click="markDelete()" ng-hide="allergy.deleted" Delete
+      a href="" ng-click="undoDelete()" ng-show="allergy.deleted" Undo

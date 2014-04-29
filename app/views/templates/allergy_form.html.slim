@@ -1,0 +1,21 @@
+.row
+  ol.breadcrumb
+    li 
+      a href="/patient#/{{patientId}}" Summary
+    li 
+      a href="/patient#/{{patientId}}/allergies" Allergies 
+    li.active Allergy Form 
+.row
+  form name="allergyForm"
+    .form-group(ng-class="{error: allergyForm.allergy.$invalid && !allergyForm.allergy.$pristine}")
+      label for="name" Allergy 
+      input.form-control(type="text" name="name" ng-model="allergy.name" required)
+      span.help-inline ng-show="allergyForm.name.$error.required && !allergyForm.name.$pristine"
+        | Required
+    .form-group
+      label for="reaction" Reaction 
+      input.form-control type="text" name="reaction" ng-model="allergy.reaction"
+    .form-group
+      label for="details" Details 
+      textarea.form-control rows="3" ng-model="allergy.details"
+    button.btn.btn-primary ng-click="save()" ng-disabled="allergyForm.$invalid" Save

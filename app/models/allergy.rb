@@ -4,6 +4,7 @@ class Allergy
 
   field :name
   field :reaction
+  field :details
   field :editor
 
   embedded_in :patient

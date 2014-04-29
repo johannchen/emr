@@ -109,7 +109,8 @@
         input.form-control type="text" id="script" ng-model="medication.script" placeholder="Script"
       button.btn.btn-primary ng-click="quickAddMedication()" ng-disabled="medicationForm.$invalid" Add Medication 
       
-    h5 Allergies
+    .category
+      a href="/patient#/{{patient.sid}}/allergies" Allergies 
     table.table id="allergies"
       tr
         th Med Name 
@@ -128,35 +129,8 @@
         input.form-control(type="text" id="reaction" ng-model="allergy.reaction" placeholder="Reaction")
       button.btn.btn-primary ng-click="quickAddAllergy()" ng-disabled="allergyForm.$invalid" Add Allergy 
 
-
-    /h5 Allergies/Advose Reactions
-    /table.table.table-hover id="reactions"
-      tr
-        th style="width:40%" Med Name 
-        th style="width:60%" Reaction
-        th
-      tr.x-row ng-repeat="reaction in patient.reactions"
-        td
-          span(editable-text="reaction.medication" e-name="medication" e-form="reactionForm" e-required)
-            | {{reaction.medication || 'empty'}}
-        td
-          span(editable-text="reaction.name" e-name="name" e-form="reactionForm" e-required)
-            | {{reaction.name || 'empty'}}
-        td
-          form.form-inline(editable-form name="reactionForm" onaftersave="saveReaction()" ng-show="reactionForm.$visible" shown="insertedReaction == reaction")
-            button.btn.btn-primary(type="submit" ng-disabled="reactionForm.$waiting")
-              span.glyphicon.glyphicon-ok
-            button.btn.btn-default(type="button" ng-disabled="reactionForm.$waiting" ng-click="reactionForm.$cancel()")
-              span.glyphicon.glyphicon-remove
-          .edit ng-show="!reactionForm.$visible"
-            button.btn.btn-primary(ng-click="reactionForm.$show()")
-              span.glyphicon.glyphicon-edit  
-            button.btn.btn-danger(ng-click="removeReaction($index)")
-              span.glyphicon.glyphicon-remove-circle
-      tr
-        td colspan="3"
-          button.btn.btn-default(ng-click="newReaction()") New Reaction 
-    a href="/patient#/{{patient.sid}}/surgeries" Surgical History 
+    .category
+      a href="/patient#/{{patient.sid}}/surgeries" Surgical History 
     table.table id="surgeries"
       tr
         th Surgery
@@ -198,3 +172,31 @@
         label.sr-only for="description" Description 
         input.form-control(type="text" id="description" ng-model="family.description" placeholder="Description" required)
       button.btn.btn-primary ng-click="quickAddFamily()" ng-disabled="familyForm.$invalid" Add Family History
+
+    /h5 Allergies/Advose Reactions
+    /table.table.table-hover id="reactions"
+      tr
+        th style="width:40%" Med Name 
+        th style="width:60%" Reaction
+        th
+      tr.x-row ng-repeat="reaction in patient.reactions"
+        td
+          span(editable-text="reaction.medication" e-name="medication" e-form="reactionForm" e-required)
+            | {{reaction.medication || 'empty'}}
+        td
+          span(editable-text="reaction.name" e-name="name" e-form="reactionForm" e-required)
+            | {{reaction.name || 'empty'}}
+        td
+          form.form-inline(editable-form name="reactionForm" onaftersave="saveReaction()" ng-show="reactionForm.$visible" shown="insertedReaction == reaction")
+            button.btn.btn-primary(type="submit" ng-disabled="reactionForm.$waiting")
+              span.glyphicon.glyphicon-ok
+            button.btn.btn-default(type="button" ng-disabled="reactionForm.$waiting" ng-click="reactionForm.$cancel()")
+              span.glyphicon.glyphicon-remove
+          .edit ng-show="!reactionForm.$visible"
+            button.btn.btn-primary(ng-click="reactionForm.$show()")
+              span.glyphicon.glyphicon-edit  
+            button.btn.btn-danger(ng-click="removeReaction($index)")
+              span.glyphicon.glyphicon-remove-circle
+      tr
+        td colspan="3"
+          button.btn.btn-default(ng-click="newReaction()") New Reaction 

@@ -1,0 +1,24 @@
+.row
+  ol.breadcrumb
+    li 
+      a href="/patient#/{{patientId}}" Summary 
+    li.active Allergies 
+.row
+  .col-md-12
+    h4 Allergies 
+    a href="/patient#/{{patientId}}/new_allergy" Add Allergy 
+    table.table.table-hover id="allergies"
+      tr
+        th Med Name 
+        th Reaction 
+        th Editor
+        th Last Updated 
+      tr.x-row ng-repeat="allergy in allergies"
+        td
+          a href="/patient#/{{patientId}}/allergies/{{allergy._id.$oid}}" {{allergy.name}}
+        td
+          |{{allergy.reaction}}
+        td
+          |{{allergy.editor}}
+        td
+          |{{allergy.updated_at}}
