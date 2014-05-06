@@ -28,8 +28,8 @@
         button.btn.btn-default type="button" ng-click="isAddingAllergy=false"
           span.glyphicon.glyphicon-remove
 .row
-  .col-md-7
-    h5 Most Rencent Visit
+  .col-md-6
+    h4 Most Rencent Visit
     .visit ng-show="patient.visit"
       p
         strong Visit Date: 
@@ -83,23 +83,9 @@
         strong Signed by: 
         | {{patient.visit.editor}}
     a href="/patient#/{{patient.sid}}/new_visit" New Visit
-  .col-md-5
-    a href="/patient#/{{patient.sid}}/diagnoses" Past Medical History
-    table.table
-      tr
-        th Diagnosis
-        th Year
-
-    a href="/patient#/{{patient.sid}}/medications" Current Medications
-    table.table id="medications"
-      tr
-        th Medication
-        th Script 
-      tr ng-repeat="medication in patient.medications"
-        td 
-          a href="/patient#/{{patient.sid}}/medications/{{medication.id.$oid}}" {{medication.name}}
-        td 
-          |{{medication.script}}
+  .col-md-6
+    .category
+      a href="/patient#/{{patient.sid}}/medications" Current Medications
     form.form-inline name="medicationForm"
       .form-group
         label.sr-only for="medication" Medication
@@ -107,19 +93,17 @@
       .form-group
         label.sr-only for="script" Script 
         input.form-control type="text" id="script" ng-model="medication.script" placeholder="Script"
-      button.btn.btn-primary ng-click="quickAddMedication()" ng-disabled="medicationForm.$invalid" Add Medication 
-      
+      button.btn.btn-primary ng-click="quickAddMedication()" ng-disabled="medicationForm.$invalid" 
+        span.glyphicon.glyphicon-ok
+    table.table id="medications"
+      tr ng-repeat="medication in patient.medications"
+        td 
+          a href="/patient#/{{patient.sid}}/medications/{{medication.id.$oid}}" {{medication.name}}
+        td 
+          |{{medication.script}}
+     
     .category
       a href="/patient#/{{patient.sid}}/allergies" Allergies 
-    table.table id="allergies"
-      tr
-        th Med Name 
-        th Reaction 
-      tr ng-repeat="allergy in patient.allergies"
-        td 
-          a href="/patient#/{{patient.sid}}/allergies/{{allergy.id.$oid}}" {{allergy.name}}
-        td 
-          |{{allergy.reaction}}
     form.form-inline name="allergyForm"
       .form-group
         label.sr-only for="name" Med Name 
@@ -127,19 +111,35 @@
       .form-group
         label.sr-only for="reaction" Reaction 
         input.form-control(type="text" id="reaction" ng-model="allergy.reaction" placeholder="Reaction")
-      button.btn.btn-primary ng-click="quickAddAllergy()" ng-disabled="allergyForm.$invalid" Add Allergy 
+      button.btn.btn-primary ng-click="quickAddAllergy()" ng-disabled="allergyForm.$invalid" 
+        span.glyphicon.glyphicon-ok
+    table.table id="allergies"
+      tr ng-repeat="allergy in patient.allergies"
+        td 
+          a href="/patient#/{{patient.sid}}/allergies/{{allergy.id.$oid}}" {{allergy.name}}
+        td 
+          |{{allergy.reaction}}
 
     .category
+      a href="/patient#/{{patient.sid}}/diagnoses" Past Medical History
+    form.form-inline name="diagnosisForm"
+      .form-group
+        label.sr-only for="name" Diagnosis 
+        input.form-control(type="text" id="name" ng-model="diagnosis.name" placeholder="Diagnosis" required)
+      .form-group
+        label.sr-only for="year" Year 
+        input.form-control(type="text" id="year" ng-model="diagnosis.year" placeholder="Year")
+      button.btn.btn-primary ng-click="quickAddDiagnosis()" ng-disabled="diagnosisForm.$invalid" 
+        span.glyphicon.glyphicon-ok
+    table.table
+      tr ng-repeat="diagnosis in patient.diagnoses"
+        td
+          a href="/patient#/{{patient.sid}}/diagnoses/{{diagnosis.id.$oid}}" {{diagnosis.name}}
+        td
+          | {{diagnosis.year}}
+    
+    .category
       a href="/patient#/{{patient.sid}}/surgeries" Surgical History 
-    table.table id="surgeries"
-      tr
-        th Surgery
-        th Year
-      tr ng-repeat="surgery in patient.surgeries"
-        td
-          a href="/patient#/{{patient.sid}}/surgeries/{{surgery.id.$oid}}" {{surgery.name}}
-        td
-          | {{surgery.year}}
     form.form-inline name="surgeryForm"
       .form-group
         label.sr-only for="name" Surgery 
@@ -147,19 +147,17 @@
       .form-group
         label.sr-only for="year" Year 
         input.form-control(type="text" id="year" ng-model="surgery.year" placeholder="Year")
-      button.btn.btn-primary ng-click="quickAddSurgery()" ng-disabled="surgeryForm.$invalid" Add Surgery 
+      button.btn.btn-primary ng-click="quickAddSurgery()" ng-disabled="surgeryForm.$invalid" 
+        span.glyphicon.glyphicon-ok
+    table.table id="surgeries"
+      tr ng-repeat="surgery in patient.surgeries"
+        td
+          a href="/patient#/{{patient.sid}}/surgeries/{{surgery.id.$oid}}" {{surgery.name}}
+        td
+          | {{surgery.year}}
 
     .category
       a href="/patient#/{{patient.sid}}/behaviors" Social History 
-    table.table id="social"
-      tr
-        th Name
-        th Details
-      tr ng-repeat="behavior in patient.behaviors"
-        td
-          a href="/patient#/{{patient.sid}}/behaviors/{{behavior.id.$oid}}" {{behavior.name}}
-        td
-          | {{behavior.details}}
     form.form-inline name="behaviorForm"
       .form-group
         label.sr-only for="name" Name 
@@ -167,19 +165,16 @@
       .form-group
         label.sr-only for="details" Details
         input.form-control(type="text" id="details" ng-model="behavior.details" placeholder="Details")
-      button.btn.btn-primary ng-click="quickAddBehavior()" ng-disabled="behaviorForm.$invalid" Add Social History 
-
+      button.btn.btn-primary ng-click="quickAddBehavior()" ng-disabled="behaviorForm.$invalid" 
+        span.glyphicon.glyphicon-ok
+    table.table id="social"
+      tr ng-repeat="behavior in patient.behaviors"
+        td
+          a href="/patient#/{{patient.sid}}/behaviors/{{behavior.id.$oid}}" {{behavior.name}}
+        td
+          | {{behavior.details}}
 
     h5 Family History
-    table.table id="family"
-      tr
-        th Relation 
-        th Description 
-      tr ng-repeat="member in patient.family_members"
-        td 
-          a href="/patient#/{{patient.sid}}/family/{{member.id.$oid}}" {{member.relation}}
-        td 
-          |{{member.description}}
     form.form-inline name="familyForm"
       .form-group
         label.sr-only for="relation" Medication
@@ -187,7 +182,14 @@
       .form-group
         label.sr-only for="description" Description 
         input.form-control(type="text" id="description" ng-model="family.description" placeholder="Description" required)
-      button.btn.btn-primary ng-click="quickAddFamily()" ng-disabled="familyForm.$invalid" Add Family History
+      button.btn.btn-primary ng-click="quickAddFamily()" ng-disabled="familyForm.$invalid" 
+        span.glyphicon.glyphicon-ok
+    table.table id="family"
+      tr ng-repeat="member in patient.family_members"
+        td 
+          a href="/patient#/{{patient.sid}}/family/{{member.id.$oid}}" {{member.relation}}
+        td 
+          |{{member.description}}
 
     /h5 Allergies/Advose Reactions
     /table.table.table-hover id="reactions"

@@ -13,10 +13,18 @@
 
 .row
   .col-md-12
-    p Address: {{patient.address}}
-    p Nationality: {{patient.nationality}}
-    p Occupation: {{patient.occupation}}
-    p Company: {{patient.company}}
+    p 
+      strong Address: 
+      | {{patient.address.province}} {{patient.address.city}} {{patient.address.district}} {{patient.address.street}}
+    p 
+      strong Nationality: 
+      | {{patient.nationality}}
+    p 
+      strong Occupation: 
+      | {{patient.occupation}}
+    p 
+      strong Company: 
+      | {{patient.company}}
     p Created at: {{patient.created_at}}
     p Updated at: {{patient.updated_at}}
     p Last updated by: {{patient.editor}}

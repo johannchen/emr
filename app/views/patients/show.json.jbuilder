@@ -1,6 +1,10 @@
-json.(@patient, :id, :sid, :full_name, :first_name, :last_name, :gender, :birthday, :email, :phone, :age, :nationality, :address, :occupation, :company, :created_at, :updated_at, :editor)
+json.(@patient, :id, :sid, :full_name, :first_name, :last_name, :gender, :birthday, :email, :phone, :age, :nationality, :occupation, :company, :created_at, :updated_at, :editor)
+if @patient.address
+	json.address @patient.address, :province, :city, :district, :street 
+end
 json.allergies @patient.allergies, :id, :name, :reaction
 json.medications @patient.medications, :id, :name, :script
+json.diagnoses @patient.diagnoses, :id, :name, :year
 json.surgeries @patient.surgeries, :id, :name, :year
 json.behaviors @patient.behaviors, :id, :name, :details
 json.family_members @patient.family_members, :id, :relation, :description

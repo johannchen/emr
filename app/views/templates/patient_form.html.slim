@@ -22,8 +22,24 @@
       label for="nationality" Nationality 
       input.form-control type="text" name="nationality" ng-model="patient.nationality"
     .form-group
-      label for="address" Address 
-      input.form-control type="text" name="address" ng-model="patient.address"
+      label for="address" Current Address 
+      .form-horizontal
+        .form-group
+          label.col-sm-1.control-label for="province" Province 
+          .col-sm-11
+            input.form-control type="text" id="province" ng-model="patient.address.province"
+        .form-group
+          label.col-sm-1.control-label for="city" City 
+          .col-sm-11
+            input.form-control type="text" id="city" ng-model="patient.address.city"
+        .form-group
+          label.col-sm-1.control-label for="district" District 
+          .col-sm-11
+            input.form-control type="text" id="district" ng-model="patient.address.district"
+        .form-group
+          label.col-sm-1.control-label for="street" Street 
+          .col-sm-11
+            input.form-control type="text" id="street" ng-model="patient.address.street"
     .form-group
       label for="email" Email 
       input.form-control type="email" name="email" ng-model="patient.email"

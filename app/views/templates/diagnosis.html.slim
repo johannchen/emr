@@ -1,17 +1,5 @@
 .row
   ol.breadcrumb
-    li
-      |{{patient.full_name}} 
-    li.active(ng-hide="patient.gender == null")
-      |{{patient.gender}}
-    li.active(ng-hide="patient.birthday == null")
-      |DOB: {{patient.birthday}} Age: {{patient.age}}
-    li.active(ng-hide="patient.email == null")
-      |{{patient.email}}
-    li.active(ng-hide="patient.phone == null")
-      |Phone: {{patient.phone}}
-.row
-  ol.breadcrumb
     li 
       a href="/patient#/{{patient.sid}}" Summary 
     li

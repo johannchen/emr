@@ -9,6 +9,7 @@ class Visit
   field :treatment
   field :follow_up
   field :editor
+  
   embeds_one :vital_sign
   embeds_one :physical
   accepts_nested_attributes_for :vital_sign

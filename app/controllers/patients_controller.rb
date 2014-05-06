@@ -15,7 +15,6 @@ class PatientsController < ApplicationController
   end
 
   def create
-    #@patient = Patient.create!(safe_params, modifier: current_user)
     params[:patient][:editor] = current_user.full_name
     @patient = Patient.create!(safe_params)
     render json: @patient 
@@ -34,6 +33,6 @@ class PatientsController < ApplicationController
 
   private
   def safe_params
-    params.require(:patient).permit(:first_name, :last_name, :gender, :birthday, :email, :phone, :nationality, :address, :occupation, :company, :editor)
+    params.require(:patient).permit(:first_name, :last_name, :gender, :birthday, :email, :phone, :nationality, :occupation, :company, :editor, address: [:province, :city, :district, :street])
   end
 end

@@ -35,6 +35,14 @@ angular.module('emrApp').controller 'PatientShowCtrl', ['$scope', '$sessionStora
 				year: surgery.year
 			$scope.surgery.name = ""
 			$scope.surgery.year = ""
+	$scope.quickAddDiagnosis = ->
+		patient.all("diagnoses").post($scope.diagnosis).then (diagnosis) ->
+			$scope.patient.diagnoses.push
+				id: diagnosis._id
+				name: diagnosis.name
+				year: diagnosis.year
+			$scope.diagnosis.name = ""
+			$scope.diagnosis.year = ""
 	$scope.quickAddBehavior = ->
 		patient.all("behaviors").post($scope.behavior).then (behavior) ->
 			$scope.patient.behaviors.push

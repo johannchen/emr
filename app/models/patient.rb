@@ -7,14 +7,14 @@ class Patient
   field :last_name
   field :gender
   field :birthday, type: Date 
-  field :address
   field :email
   field :phone
   field :nationality
   field :occupation
   field :company
   field :editor
-#  embeds_one :address
+
+  embeds_one :address
 #embeds_many :reactions
   embeds_many :allergies
 	embeds_many :medications
@@ -23,6 +23,8 @@ class Patient
   embeds_many :family_members
   embeds_many :visits
   embeds_many :diagnoses, class_name: "Diagnosis"
+
+  accepts_nested_attributes_for :address
 =begin
 	track_history :modifier_field => :modifier,
 		:modifer_field_inverse_of => :nil,
