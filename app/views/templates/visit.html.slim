@@ -97,8 +97,8 @@
     p
       strong Follow up:
       | {{visit.follow_up}}
-    p Created at: {{visit.created_at}}
-    p Updated at: {{visit.updated_at}}
+    p Created at: {{visit.created_at | date:'medium'}}
+    p Updated at: {{visit.updated_at | date:'medium'}}
     p Last updated by: {{visit.editor}}
     a href="/patient#/{{patientId}}/visits/{{visit._id.$oid}}/edit" Edit 
     a href="" ng-click="markDelete()" ng-hide="visit.deleted" Delete

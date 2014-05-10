@@ -16,8 +16,8 @@
     p 
       strong Details: 
       | {{medication.details}}
-    p Created at: {{medication.created_at}}
-    p Updated at: {{medication.updated_at}}
+    p Created at: {{medication.created_at | date:'medium'}}
+    p Updated at: {{medication.updated_at | date:'medium'}}
     p Last updated by: {{medication.editor}}
     .action ng-show="isEditor"
       a href="/patient#/{{patientId}}/medications/{{medication._id.$oid}}/edit" Edit 

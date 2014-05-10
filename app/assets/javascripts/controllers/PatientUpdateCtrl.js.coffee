@@ -6,5 +6,5 @@ angular.module('emrApp').controller 'PatientUpdateCtrl', ['$scope', '$location',
 	$scope.save = ->
 		patientBase.patient = $scope.patient
 		patientBase.put()
-		$location.path('/' + patientId)
+		$location.path('/' + patientId + '/profile')
 ]

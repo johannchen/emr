@@ -80,8 +80,11 @@
         strong Follow up: 
         | {{patient.visit.follow_up}}
       p
-        strong Signed by: 
+        strong Last updated by: 
         | {{patient.visit.editor}}
+      p
+        strong Last updated on: 
+        | {{patient.visit.updated_at | date : 'medium'}}
     a href="/patient#/{{patient.sid}}/new_visit" New Visit
   .col-md-6
     .category

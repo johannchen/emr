@@ -14,7 +14,7 @@
 .row
   .col-md-12
     p 
-      strong Address: 
+      strong Current Address: 
       | {{patient.address.province}} {{patient.address.city}} {{patient.address.district}} {{patient.address.street}}
     p 
       strong Nationality: 
@@ -25,8 +25,8 @@
     p 
       strong Company: 
       | {{patient.company}}
-    p Created at: {{patient.created_at}}
-    p Updated at: {{patient.updated_at}}
+    p Created at: {{patient.created_at | date:'medium'}}
+    p Updated at: {{patient.updated_at | date:'medium'}}
     p Last updated by: {{patient.editor}}
     a href="/patient#/{{patient.sid}}/edit" Edit 
 

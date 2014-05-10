@@ -16,8 +16,8 @@
     p 
       strong Details: 
       | {{surgery.details}}
-    p Created at: {{surgery.created_at}}
-    p Updated at: {{surgery.updated_at}}
+    p Created at: {{surgery.created_at | date:'medium'}}
+    p Updated at: {{surgery.updated_at | date:'medium'}}
     p Last updated by: {{surgery.editor}}
     .action ng-show="isEditor"
       a href="/patient#/{{patientId}}/surgeries/{{surgery._id.$oid}}/edit" Edit 

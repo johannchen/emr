@@ -10,8 +10,8 @@
     p Diagnosis: {{diagnosis.name}}
     p Year: {{diagnosis.year}}
     p Comment: {{diagnosis.comment}}
-    p Created at: {{diagnosis.created_at}}
-    p Updated at: {{diagnosis.updated_at}}
+    p Created at: {{diagnosis.created_at | date:'medium'}}
+    p Updated at: {{diagnosis.updated_at | date:'medium'}}
     p Last updated by: {{diagnosis.edited_by}}
     a href="/patient#/{{patient.sid}}/diagnoses/{{diagnosis._id.$oid}}/edit" Edit 
     a href="" ng-click="markDelete()" ng-hide="diagnosis.deleted" Delete
