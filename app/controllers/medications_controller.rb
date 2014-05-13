@@ -42,6 +42,6 @@ class MedicationsController < ApplicationController
   end
 
   def safe_params
-    params.require(:medication).permit(:name, :script, :details, :editor)
+    params.require(:medication).permit(:name, :script, :details, :stop, :editor)
   end
 end

@@ -3,7 +3,7 @@
     li 
       a href="/patient#/{{patientId}}" Summary 
     li
-      a href="/patient#/{{patientId}}/medications" Current Medications 
+      a href="/patient#/{{patientId}}/medications" Medications 
     li.active Medication 
 .row
   .col-md-12
@@ -20,6 +20,7 @@
     p Updated at: {{medication.updated_at | date:'medium'}}
     p Last updated by: {{medication.editor}}
     .action ng-show="isEditor"
-      a href="/patient#/{{patientId}}/medications/{{medication._id.$oid}}/edit" Edit 
-      a href="" ng-click="markDelete()" ng-hide="medication.deleted" Delete
-      a href="" ng-click="undoDelete()" ng-show="medication.deleted" Undo
+      button.btn.btn-link type="button"
+        a href="/patient#/{{patientId}}/medications/{{medication._id.$oid}}/edit" Edit 
+      button.btn.btn-warning type="button" ng-click="stop()" ng-hide="medication.stop" Stop 
+      button.btn.btn-primary type="button" ng-click="start()" ng-show="medication.stop" Start 

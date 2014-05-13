@@ -1,4 +1,4 @@
-angular.module('emrApp', ['restangular', 'ngRoute', 'ngStorage', 'ui.select2', 'xeditable', 'util.service', 'patient.service'])
+angular.module('emrApp', ['restangular', 'ngRoute', 'ngStorage', 'ui.select2', 'xeditable', 'emr.filters', 'util.service', 'patient.service'])
 	.config(['$httpProvider', ($httpProvider) ->
 		authToken = $("meta[name=\"csrf-token\"]").attr("content")
 		$httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken
@@ -48,10 +48,6 @@ angular.module('emrApp', ['restangular', 'ngRoute', 'ngStorage', 'ui.select2', '
 		$routeProvider.when "/:patientId/medications/:id",
 			controller: 'MedicationCtrl'
 			templateUrl: '/templates/medication.html'
-			resolve:
-			  medication: ['$route', 'Restangular', ($route, Restangular) ->
-          Restangular.one('patients', $route.current.params.patientId).one('medications', $route.current.params.id).get()
-        ]	
 		$routeProvider.when "/:patientId/medications/:id/edit",
       controller: 'MedicationUpdateCtrl'
       templateUrl: '/templates/medication_form.html' 
