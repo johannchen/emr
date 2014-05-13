@@ -26,9 +26,10 @@ class PatientsController < ApplicationController
 
   def update
     @patient = Patient.find(params[:id])
-		#@patient.modifier = current_user
-    params[:patient][:editor] = current_user.full_name
-    @patient.update_attributes(safe_params)
+    if @patient.editor == current_user.full_name or current_user.admin
+      # params[:patient][:editor] = current_user.full_name unless @patient.editor
+      @patient.update_attributes(safe_params)
+    end
     render nothing: true
   end
 

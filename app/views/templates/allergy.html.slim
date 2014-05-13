@@ -22,5 +22,3 @@
     p Last updated by: {{allergy.editor}}
     .action ng-show="isEditor"
       a href="/patient#/{{patientId}}/allergies/{{allergy._id.$oid}}/edit" Edit 
-      a href="" ng-click="markDelete()" ng-hide="allergy.deleted" Delete
-      a href="" ng-click="undoDelete()" ng-show="allergy.deleted" Undo

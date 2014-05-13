@@ -11,14 +11,14 @@
       tr
         th Diagnosis
         th Year
+        th Editor
         th Last Updated 
-        th By
       tr.x-row ng-repeat="diagnosis in diagnoses"
         td
           a href="/patient#/{{patient.sid}}/diagnoses/{{diagnosis._id.$oid}}" {{diagnosis.name}}
         td
           |{{diagnosis.year}}
         td
-          |{{diagnosis.updated_at | date:'medium'}}
+          |{{diagnosis.editor}}
         td
-          |{{diagnosis.edited_by}}
+          |{{diagnosis.updated_at | date:'medium'}}

@@ -1,4 +1,4 @@
-.row ng-init="user='#{current_user.full_name}'"
+.row ng-init="user={'name':'#{current_user.full_name}', 'admin':#{current_user.admin}}"
   .col-md-2(ng-controller="PatientMenuCtrl" ng-init="init()")
     h4 Current Patient:
     form

@@ -20,11 +20,11 @@ class BehaviorsController < ApplicationController
     behavior
     # only creator can update his own record
     # todo: use id to check to enhance accuracy
-    if @behavior.editor == current_user.full_name
-      params[:behavior][:editor] = current_user.full_name
+    if @behavior.editor == current_user.full_name or current_user.admin
+      #params[:behavior][:editor] = current_user.full_name
       @behavior.update_attributes(safe_params)
-      render nothing: true
     end
+    render nothing: true
   end
 
   def destroy

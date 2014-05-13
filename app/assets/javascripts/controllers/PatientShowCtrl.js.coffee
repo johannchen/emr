@@ -1,7 +1,5 @@
 angular.module('emrApp').controller 'PatientShowCtrl', ['$scope', '$sessionStorage', 'patient', 'PatientService', 'UtilService', ($scope, $sessionStorage, patient, PatientService, UtilService) ->
 	$scope.patient = patient
-	$scope.$storage = $sessionStorage
-	$scope.$storage.patient = patient
 
 	PatientService.broadcastSid($scope.patient.sid)
 	$scope.quickAddMedication = ->

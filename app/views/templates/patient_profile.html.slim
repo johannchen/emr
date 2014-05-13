@@ -28,6 +28,7 @@
     p Created at: {{patient.created_at | date:'medium'}}
     p Updated at: {{patient.updated_at | date:'medium'}}
     p Last updated by: {{patient.editor}}
-    a href="/patient#/{{patient.sid}}/edit" Edit 
+    .action ng-show="isEditor"
+      a href="/patient#/{{patient.sid}}/edit" Edit 
 
 

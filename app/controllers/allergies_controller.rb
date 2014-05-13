@@ -18,11 +18,11 @@ class AllergiesController < ApplicationController
 
   def update
     allergy
-    if @allergy.editor == current_user.full_name
-      params[:allergy][:editor] = current_user.full_name
+    if @allergy.editor == current_user.full_name or current_user.admin
+      #params[:allergy][:editor] = current_user.full_name
       @allergy.update_attributes(safe_params)
-      render nothing: true
     end
+    render nothing: true
   end
 
   def destroy

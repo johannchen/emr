@@ -4,11 +4,10 @@ class Diagnosis
 # include Mongoid::Versioning
 #	include Mongoid::History::Trackable
 
-  field :name, type: String
-  field :year, type: String
-  field :comment, type: String
-  field :deleted, type: Boolean 
-  field :edited_by, type: String
+  field :name
+  field :year
+  field :comment
+  field :editor
   embedded_in :patient 
 
 #	track_history :scope => :patient

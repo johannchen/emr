@@ -3,13 +3,5 @@ angular.module('emrApp').controller 'DiagnosisCtrl', ['$scope', '$route', '$sess
 	id = $route.current.params.id
 	diagnosisBase = Restangular.one('patients', $scope.patient.sid).one('diagnoses', id)
 	$scope.diagnosis = diagnosisBase.get().$object
-	$scope.isEditor = $scope.diagnosis.editor == $sessionStorage.user
-	$scope.markDelete = ->
-		$scope.diagnosis.deleted = true
-		diagnosisBase.diagnosis = $scope.diagnosis
-		diagnosisBase.put()
-	$scope.undoDelete = ->
-		$scope.diagnosis.deleted = false
-		diagnosisBase.diagnosis = $scope.diagnosis
-		diagnosisBase.put()
+	$scope.isEditor = $scope.diagnosis.editor == $sessionStorage.user.name or $sessionStorage.user.admin
 ]

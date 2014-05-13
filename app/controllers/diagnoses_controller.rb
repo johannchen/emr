@@ -1,7 +1,7 @@
 class DiagnosesController < ApplicationController
   before_filter :authenticate_user!
 	def index
-		@diagnoses = patient.diagnoses.in(deleted: [nil, false])
+		@diagnoses = patient.diagnoses
 		render json: @diagnoses
 	end
 
@@ -11,12 +11,16 @@ class DiagnosesController < ApplicationController
   end
 
   def create
+    params[:diagnosis][:editor] = current_user.full_name
     @diagnosis = patient.diagnoses.create!(safe_params)
     render json: @diagnosis
   end
 
   def update
-    diagnosis.update_attributes(safe_params)
+    diagnosis
+    if @diagnosis.editor == current_user.full_name or current_user.admin
+      diagnosis.update_attributes(safe_params)
+    end
     render nothing: true
   end
 
@@ -35,6 +39,6 @@ class DiagnosesController < ApplicationController
   end
 
   def safe_params
-    params.require(:diagnosis).permit(:name, :year, :comment, :deleted, :edited_by)
+    params.require(:diagnosis).permit(:name, :year, :comment, :editor)
   end
 end

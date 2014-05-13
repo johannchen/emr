@@ -19,5 +19,3 @@
     p Last updated by: {{behavior.editor}}
     .action ng-show="isEditor"
       a href="/patient#/{{patientId}}/behaviors/{{behavior._id.$oid}}/edit" Edit 
-      a href="" ng-click="markDelete()" ng-hide="behavior.deleted" Delete
-      a href="" ng-click="undoDelete()" ng-show="behavior.deleted" Undo

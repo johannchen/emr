@@ -100,6 +100,4 @@
     p Created at: {{visit.created_at | date:'medium'}}
     p Updated at: {{visit.updated_at | date:'medium'}}
     p Last updated by: {{visit.editor}}
-    a href="/patient#/{{patientId}}/visits/{{visit._id.$oid}}/edit" Edit 
-    a href="" ng-click="markDelete()" ng-hide="visit.deleted" Delete
-    a href="" ng-click="undoDelete()" ng-show="visit.deleted" Undo
+    a href="/patient#/{{patientId}}/visits/{{visit._id.$oid}}/edit" ng-show="isEditor" Edit 

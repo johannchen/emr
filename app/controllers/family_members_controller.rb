@@ -21,13 +21,11 @@ class FamilyMembersController < ApplicationController
       p = Patient.find(params[:family_member][:patient_id])
       params[:family_member][:name] = p.full_name
     end
-    # only creator can update his own record
-    # todo: use id to check to enhance accuracy
-    #if @family_member.editor == current_user.full_name
-    params[:family_member][:editor] = current_user.full_name
-    family_member.update_attributes(safe_params)
+    family_member
+    if @family_member.editor == current_user.full_name or current_user.admin
+      @family_member.update_attributes(safe_params)
+    end
     render nothing: true
-    #end
   end
 
   def destroy
