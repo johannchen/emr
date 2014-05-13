@@ -29,7 +29,7 @@
           span.glyphicon.glyphicon-remove
 .row
   .col-md-6
-    h4 Most Rencent Visit
+    h4 Most Recent Visit
     .visit ng-show="patient.visit"
       p
         strong Visit Date: 
@@ -86,6 +86,11 @@
         strong Last updated on: 
         | {{patient.visit.updated_at | date : 'medium'}}
     a href="/patient#/{{patient.sid}}/new_visit" New Visit
+    h4 Recent Visits
+    ul.list-unstyled
+      li ng-repeat="visit in patient.recent_visits"
+        a href="/patient#/{{patient.sid}}/visits/{{visit.id.$oid}}" {{visit.visit_date}} 
+        |  {{visit.subjective}}
   .col-md-6
     .category
       a href="/patient#/{{patient.sid}}/medications" Current Medications
