@@ -1,5 +1,5 @@
 .row ng-init="user={'name':'#{current_user.full_name}', 'admin':#{current_user.admin}}"
-  .col-md-2(ng-controller="PatientMenuCtrl" ng-init="init()")
+  .col-md-2 id="side" ng-controller="PatientMenuCtrl" ng-init="init()" 
     h4 Current Patient:
     form
       select(ui-select2 ng-model="currentPatientId" ng-change="selectPatient()" data-placeholder="Choose a patient")

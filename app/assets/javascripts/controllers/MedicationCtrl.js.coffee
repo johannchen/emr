@@ -4,6 +4,7 @@ angular.module('emrApp').controller 'MedicationCtrl', ['$scope', '$routeParams',
 		$scope.medication = medication
 		$scope.isEditor = $scope.medication.editor == $sessionStorage.user.name or $sessionStorage.user.admin
 	$scope.patientId = $routeParams.patientId
+	$scope.patient = $sessionStorage.patient
 	$scope.stop = ->
 		$scope.medication.stop = true
 		medicationBase.medication = $scope.medication
