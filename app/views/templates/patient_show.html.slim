@@ -11,29 +11,13 @@
     li.active(ng-hide="patient.phone == null")
       |Phone: {{patient.phone}}
 
-/.row
-  ul.list-inline
-    li 
-      strong Allergies:
-    li(ng-repeat="allergy in patient.allergies")
-      a href="#" editable-text="allergy.name" onbeforesave="updateAllergy($data)" {{allergy.name}}
-    li
-      a ng-click="isAddingAllergy=true" ng-hide="isAddingAllergy"
-        span.glyphicon.glyphicon-plus-sign
-      form.form-inline ng-show="isAddingAllergy" 
-        .form-group
-          input.form-control(type="text" ng-model="newAllergy" autofocus)
-        button.btn.btn-primary ng-click="addAllergy()"
-          span.glyphicon.glyphicon-ok
-        button.btn.btn-default type="button" ng-click="isAddingAllergy=false"
-          span.glyphicon.glyphicon-remove
 .row
   .col-md-6
     h4 Most Recent Visit
     .visit ng-show="patient.visit"
       p
         strong Visit Date: 
-        a href="/patient#/{{patient.sid}}/visits/{{patient.visit.id.$oid}}" {{patient.visit.visit_date}}
+        a href="/patient#/{{patient.id.$oid}}/visits/{{patient.visit.id.$oid}}" {{patient.visit.visit_date}}
       p
         strong Subjective: 
         | {{patient.visit.subjective}}
@@ -85,19 +69,21 @@
       p
         strong Last updated on: 
         | {{patient.visit.updated_at | date : 'medium'}}
-    a href="/patient#/{{patient.sid}}/new_visit" New Visit
+    a href="/patient#/{{patient.id.$oid}}/new_visit" New Visit
     h4 Recent Visits
     ul.list-unstyled
       li ng-repeat="visit in patient.recent_visits"
-        a href="/patient#/{{patient.sid}}/visits/{{visit.id.$oid}}" {{visit.visit_date}} 
+        a href="/patient#/{{patient.id.$oid}}/visits/{{visit.id.$oid}}" {{visit.visit_date}} 
         |  {{visit.subjective}}
   .col-md-6
     .category
-      a href="/patient#/{{patient.sid}}/medications" Current Medications
+      a href="/patient#/{{patient.id.$oid}}/medications" Current Medications
     form.form-inline name="medicationForm"
       .form-group
         label.sr-only for="medication" Medication
-        input.form-control(type="text" id="medication" ng-model="medication.name" placeholder="Medication" required)
+        input.form-control(type="text" id="medication" list="meds" ng-model="medication.name" placeholder="Medication" required)
+        datalist id="meds"
+          option ng-repeat="med in meds" value="{{med.name}}"
       .form-group
         label.sr-only for="script" Script 
         input.form-control type="text" id="script" ng-model="medication.script" placeholder="Script"
@@ -106,12 +92,12 @@
     table.table id="medications"
       tr ng-repeat="medication in patient.medications"
         td 
-          a href="/patient#/{{patient.sid}}/medications/{{medication.id.$oid}}" {{medication.name}}
+          a href="/patient#/{{patient.id.$oid}}/medications/{{medication.id.$oid}}" {{medication.name}}
         td 
           |{{medication.script}}
      
     .category
-      a href="/patient#/{{patient.sid}}/allergies" Allergies 
+      a href="/patient#/{{patient.id.$oid}}/allergies" Allergies 
     form.form-inline name="allergyForm"
       .form-group
         label.sr-only for="name" Med Name 
@@ -124,12 +110,12 @@
     table.table id="allergies"
       tr ng-repeat="allergy in patient.allergies"
         td 
-          a href="/patient#/{{patient.sid}}/allergies/{{allergy.id.$oid}}" {{allergy.name}}
+          a href="/patient#/{{patient.id.$oid}}/allergies/{{allergy.id.$oid}}" {{allergy.name}}
         td 
           |{{allergy.reaction}}
 
     .category
-      a href="/patient#/{{patient.sid}}/diagnoses" Past Medical History
+      a href="/patient#/{{patient.id.$oid}}/diagnoses" Past Medical History
     form.form-inline name="diagnosisForm"
       .form-group
         label.sr-only for="name" Diagnosis 
@@ -142,12 +128,12 @@
     table.table
       tr ng-repeat="diagnosis in patient.diagnoses"
         td
-          a href="/patient#/{{patient.sid}}/diagnoses/{{diagnosis.id.$oid}}" {{diagnosis.name}}
+          a href="/patient#/{{patient.id.$oid}}/diagnoses/{{diagnosis.id.$oid}}" {{diagnosis.name}}
         td
           | {{diagnosis.year}}
     
     .category
-      a href="/patient#/{{patient.sid}}/surgeries" Surgical History 
+      a href="/patient#/{{patient.id.$oid}}/surgeries" Surgical History 
     form.form-inline name="surgeryForm"
       .form-group
         label.sr-only for="name" Surgery 
@@ -160,12 +146,12 @@
     table.table id="surgeries"
       tr ng-repeat="surgery in patient.surgeries"
         td
-          a href="/patient#/{{patient.sid}}/surgeries/{{surgery.id.$oid}}" {{surgery.name}}
+          a href="/patient#/{{patient.id.$oid}}/surgeries/{{surgery.id.$oid}}" {{surgery.name}}
         td
           | {{surgery.year}}
 
     .category
-      a href="/patient#/{{patient.sid}}/behaviors" Social History 
+      a href="/patient#/{{patient.id.$oid}}/behaviors" Social History 
     form.form-inline name="behaviorForm"
       .form-group
         label.sr-only for="name" Name 
@@ -178,7 +164,7 @@
     table.table id="social"
       tr ng-repeat="behavior in patient.behaviors"
         td
-          a href="/patient#/{{patient.sid}}/behaviors/{{behavior.id.$oid}}" {{behavior.name}}
+          a href="/patient#/{{patient.id.$oid}}/behaviors/{{behavior.id.$oid}}" {{behavior.name}}
         td
           | {{behavior.details}}
 
@@ -195,7 +181,7 @@
     table.table id="family"
       tr ng-repeat="member in patient.family_members"
         td 
-          a href="/patient#/{{patient.sid}}/family/{{member.id.$oid}}" {{member.relation}}
+          a href="/patient#/{{patient.id.$oid}}/family/{{member.id.$oid}}" {{member.relation}}
         td 
           |{{member.description}}
 

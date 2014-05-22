@@ -4,7 +4,7 @@
     form
       select(ui-select2 ng-model="currentPatientId" ng-change="selectPatient()" data-placeholder="Choose a patient")
         option value=""
-        option(ng-repeat="patient in patients" value="{{patient.sid}}") 
+        option(ng-repeat="patient in patients" value="{{patient.id.$oid}}") 
           | {{patient.full_name}}
     .menu ng-hide="currentPatientId==''"
       ul.nav.nav-pills.nav-stacked
@@ -22,4 +22,6 @@
     ul.nav.nav-pills
       li
         a(ng-click="new()") New Patient
+      li
+        a href="#/dictionary" Dictionary
   .col-md-10(ng-view)

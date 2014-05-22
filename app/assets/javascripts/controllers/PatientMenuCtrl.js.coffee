@@ -5,8 +5,8 @@ angular.module('emrApp').controller 'PatientMenuCtrl', ['$scope', '$location', '
 			$scope.patients = patients
 	$scope.$on 'handleReloadPatients', ->
 		$scope.init()
-	$scope.$on 'handleBroadcastSid', ->
-		$scope.currentPatientId = PatientService.sid
+	$scope.$on 'handleBroadcastId', ->
+		$scope.currentPatientId = PatientService.id
 		Restangular.one('patients', $scope.currentPatientId).all('family_members').getList().then (family) ->
 			$scope.family = family
 	$scope.selectPatient = ->

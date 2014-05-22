@@ -1,9 +1,9 @@
 patientService = angular.module('patient.service', [])
 patientService.factory "PatientService", ['$rootScope', ($rootScope) ->
-	sid: ""
-	broadcastSid: (sid) ->
-		@sid = sid
-		$rootScope.$broadcast('handleBroadcastSid')
+	id: ""
+	broadcastId: (id) ->
+		@id = id
+		$rootScope.$broadcast('handleBroadcastId')
 	reloadPatients: ->
 		$rootScope.$broadcast('handleReloadPatients')
 	age: (dateString) ->

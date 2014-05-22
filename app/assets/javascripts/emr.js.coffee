@@ -4,6 +4,7 @@ angular.module('emrApp', ['restangular', 'ngRoute', 'ngStorage', 'ui.select2', '
 		$httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken
 	])
 	.config(['$routeProvider', ($routeProvider) ->
+		$routeProvider.when "/dictionary", controller: 'DictionaryCtrl', templateUrl: '/templates/dictionary.html'
 		$routeProvider.when "/new", controller: 'PatientCreateCtrl', templateUrl: '/templates/patient_form.html'
 		$routeProvider.when "/:patientId",
 			controller: 'PatientShowCtrl'

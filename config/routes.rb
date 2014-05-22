@@ -16,6 +16,8 @@ Emr::Application.routes.draw do
     end
   end
 
+  resources :med_names, defaults: {format: :json}
+
   resources :patients, defaults: {format: :json} do
     resources :allergies
     resources :surgeries

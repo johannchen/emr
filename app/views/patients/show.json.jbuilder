@@ -1,4 +1,4 @@
-json.(@patient, :id, :sid, :full_name, :first_name, :last_name, :gender, :birthday, :email, :phone, :age, :nationality, :occupation, :company, :created_at, :updated_at, :editor)
+json.(@patient, :id, :full_name, :first_name, :last_name, :gender, :birthday, :email, :phone, :age, :nationality, :occupation, :company, :created_at, :updated_at, :editor)
 
 json.allergies @patient.allergies, :id, :name, :reaction
 json.medications @medications, :id, :name, :script

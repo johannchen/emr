@@ -33,9 +33,6 @@ class Patient
 		:track_update => true,
 		:track_destroy => false
 =end
-  def sid
-    id.to_s
-  end
 
   def full_name
     "#{last_name}, #{first_name}"

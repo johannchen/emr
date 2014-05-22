@@ -1,8 +1,10 @@
-angular.module('emrApp').controller 'PatientShowCtrl', ['$scope', '$sessionStorage', 'patient', 'PatientService', 'UtilService', ($scope, $sessionStorage, patient, PatientService, UtilService) ->
+angular.module('emrApp').controller 'PatientShowCtrl', ['$scope', '$sessionStorage', 'patient', 'Restangular', 'PatientService', 'UtilService', ($scope, $sessionStorage, patient, Restangular, PatientService, UtilService) ->
 	$scope.patient = patient
 	$sessionStorage.patient = $scope.patient.full_name
 
-	PatientService.broadcastSid($scope.patient.sid)
+	$scope.meds = Restangular.all('med_names').getList().$object
+
+	PatientService.broadcastId($scope.patient.id.$oid)
 	$scope.quickAddMedication = ->
 		patient.all("medications").post($scope.medication).then (medication) ->
 			$scope.patient.medications.push
@@ -10,6 +12,10 @@ angular.module('emrApp').controller 'PatientShowCtrl', ['$scope', '$sessionStora
 				script: medication.script
 			$scope.medication.name = ""
 			$scope.medication.script = ""
+		Restangular.all("med_names").post({name: $scope.medication.name}).then (med) ->
+			$scope.meds.push
+				id: med._id
+				name: med.name
 	$scope.quickAddFamily = ->
 		patient.all("family_members").post($scope.family).then (family) ->
 			$scope.patient.family_members.push
