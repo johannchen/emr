@@ -101,7 +101,7 @@
     form.form-inline name="allergyForm"
       .form-group
         label.sr-only for="name" Med Name 
-        input.form-control(type="text" id="name" ng-model="allergy.name" placeholder="Med Name" required)
+        input.form-control(type="text" id="name" list="meds" ng-model="allergy.name" placeholder="Med Name" required)
       .form-group
         label.sr-only for="reaction" Reaction 
         input.form-control(type="text" id="reaction" ng-model="allergy.reaction" placeholder="Reaction")
@@ -119,7 +119,9 @@
     form.form-inline name="diagnosisForm"
       .form-group
         label.sr-only for="name" Diagnosis 
-        input.form-control(type="text" id="name" ng-model="diagnosis.name" placeholder="Diagnosis" required)
+        input.form-control(type="text" id="name" list="diags" ng-model="diagnosis.name" placeholder="Diagnosis" required)
+        datalist id="diags"
+          option ng-repeat="diag in diags" value="{{diag.name}}"
       .form-group
         label.sr-only for="year" Year 
         input.form-control(type="text" id="year" ng-model="diagnosis.year" placeholder="Year")

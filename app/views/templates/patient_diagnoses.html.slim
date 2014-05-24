@@ -1,12 +1,12 @@
 .row
   ol.breadcrumb
     li 
-      a href="/patient#/{{patient.sid}}" {{patient}} 
+      a href="/patient#/{{patientId}}" {{patient}} 
     li.active Medical History
 .row
   .col-md-12
     h4 Medical History
-    a href="/patient#/{{patient.sid}}/new_diagnosis" Add Diagnosis 
+    a href="/patient#/{{patientId}}/new_diagnosis" Add Diagnosis 
     table.table.table-hover id="diagnoses"
       tr
         th Diagnosis

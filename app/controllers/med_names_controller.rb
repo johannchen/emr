@@ -1,7 +1,7 @@
 class MedNamesController < ApplicationController
   before_filter :authenticate_user!
   def index
-    @meds = MedName.all 
+    @meds = MedName.asc(:name) 
     #render json: @meds, only: [:_id, :name]
   end
 

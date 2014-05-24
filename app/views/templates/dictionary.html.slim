@@ -1,6 +1,7 @@
+h4 Dictionary
 .row
-  .col-md-12
-    h4 Medications
+  .col-md-6
+    h5 Medications
     form.form-inline
       .form-group
         input.form-control(type="text" ng-model="newMed")
@@ -11,3 +12,15 @@
     ul.list-unstyled
       li(ng-repeat="med in meds | filter:newMed")
         a href="#" editable-text="med.name" onbeforesave="updateMed($data)" {{med.name}}
+  .col-md-6
+    h5 Diagnoses 
+    form.form-inline
+      .form-group
+        input.form-control(type="text" ng-model="newDiagnosis")
+      button.btn.btn-primary ng-click="addDiagnosis()"
+        span.glyphicon.glyphicon-ok
+      /button.btn.btn-default type="button" 
+        span.glyphicon.glyphicon-remove
+    ul.list-unstyled
+      li(ng-repeat="diagnosis in diagnoses| filter:newDiagnosis")
+        a href="#" editable-text="diagnosis.name" onbeforesave="updateDiagnosis($data)" {{diagnosis.name}}

@@ -3,6 +3,7 @@ angular.module('emrApp').controller 'PatientShowCtrl', ['$scope', '$sessionStora
 	$sessionStorage.patient = $scope.patient.full_name
 
 	$scope.meds = Restangular.all('med_names').getList().$object
+	$scope.diags = Restangular.all('diagnosis_names').getList().$object
 
 	PatientService.broadcastId($scope.patient.id.$oid)
 	$scope.quickAddMedication = ->
@@ -32,6 +33,10 @@ angular.module('emrApp').controller 'PatientShowCtrl', ['$scope', '$sessionStora
 				reaction: allergy.reaction
 			$scope.allergy.name = ""
 			$scope.allergy.reaction = ""
+		Restangular.all("med_names").post({name: $scope.allergy.name}).then (med) ->
+			$scope.meds.push
+				id: med._id
+				name: med.name
 	$scope.quickAddSurgery = ->
 		patient.all("surgeries").post($scope.surgery).then (surgery) ->
 			$scope.patient.surgeries.push
@@ -48,6 +53,10 @@ angular.module('emrApp').controller 'PatientShowCtrl', ['$scope', '$sessionStora
 				year: diagnosis.year
 			$scope.diagnosis.name = ""
 			$scope.diagnosis.year = ""
+		Restangular.all("diagnosis_names").post({name: $scope.diagnosis.name}).then (diag) ->
+			$scope.diags.push
+				id: diag._id
+				name: diag.name
 	$scope.quickAddBehavior = ->
 		patient.all("behaviors").post($scope.behavior).then (behavior) ->
 			$scope.patient.behaviors.push

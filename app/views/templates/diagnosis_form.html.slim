@@ -1,15 +1,17 @@
 .row
   ol.breadcrumb
     li 
-      a href="/patient#/{{patient.sid}}" Summary
+      a href="/patient#/{{patientId}}" {{patient}} 
     li 
-      a href="/patient#/{{patient.sid}}/diagnoses" Medical History
+      a href="/patient#/{{patientId}}/diagnoses" Medical History
     li.active Diagnosis
 .row
   form name="diagnosisForm"
     .form-group(ng-class="{error: diagnosisForm.diagnosis.$invalid && !diagnosisForm.diagnosis.$pristine}")
       label for="name" Diagnosis 
-      input.form-control(type="text" name="name" ng-model="diagnosis.name" required)
+      input.form-control(type="text" name="name" list="diags" ng-model="diagnosis.name" required)
+      datalist id="diags"
+        option ng-repeat="diag in diags" value="{{diag.name}}"
       span.help-inline ng-show="diagnosisForm.name.$error.required && !diagnosisForm.name.$pristine"
         | Required
     .form-group(ng-class="{error: diagnosisForm.year.$invalid && !diagnosisForm.year.$pristine}")
