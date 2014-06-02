@@ -7,8 +7,10 @@ class User
          :recoverable, :rememberable, :trackable, :validatable
          
   field :admin, :type => Boolean, :default => false
-  field :first_name, :type => String
-  field :last_name, :type => String
+  field :first_name
+  field :last_name
+  field :title
+  field :phone
 
   ## Database authenticatable
   field :email,              :type => String, :default => ""

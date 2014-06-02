@@ -9,7 +9,9 @@
   form name="surgeryForm"
     .form-group(ng-class="{error: surgeryForm.surgery.$invalid && !surgeryForm.surgery.$pristine}")
       label for="name" Surgery 
-      input.form-control(type="text" name="name" ng-model="surgery.name" required)
+      input.form-control(type="text" name="name" list="surgs" ng-model="surgery.name" required)
+      datalist id="surgs"
+        option ng-repeat="surg in surgs" value="{{surg.name}}"
       span.help-inline ng-show="surgeryForm.name.$error.required && !surgeryForm.name.$pristine"
         | Required
     .form-group

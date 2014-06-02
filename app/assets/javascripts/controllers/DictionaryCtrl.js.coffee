@@ -1,6 +1,7 @@
 angular.module('emrApp').controller 'DictionaryCtrl', ['$scope', 'Restangular', 'UtilService', ($scope, Restangular, UtilService) ->
 	$scope.meds = Restangular.all('med_names').getList().$object 
 	$scope.diagnoses = Restangular.all('diagnosis_names').getList().$object 
+	$scope.surgeries = Restangular.all('surgery_names').getList().$object 
 
 	$scope.addMed = ->
 		if $scope.newMed != ""
@@ -12,7 +13,6 @@ angular.module('emrApp').controller 'DictionaryCtrl', ['$scope', 'Restangular', 
 	$scope.updateMed = (data) ->
 		Restangular.one("med_names", @med.id.$oid).get().then (med) ->
 			if data == ""
-				#TODO: use angular $index
 				index = UtilService.findIndexByKeyValue($scope.meds, "name", "")
 				$scope.meds.splice(index, 1)
 				med.remove()
@@ -30,7 +30,6 @@ angular.module('emrApp').controller 'DictionaryCtrl', ['$scope', 'Restangular', 
 	$scope.updateDiagnosis = (data) ->
 		Restangular.one("diagnosis_names", @diagnosis.id.$oid).get().then (diagnosis) ->
 			if data == ""
-				#TODO: use angular $index
 				index = UtilService.findIndexByKeyValue($scope.diagnoses, "name", "")
 				$scope.diagnoses.splice(index, 1)
 				diagnosis.remove()
@@ -38,5 +37,24 @@ angular.module('emrApp').controller 'DictionaryCtrl', ['$scope', 'Restangular', 
 				diagnosis.name = data
 				diagnosis.put()
 		true
+				
+	$scope.addSurgery = ->
+		if $scope.newSurgery != ""
+			Restangular.all("surgeries_names").post({name: $scope.newSurgery}).then (surgery) ->
+				$scope.surgeries.push
+					 id: surgery._id
+					 name: surgery.name
+				$scope.newSurgery = "" 
+	$scope.updateSurgery = (data) ->
+		Restangular.one("surgeries_names", @surgery.id.$oid).get().then (surgery) ->
+			if data == ""
+				index = UtilService.findIndexByKeyValue($scope.surgeries, "name", "")
+				$scope.surgeries.splice(index, 1)
+				surgery.remove()
+			else
+				surgery.name = data
+				surgery.put()
+		true
+
 ]
 				

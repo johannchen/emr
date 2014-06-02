@@ -91,7 +91,7 @@
         span.glyphicon.glyphicon-ok
     table.table id="medications"
       tr ng-repeat="medication in patient.medications"
-        td 
+        td width="40%"
           a href="/patient#/{{patient.id.$oid}}/medications/{{medication.id.$oid}}" {{medication.name}}
         td 
           |{{medication.script}}
@@ -109,7 +109,7 @@
         span.glyphicon.glyphicon-ok
     table.table id="allergies"
       tr ng-repeat="allergy in patient.allergies"
-        td 
+        td width="40%"
           a href="/patient#/{{patient.id.$oid}}/allergies/{{allergy.id.$oid}}" {{allergy.name}}
         td 
           |{{allergy.reaction}}
@@ -129,7 +129,7 @@
         span.glyphicon.glyphicon-ok
     table.table
       tr ng-repeat="diagnosis in patient.diagnoses"
-        td
+        td width="40%" 
           a href="/patient#/{{patient.id.$oid}}/diagnoses/{{diagnosis.id.$oid}}" {{diagnosis.name}}
         td
           | {{diagnosis.year}}
@@ -139,7 +139,9 @@
     form.form-inline name="surgeryForm"
       .form-group
         label.sr-only for="name" Surgery 
-        input.form-control(type="text" id="name" ng-model="surgery.name" placeholder="Surgery" required)
+        input.form-control(type="text" id="name" list="surgs" ng-model="surgery.name" placeholder="Surgery" required)
+        datalist id="surgs"
+          option ng-repeat="surg in surgs" value="{{surg.name}}"
       .form-group
         label.sr-only for="year" Year 
         input.form-control(type="text" id="year" ng-model="surgery.year" placeholder="Year")
@@ -147,7 +149,7 @@
         span.glyphicon.glyphicon-ok
     table.table id="surgeries"
       tr ng-repeat="surgery in patient.surgeries"
-        td
+        td width="40%" 
           a href="/patient#/{{patient.id.$oid}}/surgeries/{{surgery.id.$oid}}" {{surgery.name}}
         td
           | {{surgery.year}}
@@ -165,7 +167,7 @@
         span.glyphicon.glyphicon-ok
     table.table id="social"
       tr ng-repeat="behavior in patient.behaviors"
-        td
+        td width="40%" 
           a href="/patient#/{{patient.id.$oid}}/behaviors/{{behavior.id.$oid}}" {{behavior.name}}
         td
           | {{behavior.details}}
@@ -182,7 +184,7 @@
         span.glyphicon.glyphicon-ok
     table.table id="family"
       tr ng-repeat="member in patient.family_members"
-        td 
+        td width="40%" 
           a href="/patient#/{{patient.id.$oid}}/family/{{member.id.$oid}}" {{member.relation}}
         td 
           |{{member.description}}

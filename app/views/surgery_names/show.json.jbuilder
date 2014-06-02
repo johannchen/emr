@@ -1,0 +1,1 @@
+json.(@surgery, :id, :name)

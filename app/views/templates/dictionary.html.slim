@@ -1,6 +1,6 @@
 h4 Dictionary
 .row
-  .col-md-6
+  .col-md-4
     h5 Medications
     form.form-inline
       .form-group
@@ -12,7 +12,7 @@ h4 Dictionary
     ul.list-unstyled
       li(ng-repeat="med in meds | filter:newMed")
         a href="#" editable-text="med.name" onbeforesave="updateMed($data)" {{med.name}}
-  .col-md-6
+  .col-md-4
     h5 Diagnoses 
     form.form-inline
       .form-group
@@ -24,3 +24,15 @@ h4 Dictionary
     ul.list-unstyled
       li(ng-repeat="diagnosis in diagnoses| filter:newDiagnosis")
         a href="#" editable-text="diagnosis.name" onbeforesave="updateDiagnosis($data)" {{diagnosis.name}}
+  .col-md-4
+    h5 Surgeries 
+    form.form-inline
+      .form-group
+        input.form-control type="text" ng-model="newSurgery"
+      button.btn.btn-primary ng-click="addSurgery()"
+        span.glyphicon.glyphicon-ok
+      /button.btn.btn-default type="button" 
+        span.glyphicon.glyphicon-remove
+    ul.list-unstyled
+      li(ng-repeat="surgery in surgeries| filter:newSurgery")
+        a href="#" editable-text="surgery.name" onbeforesave="updateSurgery($data)" {{surgery.name}}

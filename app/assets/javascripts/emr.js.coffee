@@ -1,4 +1,4 @@
-angular.module('emrApp', ['restangular', 'ngRoute', 'ngStorage', 'ui.select2', 'xeditable', 'emr.filters', 'util.service', 'patient.service'])
+angular.module('emrApp', ['restangular', 'ngRoute', 'ngStorage', 'ui.select2', 'xeditable', 'pascalprecht.translate', 'emr.filters', 'util.service', 'patient.service'])
 	.config(['$httpProvider', ($httpProvider) ->
 		authToken = $("meta[name=\"csrf-token\"]").attr("content")
 		$httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken
@@ -128,6 +128,34 @@ angular.module('emrApp', ['restangular', 'ngRoute', 'ngStorage', 'ui.select2', '
 		#RestangularProvider.setBaseUrl('/')
 		RestangularProvider.setRestangularFields
 			id: "id.$oid"
+	])
+	.config(['$translateProvider', ($translateProvider) ->
+		$translateProvider.translations 'en',
+			CURRENT_PATIENT: 'Current Patient'
+			Dictionary: 'Dictionary'
+			Family: 'Family/Relatives'
+			NewPatient: 'New Patient'
+			LOG_OUT: 'Log out'
+			PATIENT: 'Patient'
+			Profile: 'Profile'
+			SIGN_IN: 'Sign in'
+			Summary: 'Summary'
+			USER: 'Users'
+			Visits: 'Visits'
+
+		$translateProvider.translations 'zh',
+			CURRENT_PATIENT: '病人'
+			Dictionary: '词典管理'
+			Family: '家属'
+			NewPatient: '新病人'
+			LOG_OUT: '退出'
+			PATIENT: '病人'
+			Profile: '个人信息'
+			SIGN_IN: '登录'
+			Summary: '简介'
+			USER: '用户管理'
+			Visits: '门诊'
+		$translateProvider.preferredLanguage 'zh'
 	])
 	.run(['editableOptions', (editableOptions) ->
 		editableOptions.theme = 'bs3'

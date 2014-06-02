@@ -8,16 +8,17 @@ Emr::Application.routes.draw do
     resources :users
   end
 
-  namespace :api, defaults: {format: :json} do
-    namespace :v1 do
-      devise_scope :user do
-        resource :session, only: [:create, :destroy]
-      end
-    end
-  end
+#  namespace :api, defaults: {format: :json} do
+#    namespace :v1 do
+#      devise_scope :user do
+#        resource :session, only: [:create, :destroy]
+#      end
+#    end
+#  end
 
   resources :med_names, defaults: {format: :json}
   resources :diagnosis_names, defaults: {format: :json}
+  resources :surgery_names, defaults: {format: :json}
 
   resources :patients, defaults: {format: :json} do
     resources :allergies
@@ -29,6 +30,10 @@ Emr::Application.routes.draw do
     resources :family_members
     resources :visits
   end
+
+  #get 'profile/:id' => 'profiles#show'
+  resources :profiles, only: [:show, :edit, :update]
+
   get '/patient' => 'templates#patient'
   get '/templates/:path.html' => 'templates#template', :constraints => { :path => /.+/ }
 

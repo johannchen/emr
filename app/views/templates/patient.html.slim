@@ -1,6 +1,7 @@
 .row ng-init="user={'name':'#{current_user.full_name}', 'admin':#{current_user.admin}}"
   .col-md-2 id="side" ng-controller="PatientMenuCtrl" ng-init="init()" 
-    h4 Current Patient:
+    h4 
+      |{{'CURRENT_PATIENT' | translate}}
     form
       select(ui-select2 ng-model="currentPatientId" ng-change="selectPatient()" data-placeholder="Choose a patient")
         option value=""
@@ -9,19 +10,20 @@
     .menu ng-hide="currentPatientId==''"
       ul.nav.nav-pills.nav-stacked
         li
-          a href="#/{{currentPatientId}}" Summary 
+          a href="#/{{currentPatientId}}" {{'Summary' | translate}}
         li
-          a href="#/{{currentPatientId}}/visits" Visits 
+          a href="#/{{currentPatientId}}/visits" {{'Visits' | translate}}
         li
-          a href="#/{{currentPatientId}}/profile" Profile 
-      h5 Family/Relatives
-      ul.nav.nav-pills
+          a href="#/{{currentPatientId}}/profile" {{'Profile' | translate}} 
+      h5 
+        | {{'Family' | translate}}
+      ul.nav.nav-pills.nav-stacked
         li ng-repeat="member in family"
           a href="#/{{member.patient_id}}" {{member.name}} 
     hr
-    ul.nav.nav-pills
+    ul.nav.nav-pills.nav-stacked
       li
-        a(ng-click="new()") New Patient
+        a(ng-click="new()") {{'NewPatient' | translate}}
       li
-        a href="#/dictionary" Dictionary
+        a href="#/dictionary" {{'Dictionary' | translate}}
   .col-md-10(ng-view)

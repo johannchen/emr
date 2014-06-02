@@ -4,19 +4,22 @@ angular.module('emrApp').controller 'PatientShowCtrl', ['$scope', '$sessionStora
 
 	$scope.meds = Restangular.all('med_names').getList().$object
 	$scope.diags = Restangular.all('diagnosis_names').getList().$object
+	$scope.surgs = Restangular.all('surgery_names').getList().$object
 
 	PatientService.broadcastId($scope.patient.id.$oid)
 	$scope.quickAddMedication = ->
+		index = UtilService.findIndexByKeyValue($scope.meds, "name", $scope.medication.name)
 		patient.all("medications").post($scope.medication).then (medication) ->
 			$scope.patient.medications.push
 				name: medication.name
 				script: medication.script
 			$scope.medication.name = ""
 			$scope.medication.script = ""
-		Restangular.all("med_names").post({name: $scope.medication.name}).then (med) ->
-			$scope.meds.push
-				id: med._id
-				name: med.name
+		if index == -1
+			Restangular.all("med_names").post({name: $scope.medication.name}).then (med) ->
+				$scope.meds.push
+					id: med._id
+					name: med.name
 	$scope.quickAddFamily = ->
 		patient.all("family_members").post($scope.family).then (family) ->
 			$scope.patient.family_members.push
@@ -26,6 +29,7 @@ angular.module('emrApp').controller 'PatientShowCtrl', ['$scope', '$sessionStora
 			$scope.family.relation = ""
 			$scope.family.description = ""
 	$scope.quickAddAllergy = ->
+		index = UtilService.findIndexByKeyValue($scope.meds, "name", $scope.allergy.name)
 		patient.all("allergies").post($scope.allergy).then (allergy) ->
 			$scope.patient.allergies.push
 				id: allergy._id
@@ -33,11 +37,13 @@ angular.module('emrApp').controller 'PatientShowCtrl', ['$scope', '$sessionStora
 				reaction: allergy.reaction
 			$scope.allergy.name = ""
 			$scope.allergy.reaction = ""
-		Restangular.all("med_names").post({name: $scope.allergy.name}).then (med) ->
-			$scope.meds.push
-				id: med._id
-				name: med.name
+		if index == -1
+			Restangular.all("med_names").post({name: $scope.allergy.name}).then (med) ->
+				$scope.meds.push
+					id: med._id
+					name: med.name
 	$scope.quickAddSurgery = ->
+		index = UtilService.findIndexByKeyValue($scope.surgs, "name", $scope.surgery.name)
 		patient.all("surgeries").post($scope.surgery).then (surgery) ->
 			$scope.patient.surgeries.push
 				id: surgery._id
@@ -45,7 +51,13 @@ angular.module('emrApp').controller 'PatientShowCtrl', ['$scope', '$sessionStora
 				year: surgery.year
 			$scope.surgery.name = ""
 			$scope.surgery.year = ""
+		if index == -1
+			Restangular.all("surgery_names").post({name: $scope.surgery.name}).then (surgery) ->
+				$scope.surgs.push
+					id: surgery._id
+					name: surgery.name
 	$scope.quickAddDiagnosis = ->
+		index = UtilService.findIndexByKeyValue($scope.diags, "name", $scope.diagnosis.name)
 		patient.all("diagnoses").post($scope.diagnosis).then (diagnosis) ->
 			$scope.patient.diagnoses.push
 				id: diagnosis._id
@@ -53,10 +65,11 @@ angular.module('emrApp').controller 'PatientShowCtrl', ['$scope', '$sessionStora
 				year: diagnosis.year
 			$scope.diagnosis.name = ""
 			$scope.diagnosis.year = ""
-		Restangular.all("diagnosis_names").post({name: $scope.diagnosis.name}).then (diag) ->
-			$scope.diags.push
-				id: diag._id
-				name: diag.name
+		if index == -1
+			Restangular.all("diagnosis_names").post({name: $scope.diagnosis.name}).then (diag) ->
+				$scope.diags.push
+					id: diag._id
+					name: diag.name
 	$scope.quickAddBehavior = ->
 		patient.all("behaviors").post($scope.behavior).then (behavior) ->
 			$scope.patient.behaviors.push
