@@ -3,7 +3,7 @@
     h4 
       |{{'CURRENT_PATIENT' | translate}}
     form
-      select(ui-select2 ng-model="currentPatientId" ng-change="selectPatient()" data-placeholder="Choose a patient")
+      select(ui-select2 ng-model="currentPatientId" ng-change="selectPatient()" data-placeholder="{{'SelectPatient' | translate}}")
         option value=""
         option(ng-repeat="patient in patients" value="{{patient.id.$oid}}") 
           | {{patient.full_name}}

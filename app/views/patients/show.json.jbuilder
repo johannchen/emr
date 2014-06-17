@@ -5,7 +5,7 @@ json.medications @medications, :id, :name, :script
 json.diagnoses @patient.diagnoses, :id, :name, :year
 json.surgeries @patient.surgeries, :id, :name, :year
 json.behaviors @patient.behaviors, :id, :name, :details
-json.family_members @patient.family_members, :id, :relation, :description
+json.family_members @patient.family_members, :id, :relation, :details
 
 if @patient.address
 	json.address @patient.address, :province, :city, :district, :street 

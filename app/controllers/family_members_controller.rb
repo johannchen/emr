@@ -43,6 +43,6 @@ class FamilyMembersController < ApplicationController
   end
 
   def safe_params
-    params.require(:family_member).permit(:relation, :description, :patient_id, :name, :editor)
+    params.require(:family_member).permit(:relation, :details, :patient_id, :name, :editor)
   end
 end

@@ -1,5 +1,6 @@
-angular.module('emrApp').controller 'MedicationCreateCtrl', ['$scope', '$routeParams', '$location', 'Restangular', 'UtilService', ($scope, $routeParams, $location, Restangular, UtilService) ->
+angular.module('emrApp').controller 'MedicationCreateCtrl', ['$scope', '$routeParams', '$location', '$sessionStorage', 'Restangular', 'UtilService', ($scope, $routeParams, $location, $sessionStorage, Restangular, UtilService) ->
 	$scope.patientId = $routeParams.patientId
+	$scope.patient = $sessionStorage.patient
 	$scope.meds = Restangular.all('med_names').getList().$object
 	$scope.save = ->
 		index = UtilService.findIndexByKeyValue($scope.meds, "name", $scope.medication.name)

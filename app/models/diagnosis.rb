@@ -6,7 +6,7 @@ class Diagnosis
 
   field :name
   field :year
-  field :comment
+  field :details
   field :editor
   embedded_in :patient 
 

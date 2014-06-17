@@ -1,55 +1,55 @@
 .row
   form name="patientForm"
     .form-group(ng-class="{error: patientForm.first_name.$invalid && !patientForm.first_name.$pristine}")
-      label for="first_name" First name
+      label for="first_name" {{'FirstName'|translate}}
       input.form-control(type="text" name="first_name" ng-model="patient.first_name" required)
       span.help-inline ng-show="patientForm.first_name.$error.required && !patientForm.first_name.$pristine"
         | Required
     .form-group(ng-class="{error: patientForm.last_name.$invalid && !patientForm.last_name.$pristine}")
-      label for="last_name" Last name
+      label for="last_name" {{'LastName'|translate}}
       input.form-control(type="text" name="last_name" ng-model="patient.last_name" required) 
       span.help-inline ng-show="patientForm.last_name.$error.required && !patientForm.last_name.$pristine"
         | Required
     .form-group
       label.radio-inline
-        input type="radio" name="gender" id="F" value="Female" ng-model="patient.gender" Female
+        input type="radio" name="gender" id="F" value="{{'Female'|translate}}" ng-model="patient.gender" {{'Female'|translate}}
       label.radio-inline
-        input type="radio" name="gender" id="M" value="Male" ng-model="patient.gender" Male
+        input type="radio" name="gender" id="M" value="{{'Male'|translate}}" ng-model="patient.gender" {{'Male'|translate}}
     .form-group
-      label for="birthday" Birthday
+      label for="birthday" {{'Birthday'|translate}}
       input.form-control type="date" name="birthday" ng-model="patient.birthday"
     .form-group
-      label for="nationality" Nationality 
+      label for="nationality" {{'Nationality'|translate}} 
       input.form-control type="text" name="nationality" ng-model="patient.nationality"
     .form-group
-      label for="address" Current Address 
+      label for="address" {{'Address'|translate}} 
       .form-horizontal
         .form-group
-          label.col-sm-1.control-label for="province" Province 
+          label.col-sm-1.control-label for="province" {{'Province'|translate}}
           .col-sm-11
             input.form-control type="text" id="province" ng-model="patient.address.province"
         .form-group
-          label.col-sm-1.control-label for="city" City 
+          label.col-sm-1.control-label for="city" {{'City'|translate}}
           .col-sm-11
             input.form-control type="text" id="city" ng-model="patient.address.city"
         .form-group
-          label.col-sm-1.control-label for="district" District 
+          label.col-sm-1.control-label for="district" {{'District'|translate}}
           .col-sm-11
             input.form-control type="text" id="district" ng-model="patient.address.district"
         .form-group
-          label.col-sm-1.control-label for="street" Street 
+          label.col-sm-1.control-label for="street" {{'Street'|translate}}
           .col-sm-11
             input.form-control type="text" id="street" ng-model="patient.address.street"
     .form-group
-      label for="email" Email 
+      label for="email" {{'Email'|translate}} 
       input.form-control type="email" name="email" ng-model="patient.email"
     .form-group
-      label for="phone" Phone 
+      label for="phone" {{'Phone'|translate}} 
       input.form-control type="text" name="phone" ng-model="patient.phone"
     .form-group
-      label for="occupation" Occupation 
+      label for="occupation" {{'Occupation'|translate}} 
       input.form-control type="text" name="occupation" ng-model="patient.occupation"
     .form-group
-      label for="company" Company 
+      label for="company" {{'Company'|translate}} 
       input.form-control type="text" name="company" ng-model="patient.company"
-    button.btn.btn-primary type="button" ng-click="save()" ng-disabled="patientForm.$invalid" Save 
+    button.btn.btn-primary type="button" ng-click="save()" ng-disabled="patientForm.$invalid" {{'Save'|translate}}

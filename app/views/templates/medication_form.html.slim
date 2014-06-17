@@ -1,23 +1,22 @@
 .row
   ol.breadcrumb
     li 
-      a href="/patient#/{{patientId}}" Summary
+      a href="/patient#/{{patientId}}" {{patient}} 
     li 
-      a href="/patient#/{{patientId}}/medications" Current Medications 
-    li.active Medication 
+      a href="/patient#/{{patientId}}/medications" {{'CurrentMedications'|translate}}
 .row
   form name="medicationForm"
     .form-group(ng-class="{error: medicationForm.medication.$invalid && !medicationForm.medication.$pristine}")
-      label for="name" Medication
+      label for="name" {{'Medication'|translate}}
       input.form-control(type="text" name="name" list="meds" ng-model="medication.name" required)
       datalist id="meds"
         option ng-repeat="med in meds" value="{{med.name}}"
       span.help-inline ng-show="medicationForm.name.$error.required && !medicationForm.name.$pristine"
         | Required
     .form-group
-      label for="script" Script 
+      label for="script" {{'Script'|translate}} 
       input.form-control type="text" name="script" ng-model="medication.script"
     .form-group
-      label for="details" Details 
+      label for="details" {{'Details'|translate}} 
       textarea.form-control rows="3" ng-model="medication.details"
-    button.btn.btn-primary ng-click="save()" ng-disabled="medicationForm.$invalid" Save
+    button.btn.btn-primary ng-click="save()" ng-disabled="medicationForm.$invalid" {{'Save'|translate}}

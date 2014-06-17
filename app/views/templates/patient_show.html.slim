@@ -5,88 +5,106 @@
     li.active(ng-hide="patient.gender == null")
       |{{patient.gender}}
     li.active(ng-hide="patient.birthday == null")
-      |DOB: {{patient.birthday}} Age: {{patient.age}}
+      |{{'DOB'|translate}}: {{patient.birthday}} {{'Age'|translate}}: {{patient.age}}
     li.active(ng-hide="patient.email == null")
       |{{patient.email}}
     li.active(ng-hide="patient.phone == null")
-      |Phone: {{patient.phone}}
+      |{{'Phone'|translate}}: {{patient.phone}}
 
 .row
   .col-md-6
-    h4 Most Recent Visit
+    h4 
+      | {{'LastVisit'|translate}}
     .visit ng-show="patient.visit"
       p
-        strong Visit Date: 
+        strong 
+          |{{'VisitDate'|translate}}: 
         a href="/patient#/{{patient.id.$oid}}/visits/{{patient.visit.id.$oid}}" {{patient.visit.visit_date}}
       p
-        strong Subjective: 
+        strong 
+          |{{'Subjective'|translate}}: 
         | {{patient.visit.subjective}}
       p
         ul.list-inline
           li
-            strong T: 
+            strong 
+              |{{'T'|translate}}: 
             | {{patient.vital_sign.temperature}}
           li
-            strong BP: 
+            strong 
+              |{{'BP'|translate}}: 
             | {{patient.vital_sign.blood_pressure}}
           li
-            strong P:
+            strong 
+              |{{'P'|translate}}:
             | {{patient.vital_sign.pulse}}
           li
-            strong RR: 
+            strong 
+              |{{'RR'|translate}}: 
             | {{patient.vital_sign.respiratory_rate}}
           li
-            strong O2: 
+            strong 
+              |{{'O2'|translate}}: 
             | {{patient.vital_sign.oxygen_saturation}}
         ul.list-inline
           li
-            strong Wt: 
+            strong 
+              |{{'Wt'|translate}}: 
             | {{patient.vital_sign.weight}}
           li
-            strong Ht: 
+            strong 
             | {{patient.vital_sign.height}}
           li
-            strong BMI: 
+            strong 
+              |{{'BMI'|translate}}: 
             | {{patient.vital_sign.bmi}}
           li
-            strong HC: 
+            strong 
+              |{{'HC'|translate}}: 
             | {{patient.vital_sign.pediatric_hc}}
       p
-        strong Assessment: 
+        strong 
+          |{{'Assessment'|translate}}: 
         | {{patient.visit.assessment}}
       p
-        strong Lab: 
+        strong 
+          |{{'Lab'|translate}}: 
         | {{patient.visit.lab}}
       p
-        strong Treatment: 
+        strong 
+          |{{'Treatment'|translate}}: 
         | {{patient.visit.treatment}}
       p
-        strong Follow up: 
+        strong 
+          |{{'FollowUp'|translate}}: 
         | {{patient.visit.follow_up}}
       p
-        strong Last updated by: 
+        strong 
+          |{{'LastUpdatedBy'|translate}}: 
         | {{patient.visit.editor}}
       p
-        strong Last updated on: 
+        strong 
+          |{{'LastUpdatedOn'|translate}}: 
         | {{patient.visit.updated_at | date : 'medium'}}
-    a href="/patient#/{{patient.id.$oid}}/new_visit" New Visit
-    h4 Recent Visits
+    a href="/patient#/{{patient.id.$oid}}/new_visit" {{'NewVisit'|translate}}
+    h4 
+      |{{'RecentVisits'|translate}}
     ul.list-unstyled
       li ng-repeat="visit in patient.recent_visits"
         a href="/patient#/{{patient.id.$oid}}/visits/{{visit.id.$oid}}" {{visit.visit_date}} 
         |  {{visit.subjective}}
   .col-md-6
     .category
-      a href="/patient#/{{patient.id.$oid}}/medications" Current Medications
+      a href="/patient#/{{patient.id.$oid}}/medications" {{'CurrentMedications'|translate}}
     form.form-inline name="medicationForm"
       .form-group
-        label.sr-only for="medication" Medication
-        input.form-control(type="text" id="medication" list="meds" ng-model="medication.name" placeholder="Medication" required)
+        label.sr-only for="medication" {{'Medication'|translate}}
+        input.form-control(type="text" id="medication" list="meds" ng-model="medication.name" placeholder="{{'Medication'|translate}}" required)
         datalist id="meds"
           option ng-repeat="med in meds" value="{{med.name}}"
       .form-group
-        label.sr-only for="script" Script 
-        input.form-control type="text" id="script" ng-model="medication.script" placeholder="Script"
+        label.sr-only for="script" {{'Script'|translate}}
+        input.form-control type="text" id="script" ng-model="medication.script" placeholder="{{'Script'|translate}}"
       button.btn.btn-primary ng-click="quickAddMedication()" ng-disabled="medicationForm.$invalid" 
         span.glyphicon.glyphicon-ok
     table.table id="medications"
@@ -97,14 +115,14 @@
           |{{medication.script}}
      
     .category
-      a href="/patient#/{{patient.id.$oid}}/allergies" Allergies 
+      a href="/patient#/{{patient.id.$oid}}/allergies" {{'Allergies'|translate}}
     form.form-inline name="allergyForm"
       .form-group
-        label.sr-only for="name" Med Name 
-        input.form-control(type="text" id="name" list="meds" ng-model="allergy.name" placeholder="Med Name" required)
+        label.sr-only for="name" Medication
+        input.form-control(type="text" id="name" list="meds" ng-model="allergy.name" placeholder="{{'Medication'|translate}}" required)
       .form-group
         label.sr-only for="reaction" Reaction 
-        input.form-control(type="text" id="reaction" ng-model="allergy.reaction" placeholder="Reaction")
+        input.form-control(type="text" id="reaction" ng-model="allergy.reaction" placeholder="{{'Reaction'|translate}}")
       button.btn.btn-primary ng-click="quickAddAllergy()" ng-disabled="allergyForm.$invalid" 
         span.glyphicon.glyphicon-ok
     table.table id="allergies"
@@ -115,16 +133,16 @@
           |{{allergy.reaction}}
 
     .category
-      a href="/patient#/{{patient.id.$oid}}/diagnoses" Past Medical History
+      a href="/patient#/{{patient.id.$oid}}/diagnoses" {{'PastMedicalHistory'|translate}}
     form.form-inline name="diagnosisForm"
       .form-group
-        label.sr-only for="name" Diagnosis 
-        input.form-control(type="text" id="name" list="diags" ng-model="diagnosis.name" placeholder="Diagnosis" required)
+        label.sr-only for="name" {{'Diagnosis'|translate}}
+        input.form-control(type="text" id="name" list="diags" ng-model="diagnosis.name" placeholder="{{'Diagnosis'|translate}}" required)
         datalist id="diags"
           option ng-repeat="diag in diags" value="{{diag.name}}"
       .form-group
         label.sr-only for="year" Year 
-        input.form-control(type="text" id="year" ng-model="diagnosis.year" placeholder="Year")
+        input.form-control(type="text" id="year" ng-model="diagnosis.year" placeholder="{{'Year'|translate}}")
       button.btn.btn-primary ng-click="quickAddDiagnosis()" ng-disabled="diagnosisForm.$invalid" 
         span.glyphicon.glyphicon-ok
     table.table
@@ -135,16 +153,16 @@
           | {{diagnosis.year}}
     
     .category
-      a href="/patient#/{{patient.id.$oid}}/surgeries" Surgical History 
+      a href="/patient#/{{patient.id.$oid}}/surgeries" {{'SurgicalHistory'|translate}}
     form.form-inline name="surgeryForm"
       .form-group
         label.sr-only for="name" Surgery 
-        input.form-control(type="text" id="name" list="surgs" ng-model="surgery.name" placeholder="Surgery" required)
+        input.form-control(type="text" id="name" list="surgs" ng-model="surgery.name" placeholder="{{'Surgery'|translate}}" required)
         datalist id="surgs"
           option ng-repeat="surg in surgs" value="{{surg.name}}"
       .form-group
         label.sr-only for="year" Year 
-        input.form-control(type="text" id="year" ng-model="surgery.year" placeholder="Year")
+        input.form-control(type="text" id="year" ng-model="surgery.year" placeholder="{{'Year'|translate}}")
       button.btn.btn-primary ng-click="quickAddSurgery()" ng-disabled="surgeryForm.$invalid" 
         span.glyphicon.glyphicon-ok
     table.table id="surgeries"
@@ -155,14 +173,14 @@
           | {{surgery.year}}
 
     .category
-      a href="/patient#/{{patient.id.$oid}}/behaviors" Social History 
+      a href="/patient#/{{patient.id.$oid}}/behaviors" {{'SocialHistory'|translate}} 
     form.form-inline name="behaviorForm"
       .form-group
         label.sr-only for="name" Name 
-        input.form-control(type="text" id="name" ng-model="behavior.name" placeholder="Name" required)
+        input.form-control(type="text" id="name" ng-model="behavior.name" placeholder="{{'Name'|translate}}" required)
       .form-group
         label.sr-only for="details" Details
-        input.form-control(type="text" id="details" ng-model="behavior.details" placeholder="Details")
+        input.form-control(type="text" id="details" ng-model="behavior.details" placeholder="{{'Details'|translate}}")
       button.btn.btn-primary ng-click="quickAddBehavior()" ng-disabled="behaviorForm.$invalid" 
         span.glyphicon.glyphicon-ok
     table.table id="social"
@@ -172,14 +190,15 @@
         td
           | {{behavior.details}}
 
-    h5 Family History
+    h5 
+      |{{'FamilyHistory'|translate}}
     form.form-inline name="familyForm"
       .form-group
-        label.sr-only for="relation" Medication
-        input.form-control(type="text" id="relation" ng-model="family.relation" placeholder="Relation" required)
+        label.sr-only for="relation" Relation 
+        input.form-control(type="text" id="relation" ng-model="family.relation" placeholder="{{'Relation'|translate}}" required)
       .form-group
-        label.sr-only for="description" Description 
-        input.form-control(type="text" id="description" ng-model="family.description" placeholder="Description" required)
+        label.sr-only for="details" Details 
+        input.form-control(type="text" id="details" ng-model="family.details" placeholder="{{'Details'|translate}}" required)
       button.btn.btn-primary ng-click="quickAddFamily()" ng-disabled="familyForm.$invalid" 
         span.glyphicon.glyphicon-ok
     table.table id="family"
@@ -187,7 +206,7 @@
         td width="40%" 
           a href="/patient#/{{patient.id.$oid}}/family/{{member.id.$oid}}" {{member.relation}}
         td 
-          |{{member.description}}
+          |{{member.details}}
 
     /h5 Allergies/Advose Reactions
     /table.table.table-hover id="reactions"

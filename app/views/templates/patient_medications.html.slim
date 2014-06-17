@@ -2,17 +2,23 @@
   ol.breadcrumb
     li 
       a href="/patient#/{{patientId}}" {{patient}} 
-    li.active Medications 
+    li.active 
+      |{{'Medication'|translate}}
 .row
   .col-md-12
-    h4 Current Medications 
-    a href="/patient#/{{patientId}}/new_medication" Add Medication
+    h4 
+      |{{'CurrentMedications'|translate}}
+    a href="/patient#/{{patientId}}/new_medication" {{'AddMedication'|translate}}
     table.table.table-hover id="medications"
       tr
-        th Medication 
-        th Script
-        th Editor
-        th Last Updated 
+        th 
+          |{{'Medication'|translate}} 
+        th 
+          |{{'Script'|translate}}
+        th 
+          |{{'Editor'|translate}}
+        th 
+          |{{'LastUpdated'|translate}}
       tr.x-row ng-repeat="medication in medications | filter:isActive"
         td
           a href="/patient#/{{patientId}}/medications/{{medication._id.$oid}}" {{medication.name}}
@@ -22,13 +28,18 @@
           |{{medication.editor}}
         td
           |{{medication.updated_at | date:'medium'}}
-    h4 Past Medications 
+    h4 
+      |{{'PastMedications'|translate}}
     table.table.table-hover id="past-medications"
       tr
-        th Medication 
-        th Script
-        th Editor
-        th Last Updated    
+        th 
+          |{{'Medication'|translate }} 
+        th 
+          |{{'Script'|translate}}
+        th 
+          |{{'Editor'|translate}}
+        th 
+          |{{'LastUpdated'|translate}}
       tr.x-row ng-repeat="medication in medications | filter:{stop:true}"
         td
           a href="/patient#/{{patientId}}/medications/{{medication._id.$oid}}" {{medication.name}}

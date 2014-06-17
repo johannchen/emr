@@ -39,6 +39,6 @@ class DiagnosesController < ApplicationController
   end
 
   def safe_params
-    params.require(:diagnosis).permit(:name, :year, :comment, :editor)
+    params.require(:diagnosis).permit(:name, :year, :details, :editor)
   end
 end

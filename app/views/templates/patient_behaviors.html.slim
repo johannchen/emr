@@ -2,17 +2,23 @@
   ol.breadcrumb
     li 
       a href="/patient#/{{patientId}}" {{patient}} 
-    li.active Social History 
+    li.active 
+      |{{'SocialHistory'|translate}} 
 .row
   .col-md-12
-    h4 Social History 
-    a href="/patient#/{{patientId}}/new_behavior" Add Social History 
+    h4 
+      |{{'SocialHistory'|translate}} 
+    a href="/patient#/{{patientId}}/new_behavior" {{'AddSocialHistory'|translate}} 
     table.table.table-hover id="behaviors"
       tr
-        th Name 
-        th Details 
-        th Editor
-        th Last Updated 
+        th 
+          |{{'Name'|translate}} 
+        th 
+          |{{'Details'|translate}}
+        th 
+          |{{'Editor'|translate}}
+        th 
+          |{{'LastUpdated'|translate}}
       tr.x-row ng-repeat="behavior in behaviors"
         td
           a href="/patient#/{{patientId}}/behaviors/{{behavior._id.$oid}}" {{behavior.name}}

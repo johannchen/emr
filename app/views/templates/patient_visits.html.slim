@@ -2,17 +2,23 @@
   ol.breadcrumb
     li 
       a href="/patient#/{{patientId}}" {{patient}} 
-    li.active Visits 
+    li.active 
+      |{{'Visits'|translate}} 
 .row
   .col-md-12
-    h4 Vists 
-    a href="/patient#/{{patientId}}/new_visit" New Visit 
+    h4 
+      |{{'Visits'|translate}} 
+    a href="/patient#/{{patientId}}/new_visit" {{'NewVisit'|translate}}
     table.table.table-hover id="visits"
       tr
-        th.col-md-2 Date 
-        th.col-md-6 Subjective 
-        th.col-md-2 Editor
-        th.col-md-2 Last Updated 
+        th.col-md-2 
+          |{{'VisitDate'|translate}} 
+        th.col-md-6 
+          |{{'Subjective'|translate}} 
+        th.col-md-2 
+          |{{'Editor'|translate}}
+        th.col-md-2 
+          |{{'LastUpdated'|translate}} 
       tr.x-row ng-repeat="visit in visits"
         td
           a href="/patient#/{{patientId}}/visits/{{visit._id.$oid}}" {{visit.visit_date}}

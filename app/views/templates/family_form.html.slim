@@ -1,24 +1,25 @@
 .row
   ol.breadcrumb
     li 
-      a href="/patient#/{{patientId}}" Summary
-    li.active Family History 
+      a href="/patient#/{{patientId}}" {{patient}} 
+    li.active 
+      |{{'FamilyHistory'|translate}} 
 .row
   form name="familyForm"
     .form-group(ng-class="{error: familyForm.family.$invalid && !familyForm.family.$pristine}")
-      label for="relation" Relation 
+      label for="relation" {{'Relation'|translate}} 
       input.form-control(type="text" name="relation" ng-model="family.relation" required)
       span.help-inline ng-show="familyForm.relation.$error.required && !familyForm.relation.$pristine"
         | Required
-    .form-group(ng-class="{error: familyForm.description.$invalid && !familyForm.description.$pristine}")
-      label for="description" Description 
-      input.form-control type="text" name="description" ng-model="family.description"
-      span.help-inline ng-show="familyForm.description.$error.required && !familyForm.description.$pristine"
+    .form-group(ng-class="{error: familyForm.description.$invalid && !familyForm.details.$pristine}")
+      label for="details" {{'Details'|translate}}
+      input.form-control type="text" name="details" ng-model="family.details"
+      span.help-inline ng-show="familyForm.details.$error.required && !familyForm.details.$pristine"
         | Required
     .form-group
-      label for="patient_id" Name 
-      select(ui-select2 ng-model="family.patient_id" data-placeholder="Choose a patient")
+      label for="patient_id" {{'Name'|translate}} 
+      select(ui-select2 ng-model="family.patient_id" data-placeholder="{{'SelectPatient'|translate}}")
         option value=""
-        option(ng-repeat="patient in patients" value="{{patient.sid}}")
+        option(ng-repeat="patient in patients" value="{{patient.id.$oid}}")
           | {{patient.full_name}}
-    button.btn.btn-primary ng-click="save()" ng-disabled="familyForm.$invalid" Save
+    button.btn.btn-primary ng-click="save()" ng-disabled="familyForm.$invalid" {{'Save'|translate}}

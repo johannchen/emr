@@ -2,17 +2,23 @@
   ol.breadcrumb
     li 
       a href="/patient#/{{patientId}}" {{patient}} 
-    li.active Surgical History 
+    li.active 
+      |{{'SurgicalHistory'|translate}} 
 .row
   .col-md-12
-    h4 Surgical History 
-    a href="/patient#/{{patientId}}/new_surgery" Add Surgery 
+    h4 
+      |{{'SurgicalHistory'|translate}} 
+    a href="/patient#/{{patientId}}/new_surgery" {{'AddSurgery'|translate}} 
     table.table.table-hover id="surgeries"
       tr
-        th Surgery 
-        th Year 
-        th Editor
-        th Last Updated 
+        th 
+          |{{'Surgery'|translate}} 
+        th 
+          |{{'Year'|translate}} 
+        th 
+          |{{'Editor'|translate}}
+        th 
+          |{{'LastUpdated'|translate}}
       tr.x-row ng-repeat="surgery in surgeries"
         td
           a href="/patient#/{{patientId}}/surgeries/{{surgery._id.$oid}}" {{surgery.name}}

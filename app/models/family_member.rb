@@ -3,7 +3,7 @@ class FamilyMember
   include Mongoid::Timestamps
 
   field :relation
-  field :description
+  field :details
   field :editor
   field :patient_id
   field :name

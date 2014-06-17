@@ -2,17 +2,23 @@
   ol.breadcrumb
     li 
       a href="/patient#/{{patientId}}" {{patient}} 
-    li.active Allergies 
+    li.active 
+      |{{'Allergies'|translate}} 
 .row
   .col-md-12
-    h4 Allergies 
-    a href="/patient#/{{patientId}}/new_allergy" Add Allergy 
+    h4 
+      |{{'Allergies'|translate}} 
+    a href="/patient#/{{patientId}}/new_allergy" {{'AddAllergy'|translate}} 
     table.table.table-hover id="allergies"
       tr
-        th Med Name 
-        th Reaction 
-        th Editor
-        th Last Updated 
+        th
+          |{{'Medication'|translate}}
+        th 
+          |{{'Reaction'|translate}} 
+        th 
+          |{{'Editor'|translate}}
+        th 
+          |{{'LastUpdated'|translate}} 
       tr.x-row ng-repeat="allergy in allergies"
         td
           a href="/patient#/{{patientId}}/allergies/{{allergy._id.$oid}}" {{allergy.name}}

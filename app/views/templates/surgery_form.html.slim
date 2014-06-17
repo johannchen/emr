@@ -1,23 +1,22 @@
 .row
   ol.breadcrumb
     li 
-      a href="/patient#/{{patientId}}" Summary
+      a href="/patient#/{{patientId}}" {{patient}} 
     li 
-      a href="/patient#/{{patientId}}/surgeries" Surgical History 
-    li.active Surgery 
+      a href="/patient#/{{patientId}}/surgeries" {{'SurgicalHistory'|translate}} 
 .row
   form name="surgeryForm"
     .form-group(ng-class="{error: surgeryForm.surgery.$invalid && !surgeryForm.surgery.$pristine}")
-      label for="name" Surgery 
+      label for="name" {{'Surgery'|translate}}
       input.form-control(type="text" name="name" list="surgs" ng-model="surgery.name" required)
       datalist id="surgs"
         option ng-repeat="surg in surgs" value="{{surg.name}}"
       span.help-inline ng-show="surgeryForm.name.$error.required && !surgeryForm.name.$pristine"
         | Required
     .form-group
-      label for="year" Year 
+      label for="year" {{'Year'|translate}} 
       input.form-control type="text" name="year" ng-model="surgery.year"
     .form-group
-      label for="details" Details 
+      label for="details" {{'Details'|translate}} 
       textarea.form-control rows="3" ng-model="surgery.details"
-    button.btn.btn-primary ng-click="save()" ng-disabled="surgeryForm.$invalid" Save
+    button.btn.btn-primary ng-click="save()" ng-disabled="surgeryForm.$invalid" {{'Save'|translate}}

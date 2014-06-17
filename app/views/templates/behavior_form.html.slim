@@ -1,18 +1,17 @@
 .row
   ol.breadcrumb
     li 
-      a href="/patient#/{{patientId}}" Summary
+      a href="/patient#/{{patientId}}" {{patient}} 
     li 
-      a href="/patient#/{{patientId}}/behaviors" Social History 
-    li.active Form 
+      a href="/patient#/{{patientId}}/behaviors" {{'SocialHistory'|translate}}
 .row
   form name="behaviorForm"
     .form-group(ng-class="{error: behaviorForm.behavior.$invalid && !behaviorForm.behavior.$pristine}")
-      label for="name" Name 
+      label for="name" {{'Name'|translate}}
       input.form-control(type="text" name="name" ng-model="behavior.name" required)
       span.help-inline ng-show="behaviorForm.name.$error.required && !behaviorForm.name.$pristine"
         | Required
     .form-group
-      label for="details" Details 
+      label for="details" {{'Details'|translate}} 
       textarea.form-control rows="3" ng-model="behavior.details"
-    button.btn.btn-primary ng-click="save()" ng-disabled="behaviorForm.$invalid" Save
+    button.btn.btn-primary ng-click="save()" ng-disabled="behaviorForm.$invalid" {{'Save'|translate}}
