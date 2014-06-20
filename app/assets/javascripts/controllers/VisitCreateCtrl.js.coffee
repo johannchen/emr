@@ -2,5 +2,5 @@ angular.module('emrApp').controller 'VisitCreateCtrl', ['$scope', '$routeParams'
 	patientId = $routeParams.patientId
 	$scope.save = ->
 		Restangular.one('patients', patientId).all("visits").post($scope.visit).then (visit) ->
-			$location.path('/' + patientId + '/visits')
+			$location.path('/' + patientId + '/visits/' + visit._id.$oid)
 ]

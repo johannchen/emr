@@ -20,6 +20,7 @@ class PatientsController < ApplicationController
 
   def create
     params[:patient][:editor] = current_user.full_name
+    params[:patient][:address] = params[:address]
     @patient = Patient.create!(safe_params)
     render json: @patient 
   end

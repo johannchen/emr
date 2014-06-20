@@ -12,6 +12,8 @@ class VisitsController < ApplicationController
 
   def create
     params[:visit][:editor] = current_user.full_name
+    params[:visit][:vital_sign] = params[:vital_sign]
+    params[:visit][:physical] = params[:physical]
     @visit = patient.visits.create!(safe_params)
     render json: @visit
   end

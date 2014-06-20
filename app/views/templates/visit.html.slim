@@ -4,101 +4,132 @@
     li 
       a href="/patient#/{{patientId}}" {{patient}} 
     li
-      a href="/patient#/{{patientId}}/visits" Visits 
+      a href="/patient#/{{patientId}}/visits" {{'Visits'|translate}} 
     li.active 
       | {{visit.visit_date}} 
 .row
   .col-md-12
     p 
-      strong Subjective: 
+      strong 
+        |{{'Subjective'|translate}}: 
       | {{visit.subjective}}
     p
       ul.list-inline
         li
-          strong T: 
+          strong 
+            |{{'T'|translate}}: 
           | {{visit.vital_sign.temperature}}
         li
-          strong BP: 
+          strong 
+            |{{'BP'|translate}}: 
           | {{visit.vital_sign.blood_pressure}}
         li
-          strong P:
+          strong 
+            |{{'P'|translate}}:
           | {{visit.vital_sign.pulse}}
         li
-          strong RR: 
+          strong 
+            |{{'RR'|translate}}: 
           | {{visit.vital_sign.respiratory_rate}}
         li
-          strong O2: 
+          strong 
+            |{{'O2'|translate}}: 
           | {{visit.vital_sign.oxygen_saturation}}
       ul.list-inline
         li
-          strong Weight: 
+          strong 
+            |{{'Wt'|translate}}: 
           | {{visit.vital_sign.weight}}
         li
-          strong Height: 
+          strong 
+            |{{'Ht'|translate}}: 
           | {{visit.vital_sign.height}}
         li
-          strong BMI: 
+          strong 
+            |{{'BMI'|translate}}: 
           | {{visit.vital_sign.bmi}}
         li
-          strong Pediatric HC: 
+          strong 
+            |{{'HC'|translate}}: 
           | {{visit.vital_sign.pediatric_hc}}
     p
-      strong General: 
+      strong 
+        |{{'General'|translate}}: 
       | {{visit.physical.general}}
       ul
         li ng-show="{{visit.physical.heent}}"
-          strong HEENT: 
+          strong 
+            |{{'HEENT'|translate}}: 
           | {{visit.physical.heent}}
         li ng-show="{{visit.physical.neck}}"
-          strong Neck: 
+          strong 
+            |{{'Neck'|translate}}: 
           | {{visit.physical.neck}}
         li ng-show="{{visit.physical.respiratory}}"
-          strong Respiratory: 
+          strong 
+            |{{'Respiratory'|translate}}: 
           | {{visit.physical.respiratory}}
         li ng-show="{{visit.physical.cardiac}}"
-          strong Cardiac: 
+          strong 
+            |{{'Cardiac'|translate}}: 
           | {{visit.physical.cardiac}}
         li ng-show="{{visit.physical.abdomen}}"
-          strong Abdomen: 
+          strong 
+            |{{'Abdomen'|translate}}: 
           | {{visit.physical.abdomen}}
         li ng-show="{{visit.physical.gu}}"
-          strong GU: 
+          strong 
+            |{{'GU'|translate}}: 
           | {{visit.physical.gu}}
         li ng-show="{{visit.physical.rectal}}"
-          strong Rectal: 
+          strong 
+            |{{'Rectal'|translate}}: 
           | {{visit.physical.rectal}}
         li ng-show="{{visit.physical.extremities}}"
-          strong Extremities: 
+          strong 
+            |{{'Extremities'|translate}}: 
           | {{visit.physical.extremities}}
         li ng-show="{{visit.physical.back}}"
-          strong Back: 
+          strong 
+            |{{'Back'|translate}}: 
           | {{visit.physical.back}}
         li ng-show="{{visit.physical.skin}}"
-          strong Skin: 
+          strong 
+            |{{'Skin'|translate}}: 
           | {{visit.physical.skin}}
         li ng-show="{{visit.physical.breast}}"
-          strong Breast: 
+          strong 
+            |{{'Breast'|translate}}: 
           | {{visit.physical.breast}}
         li ng-show="{{visit.physical.neuro}}"
-          strong Neuro: 
+          strong 
+            |{{'Neuro'|translate}}: 
           | {{visit.physical.neuro}}
         li ng-show="{{visit.physical.psych}}"
-          strong Psych: 
+          strong 
+            |{{'Psych'|translate}}: 
           | {{visit.physical.psych}}
     p
-      strong Assessment:
+      strong 
+        |{{'Assessment'|translate}}: 
       | {{visit.assessment}}
     p
-      strong Lab:
+      strong 
+        |{{'Lab'|translate}}:
       | {{visit.lab}}
     p
-      strong Treatment:
+      strong 
+        |{{'Treatment'|translate}}:
       | {{visit.treatment}}
     p
-      strong Follow up:
+      strong 
+        |{{'FollowUp'|translate}}:
       | {{visit.follow_up}}
-    p Created at: {{visit.created_at | date:'medium'}}
-    p Updated at: {{visit.updated_at | date:'medium'}}
-    p Last updated by: {{visit.editor}}
+    p 
+      |{{'CreatedAt'|translate}}: {{visit.created_at | date:'medium'}}
+    p 
+      |{{'LastUpdatedOn'|translate}}: {{visit.updated_at | date:'medium'}}
+    p 
+      |{{'LastUpdatedBy'|translate}}: {{visit.editor}}
     .action ng-show="isEditor"
-      a href="/patient#/{{patientId}}/visits/{{visit._id.$oid}}/edit" Edit 
+      a href="/patient#/{{patientId}}/visits/{{visit._id.$oid}}/edit" {{'Edit'|translate}} 
