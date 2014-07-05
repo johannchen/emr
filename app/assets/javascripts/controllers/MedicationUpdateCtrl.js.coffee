@@ -1,5 +1,6 @@
-angular.module('emrApp').controller 'MedicationUpdateCtrl', ['$scope', '$location', '$routeParams', 'Restangular', ($scope, $location, $routeParams, Restangular) ->
+angular.module('emrApp').controller 'MedicationUpdateCtrl', ['$scope', '$location', '$routeParams', '$sessionStorage', 'Restangular', ($scope, $location, $routeParams, $sessionStorage, Restangular) ->
 	$scope.patientId = $routeParams.patientId
+	$scope.patient = $sessionStorage.patient
 	id = $routeParams.id
 	medicationBase = Restangular.one('patients', $routeParams.patientId).one('medications', id)
 	medicationBase.get().then (medication) ->

@@ -7,4 +7,5 @@ angular.module('emrApp').controller 'PatientUpdateCtrl', ['$scope', '$location',
 		patientBase.patient = $scope.patient
 		patientBase.put()
 		$location.path('/' + patientId + '/profile')
+		window.scrollTo(0, 0)
 ]

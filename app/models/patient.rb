@@ -12,10 +12,11 @@ class Patient
   field :nationality
   field :occupation
   field :company
+  field :department
+  field :insurance
   field :editor
 
   embeds_one :address
-#embeds_many :reactions
   embeds_many :allergies
 	embeds_many :medications
 	embeds_many :surgeries
@@ -25,14 +26,6 @@ class Patient
   embeds_many :diagnoses, class_name: "Diagnosis"
 
   accepts_nested_attributes_for :address
-=begin
-	track_history :modifier_field => :modifier,
-		:modifer_field_inverse_of => :nil,
-		:version_field => :version,
-		:track_create => false,
-		:track_update => true,
-		:track_destroy => false
-=end
 
   def full_name
     "#{last_name}, #{first_name}"

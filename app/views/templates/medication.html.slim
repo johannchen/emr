@@ -3,24 +3,29 @@
     li 
       a href="/patient#/{{patientId}}" {{patient}} 
     li
-      a href="/patient#/{{patientId}}/medications" Medications 
-    li.active Medication 
+      a href="/patient#/{{patientId}}/medications" {{'Medication'|translate}} 
 .row
   .col-md-12
     p 
-      strong Medication: 
+      strong 
+        |{{'Medication'|translate}}: 
       | {{medication.name}}
     p 
-      strong Script: 
+      strong 
+        |{{'Script'|translate}}: 
       | {{medication.script}}
     p 
-      strong Details: 
+      strong 
+        |{{'Details'|translate}}: 
       | {{medication.details}}
-    p Created at: {{medication.created_at | date:'medium'}}
-    p Updated at: {{medication.updated_at | date:'medium'}}
-    p Last updated by: {{medication.editor}}
+    p 
+      |{{'CreatedAt'|translate}}: {{medication.created_at | date:'medium'}}
+    p 
+      |{{'LastUpdated'|translate}}: {{medication.updated_at | date:'medium'}}
+    p 
+      |{{'LastUpdatedBy'|translate}}: {{medication.editor}}
     .action ng-show="isEditor"
       button.btn.btn-link type="button"
-        a href="/patient#/{{patientId}}/medications/{{medication._id.$oid}}/edit" Edit 
-      button.btn.btn-warning type="button" ng-click="stop()" ng-hide="medication.stop" Stop 
-      button.btn.btn-primary type="button" ng-click="start()" ng-show="medication.stop" Start 
+        a href="/patient#/{{patientId}}/medications/{{medication._id.$oid}}/edit" {{'Edit'|translate}} 
+      button.btn.btn-warning type="button" ng-click="stop()" ng-hide="medication.stop" {{'Stop'|translate}} 
+      button.btn.btn-primary type="button" ng-click="start()" ng-show="medication.stop" {{'Start'|translate}} 

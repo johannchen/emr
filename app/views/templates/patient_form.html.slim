@@ -16,6 +16,13 @@
       label.radio-inline
         input type="radio" name="gender" id="M" value="{{'Male'|translate}}" ng-model="patient.gender" {{'Male'|translate}}
     .form-group
+      label.radio-inline
+        input type="radio" name="department" id="vip" value="VIP" ng-model="patient.department" VIP 
+      label.radio-inline
+        input type="radio" name="department" id="hospice" value="{{'Hospice'|translate}}" ng-model="patient.department" {{'Hospice'|translate}}
+      label.radio-inline
+        input type="radio" name="department" id="charity" value="{{'Charity'|translate}}" ng-model="patient.department" {{'Charity'|translate}}
+    .form-group
       label for="birthday" {{'Birthday'|translate}}
       input.form-control type="date" name="birthday" ng-model="patient.birthday"
     .form-group
@@ -46,6 +53,9 @@
     .form-group
       label for="phone" {{'Phone'|translate}} 
       input.form-control type="text" name="phone" ng-model="patient.phone"
+    .form-group
+      label for="insurance" {{'Insurance'|translate}} 
+      input.form-control type="text" name="insurance" ng-model="patient.insurance"
     .form-group
       label for="occupation" {{'Occupation'|translate}} 
       input.form-control type="text" name="occupation" ng-model="patient.occupation"

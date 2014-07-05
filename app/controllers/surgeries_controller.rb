@@ -12,8 +12,12 @@ class SurgeriesController < ApplicationController
 
   def create
     params[:surgery][:editor] = current_user.full_name
-    @surgery = patient.surgeries.create!(safe_params)
-    render json: @surgery
+    if current_user.doctor 
+      @surgery = patient.surgeries.create!(safe_params)
+      render json: @surgery
+    else
+      render nothing: true
+    end
   end
 
   def update

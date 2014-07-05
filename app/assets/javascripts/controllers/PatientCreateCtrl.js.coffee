@@ -4,4 +4,5 @@ angular.module('emrApp').controller 'PatientCreateCtrl', ['$scope', '$location',
 		patients.post($scope.patient).then (patient) ->
 			PatientService.reloadPatients()
 			$location.path('/' + patient._id.$oid)
+			window.scrollTo(0, 0)
 ]

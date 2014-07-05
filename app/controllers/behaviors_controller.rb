@@ -12,8 +12,12 @@ class BehaviorsController < ApplicationController
 
   def create
     params[:behavior][:editor] = current_user.full_name
-    @behavior = patient.behaviors.create!(safe_params)
-    render json: @behavior
+    if current_user.doctor 
+      @behavior = patient.behaviors.create!(safe_params)
+      render json: @behavior
+    else
+      render nothing: true
+    end
   end
 
   def update

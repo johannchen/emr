@@ -7,6 +7,7 @@ class User
          :recoverable, :rememberable, :trackable, :validatable
          
   field :admin, :type => Boolean, :default => false
+  field :role
   field :first_name
   field :last_name
   field :title
@@ -51,5 +52,9 @@ class User
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def doctor
+    role == 'doctor' ? true : false
   end
 end

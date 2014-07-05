@@ -8,4 +8,5 @@ angular.module('emrApp').controller 'VisitUpdateCtrl', ['$scope', '$location', '
 		visitBase.visit = $scope.visit
 		visitBase.put()
 		$location.path('/' + $routeParams.patientId + '/visits/' + id)
+		window.scrollTo(0, 0)
 ]

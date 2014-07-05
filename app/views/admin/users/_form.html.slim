@@ -1,7 +1,6 @@
 = form_for [:admin, @user] do |f|
   /= @user.errors.full_messages.each do |msg|
     p = msg
-  
   .form-group
     = f.label :first_name
     = f.text_field :first_name, class: "form-control"
@@ -14,6 +13,13 @@
   .form-group
     = f.label :password
     = f.password_field :password, class: "form-control" 
+  .form-group
+    label.radio-inline
+      = f.radio_button :role, 'doctor'
+      | Doctor
+    label.radio-inline
+      = f.radio_button :role, 'frontdesk'
+      | Frontdesk 
   .checkbox
 		= f.label :admin
 		= f.check_box :admin
