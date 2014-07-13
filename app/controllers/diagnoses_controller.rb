@@ -12,7 +12,7 @@ class DiagnosesController < ApplicationController
 
   def create
     params[:diagnosis][:editor] = current_user.full_name
-    if current_user.doctor 
+    if current_user.doctor? 
       @diagnosis = patient.diagnoses.create!(safe_params)
       render json: @diagnosis
     else

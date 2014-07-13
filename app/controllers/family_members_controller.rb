@@ -12,7 +12,7 @@ class FamilyMembersController < ApplicationController
 
   def create
     params[:family_member][:editor] = current_user.full_name
-    if current_user.doctor 
+    if current_user.doctor? 
       @family_member = patient.family_members.create!(safe_params)
       render json: @family_member
     else

@@ -10,10 +10,9 @@ describe "Editing an user" do
 		fill_in 'user_email', :with => admin.email
 		fill_in 'user_password', :with => admin.password
 		click_button 'Sign in'
-		click_link 'Admin'
-		click_link 'Users'
+    visit '/admin/users'
 		click_link @user.email
-		click_link 'Edit User'
+		click_link 'Edit'
 	end
 
 	it "updates an user's details" do
@@ -35,7 +34,6 @@ describe "Editing an user" do
 		fill_in 'Email', :with => 'fake'
 		click_button 'Update User'
 		expect(page).to have_content 'User has not been updated.'
-		expect(page).to have_content 'Email is invalid'
 	end
 
 end

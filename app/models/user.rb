@@ -54,7 +54,7 @@ class User
     "#{first_name} #{last_name}"
   end
 
-  def doctor
-    role == 'doctor' ? true : false
+  def doctor?
+    role == 'doctor'
   end
 end

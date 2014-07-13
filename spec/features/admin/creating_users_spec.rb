@@ -8,8 +8,7 @@ describe "Creating Users" do
 		fill_in 'user_email', :with => admin.email
 		fill_in 'user_password', :with => admin.password
 		click_button 'Sign in'
-		click_link 'Admin'
-		click_link 'Users'
+    visit '/admin/users'
 		click_link 'New User'
 	end
 
@@ -27,7 +26,7 @@ describe "Creating Users" do
   	fill_in 'Email', :with => ''
   	fill_in 'Password', :with => 'password'
     click_button 'Create User'
-  	expect(page).to have_content "Email can't be blank"
+  	expect(page).to have_content "User has NOT been created."
   end
 
   it "creates an admin user" do
