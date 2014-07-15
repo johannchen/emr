@@ -27,6 +27,8 @@ class Patient
 
   accepts_nested_attributes_for :address
 
+  scope :search_profile, ->(text){ self.or({first_name: /#{text}/},{last_name: /#{text}/},{phone: /#{text}/}).asc }
+
   def full_name
     "#{last_name}, #{first_name}"
   end
@@ -49,5 +51,9 @@ class Patient
         "#{years} years, #{months} months old"
       end
     end
+  end
+
+  def self.search(text)
+    search_profile(text) unless text.empty?
   end
 end
