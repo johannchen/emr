@@ -29,7 +29,7 @@ group :development, :test do
 	gem 'factory_girl_rails'
 	gem 'database_cleaner'
 	gem 'mongoid-rspec'
-  gem 'rb-fsevent' if `uname` =~ /Darwin/
+  #gem 'rb-fsevent' if `uname` =~ /Darwin/
 end
 
 gem 'rails_12factor', group: :production

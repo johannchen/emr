@@ -237,7 +237,6 @@ DEPENDENCIES
   origin
   rails (= 4.1.4)
   rails_12factor
-  rb-fsevent
   rspec-rails
   sass-rails (~> 4.0.0)
   sdoc
