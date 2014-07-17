@@ -7,6 +7,11 @@ feature "Patient" do
     sign_in(user)
     @patient = create(:patient)
   end
+  
+  scenario "search patients with empty string" do
+    click_button "Search"
+    expect(page).to have_content "No result found."
+  end
 
   scenario "search patient by name" do
     fill_in "Patient", with: @patient.first_name
@@ -14,7 +19,5 @@ feature "Patient" do
     expect(page).to have_content @patient.full_name
   end
 
-  scenario "search patients by department" do
-  end
 end
 

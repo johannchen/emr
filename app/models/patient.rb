@@ -53,6 +53,10 @@ class Patient
     end
   end
 
+  def info
+    "#{gender} #{birthday} #{email} #{phone}"
+  end
+
   def self.search(text)
     search_profile(text) unless text.empty?
   end

@@ -25,10 +25,10 @@ html
               - if current_user.admin?
                 li
                   = link_to "{{'USER' | translate}}", admin_users_path
-          = form_tag patients_path, method: :get, class: "navbar-form navbar-left" do
+          = form_tag search_patients_path(:html), method: :get, class: "navbar-form navbar-left" do
             .form-group
-              = text_field_tag :patient, params[:search], class: "form-control", placeholder: "Patient"
-            = submit_tag "Search", class: "btn btn-default"
+              = text_field_tag :info, params[:info], class: "form-control", placeholder: "{{'PatientInfo'|translate}}"
+            = submit_tag "{{'Search'|translate}}", class: "btn btn-default"
 
           ul.nav.navbar-nav.navbar-right ng-controller="LanguageCtrl"
             - if user_signed_in?

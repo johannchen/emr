@@ -1,0 +1,14 @@
+h4 
+  | {{'Patients'|translate}}
+- if @patients.nil?
+  p 
+    | {{'NoResult'|translate}} 
+- else
+  ul.list-unstyled
+    - @patients.each do |patient|
+      li
+        span.col-md-1
+          a href="/patient#/#{patient.id}"
+            = patient.full_name
+        span.info
+          = patient.info

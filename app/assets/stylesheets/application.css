@@ -17,6 +17,14 @@ body {
 	padding-top: 70px;
 }
 
+input:required,
+textarea:required {
+  border-color: red !important;
+}
+input:required + label {
+  color: red;
+}
+
 .form-signin {
   max-width: 330px;
   padding: 15px;
@@ -35,6 +43,7 @@ body {
 .x-row:hover .edit {
   display: inline;
 }
+
 
 @media print {
   .navbar, #side, .action {

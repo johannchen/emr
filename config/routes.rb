@@ -29,6 +29,7 @@ Emr::Application.routes.draw do
     resources :behaviors
     resources :family_members
     resources :visits
+    get 'search', on: :collection
   end
 
   #get 'profile/:id' => 'profiles#show'

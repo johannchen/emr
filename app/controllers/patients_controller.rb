@@ -37,6 +37,13 @@ class PatientsController < ApplicationController
   def delete
   end
 
+  def search
+    @patients = Patient.search(params[:info])
+    respond_to do |format|
+      format.html
+    end
+  end
+
   private
   def safe_params
     params.require(:patient).permit(:first_name, :last_name, :gender, :birthday, :email, :phone, :department, :insurance, :nationality, :occupation, :company, :editor, address: [:province, :city, :district, :street])
